@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - ROVolutionaries</title>
+    <link rel="icon" href="assets/logo/favicon.png" type="image/png">
+    <style>
+        :root {
+            --orange: #ff7f50;
+            --blue: #0077be;
+            --dark-bg: #121212;
+            --light-text: #f0f0f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            background-color: rgba(18, 18, 18, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-text);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: rgba(18, 18, 18, 0.9);
+                width: 50%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                padding: 15px;
+                display: block;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
+        .logo {
+            padding: 0 15px;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            max-width: 100%;
+        }
+
+        .logo img.logo-small {
+            display: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            .logo {
+                padding: 0 10px;
+            }
+
+            .logo img.logo-large {
+                display: none;
+            }
+
+            .logo img.logo-small {
+                display: block;
+            }
+        }
+
+        .contact-section {
+            padding: 120px 0 80px;
+        }
+
+        .contact-section h1 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: var(--orange);
+        }
+
+        .contact-content {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--blue);
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+
+        .social-links {
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            color: var(--orange);
+        }
+
+        .team-contacts {
+            margin-top: 40px;
+        }
+
+        .team-contacts h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--blue);
+        }
+
+        @media screen and (max-width: 768px) {
+            .contact-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo/logo1.png" alt="ROVolutionaries Logo" class="logo-large">
+                <img src="assets/logo/logo2.png" alt="ROVolutionaries Logo" class="logo-small">
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="contact.html">Contact</a>
+                <a href="sponsors.html">Sponsors</a>
+            </div>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="contact-section">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Get in Touch</h2>
+                    <p>Email: rovolutionaries@gmail.com</p>
+
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/rovolutionaries/" target="_blank">Instagram</a>
+                    </div>
+
+                    <div class="team-contacts">
+                        <h3>Specific Inquiries</h3>
+                        <p>Sponsorship: atisam.faisal@thekaustschool.org</p>
+                        <p>Media Relations: iyad.hotiet@thekaustschool.org</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Nav bar
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            hamburger.classList.toggle("active");
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll(".nav-links a").forEach(n => n.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            hamburger.classList.remove("active");
+        }));
+    </script>
+</body>
+</html>

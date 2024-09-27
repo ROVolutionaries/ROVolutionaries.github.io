@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROVolutionaries</title>
-    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="assets/logo/favicon.png" type="image/png">
     <style>
         :root {
             --orange: #ff7f50;
@@ -47,17 +47,89 @@
             padding: 10px 0;
         }
 
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-text);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: rgba(18, 18, 18, 0.9);
+                width: 50%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                padding: 15px;
+                display: block;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+
         .logo {
-            padding: 0 15px;
+            padding: 0 15px; /* Add padding to the left and right of the logo */
         }
 
         .logo img {
             height: 60px;
             width: auto;
+            max-width: 100%; /* Ensure the logo doesn't overflow its container */
         }
 
         .logo img.logo-small {
             display: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            .logo {
+                padding: 0 10px; /* Slightly reduce padding on smaller screens */
+            }
+
+            .logo img.logo-large {
+                display: none;
+            }
+
+            .logo img.logo-small {
+                display: block;
+            }
         }
 
         .hero {
@@ -245,14 +317,23 @@
     </style>
 </head>
 <body>
-    <nav>
-        <div class="container nav-container">
-            <a href="#" class="logo">
-                <img src="logo1.png" alt="ROVolutionaries Logo" class="logo-large">
-                <img src="logo2.png" alt="ROVolutionaries Logo" class="logo-small">
-            </a>
-        </div>
-    </nav>
+  <nav>
+      <div class="container nav-container">
+          <a href="#" class="logo">
+              <img src="assets/logo/logo1.png" alt="ROVolutionaries Logo" class="logo-large">
+              <img src="assets/logo/logo2.png" alt="ROVolutionaries Logo" class="logo-small">
+          </a>
+          <div class="nav-links">
+              <a href="contact.html">Contact</a>
+              <a href="sponsors.html">Sponsors</a>
+          </div>
+          <div class="hamburger">
+              <div></div>
+              <div></div>
+              <div></div>
+          </div>
+      </div>
+  </nav>
 
     <section class="hero">
         <div class="hero-background"></div>
@@ -286,32 +367,32 @@
                 <div class="team-carousel">
                     <div class="team-member empty"></div>
                     <div class="team-member">
-                        <img src="member1.jpg" alt="Team Member 1">
+                        <img src="assets/images/member1.jpg" alt="Team Member 1">
                         <h3>Shivahaari Balamurugan</h3>
                         <p>CEO</p>
                     </div>
                     <div class="team-member">
-                        <img src="member2.jpg" alt="Team Member 2">
+                        <img src="assets/images/member2.jpg" alt="Team Member 2">
                         <h3>Atisam Faisal</h3>
                         <p>CFO</p>
                     </div>
                     <div class="team-member">
-                        <img src="member3.jpg" alt="Team Member 3">
+                        <img src="assets/images/member3.jpg" alt="Team Member 3">
                         <h3>Ahmed Shaikh</h3>
                         <p>CTO</p>
                     </div>
                     <div class="team-member">
-                        <img src="member4.jpg" alt="Team Member 4">
+                        <img src="assets/images/member4.jpg" alt="Team Member 4">
                         <h3>Dewei David Zhang</h3>
                         <p>Mechanical Engineer</p>
                     </div>
                     <div class="team-member">
-                        <img src="member5.jpg" alt="Team Member 5">
+                        <img src="assets/images/member5.jpg" alt="Team Member 5">
                         <h3>Iyad Hoteit</h3>
                         <p>Mechanical Engineer</p>
                     </div>
                     <div class="team-member">
-                        <img src="member6.jpg" alt="Team Member 6">
+                        <img src="assets/images/member6.jpg" alt="Team Member 6">
                         <h3>Konstantin Logashenko</h3>
                         <p>Electrical Engineer</p>
                     </div>
@@ -340,9 +421,25 @@
     </section>
 
     <script>
+        // Nav bar
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            hamburger.classList.toggle("active");
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll(".nav-links a").forEach(n => n.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            hamburger.classList.remove("active");
+        }));
+
+
         // Hero Background Carousel
         const heroBackground = document.querySelector('.hero-background');
-        let images = ['homepageimg1.jpg', 'homepageimg2.jpg', 'homepageimg3.jpg', 'homepageimg4.jpg', 'homepageimg5.jpg'];
+        let images = ['assets/images/homepage-hero1.jpg', 'assets/images/homepage-hero2.jpg', 'assets/images/homepage-hero3.jpg', 'assets/images/homepage-hero4.jpg', 'assets/images/homepage-hero5.jpg'];
         let shuffledImages = shuffleArray(images.slice());
         let currentImageIndex = 0;
 
@@ -537,6 +634,8 @@
         }
 
         createInnerSpirals();
-        animateOuterDots();    </script>
+        animateOuterDots();
+
+    </script>
 </body>
 </html>
