@@ -152,6 +152,19 @@
             position: relative;
         }
 
+        /* New media queries for smaller screens */
+        @media screen and (max-width: 768px) {
+            .sponsors-hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .sponsors-hero h1 {
+                font-size: 2rem;
+            }
+        }
+
         .slideshow {
             position: absolute;
             top: 0;
@@ -312,8 +325,8 @@
         .cta-button:hover {
             background-color: var(--orange);
         }
-
     </style>
+
 </head>
 <body>
     <nav>

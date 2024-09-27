@@ -24,6 +24,7 @@
             background-color: var(--dark-bg);
             color: var(--light-text);
             line-height: 1.6;
+            font-size: 16px;
         }
 
         .container {
@@ -78,6 +79,10 @@
         }
 
         @media screen and (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+
             .nav-links {
                 position: fixed;
                 right: -100%;
@@ -105,13 +110,13 @@
         }
 
         .logo {
-            padding: 0 15px; /* Add padding to the left and right of the logo */
+            padding: 0 15px;
         }
 
         .logo img {
             height: 60px;
             width: auto;
-            max-width: 100%; /* Ensure the logo doesn't overflow its container */
+            max-width: 100%;
         }
 
         .logo img.logo-small {
@@ -120,7 +125,7 @@
 
         @media screen and (max-width: 768px) {
             .logo {
-                padding: 0 10px; /* Slightly reduce padding on smaller screens */
+                padding: 0 10px;
             }
 
             .logo img.logo-large {
@@ -201,7 +206,6 @@
             margin-bottom: 15px;
             color: var(--blue);
         }
-
         .team-carousel-container {
             overflow: hidden;
             width: 100%;
@@ -305,10 +309,23 @@
             background-color: var(--orange);
         }
 
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem; /* Smaller font size for mobile */
+            }
+
+            .about-us h2, .team h2, .mission h2 {
+                font-size: 2rem; /* Smaller font size for mobile */
+            }
+
+            .about-box h3 {
+                font-size: 1.2rem; /* Smaller font size for mobile */
+            }
+
             .mission-container {
                 flex-direction: column;
             }
+
             .mission-left, .mission-right {
                 flex: auto;
                 width: 100%;
