@@ -34,6 +34,21 @@
         .message:nth-child(odd) {
             background: #1e3799;
         }
+        .quoted-message {
+            margin: 5px 0;
+            padding: 8px 12px;
+            background: #142952;
+            border-left: 3px solid #e58e26;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #cccccc;
+        }
+
+        .quoted-message-author {
+            color: #e58e26;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
         .timestamp {
             color: #e58e26;
             font-size: 0.9em;
@@ -413,6 +428,16 @@
 
                 let content = `<strong>${creatorName}</strong>
                               <span class="timestamp">${formatTimestamp(msg.created_date)}</span><br>`;
+
+                // Add quoted message if it exists
+                if (msg.quoted_message_metadata) {
+                    content += `
+                        <div class="quoted-message">
+                            <div class="quoted-message-author">${msg.quoted_message_metadata.creator.name}</div>
+                            ${filterProfanity(msg.quoted_message_metadata.text)}
+                        </div>
+                    `;
+                }
 
                 if (msg.text) {
                     const boldText = msg.text === "Updated room membership." ?
