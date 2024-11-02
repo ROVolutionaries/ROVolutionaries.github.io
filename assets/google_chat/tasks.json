@@ -1,0 +1,52 @@
+{
+  "task": [
+    {
+      "id": "b25Vd0V1dUlHejBQUlE0TA",
+      "title": "Find more underwater videos of brittle stars to test the model",
+      "description": "",
+      "due_date": "",
+      "completed": false,
+      "complete_time": "",
+      "deleted": false,
+      "delete_time": "",
+      "assignee_email": "",
+      "assigned_by_email": "",
+      "creator_email": "ahmed.shaikh@thekaustschool.org",
+      "create_time": "2024-08-01T17:03:55.426930Z",
+      "last_modified_time": "2024-08-01T17:03:56.576191Z",
+      "creation_point_link": ""
+    },
+    {
+      "id": "YVU5aU5UTENTZXFOclMtaw",
+      "title": "Wednesday May 22",
+      "description": "- clean up (T200s and capsule) \n- someone give stuff to cmor \n- ask if we can use the stuff next year \n\nhw\n- cad models of grabber arm\n- cad models of float\n- OP marketing (logo design/color scheme/shirts)\n- start community outreach",
+      "due_date": "2024-05-22",
+      "completed": false,
+      "complete_time": "",
+      "deleted": false,
+      "delete_time": "",
+      "assignee_email": "",
+      "assigned_by_email": "",
+      "creator_email": "dewei.zhang@thekaustschool.org",
+      "create_time": "2024-05-19T20:03:03.302935Z",
+      "last_modified_time": "2024-05-19T20:06:40.038895Z",
+      "creation_point_link": "https://mail.google.com/chat/#chat/space/AAAARtbJUSk/FunFcUiBMM4/FunFcUiBMM4"
+    },
+    {
+      "id": "NjFYaDlmVUpNcS1taTR6dw",
+      "title": "Wednesday May 29 ",
+      "description": "- interview karim \n- figure out roles \n- finalize roles and pictures for marketing \n- talk about designs for grabber arm",
+      "due_date": "2024-05-29",
+      "completed": false,
+      "complete_time": "",
+      "deleted": false,
+      "delete_time": "",
+      "assignee_email": "",
+      "assigned_by_email": "dewei.zhang@thekaustschool.org",
+      "creator_email": "dewei.zhang@thekaustschool.org",
+      "create_time": "2024-05-19T20:03:38.290242Z",
+      "last_modified_time": "2024-05-19T20:06:35.665615Z",
+      "creation_point_link": "https://mail.google.com/chat/#chat/space/AAAARtbJUSk/oXzc5DImRVg/oXzc5DImRVg"
+    }
+  ]
+}

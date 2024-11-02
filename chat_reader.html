@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Google Chat Reader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #000000;
+            color: #ffffff;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .input-container {
+            margin: 20px 0;
+        }
+        #messageContainer {
+            border: 1px solid #1e3799;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        .message {
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            background: #0c2461;
+            border: 1px solid #1e3799;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        .message:nth-child(odd) {
+            background: #1e3799;
+        }
+        .timestamp {
+            color: #e58e26;
+            font-size: 0.9em;
+        }
+        #status {
+            color: #e58e26;
+            margin: 10px 0;
+        }
+        .attachment {
+            margin: 10px 0;
+            padding: 5px;
+            background: #0c2461;
+            border-radius: 4px;
+        }
+        .thumbnail {
+            max-width: 200px;
+            max-height: 200px;
+            margin: 5px;
+            cursor: pointer;
+            border: 2px solid #e58e26;
+        }
+        .video-thumbnail {
+            max-width: 320px;
+            max-height: 240px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .audio-player {
+            width: 300px;
+            margin: 5px;
+        }
+        .media-container {
+            position: relative;
+            display: inline-block;
+        }
+        .fullscreen-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(229,142,38,0.8);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .file-attachment {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #1e3799;
+            border-radius: 4px;
+            margin: 5px 0;
+        }
+        .reactions {
+            margin-top: 5px;
+        }
+        .reaction {
+            display: inline-block;
+            background: #1e3799;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-right: 5px;
+            font-size: 0.9em;
+        }
+        .link-preview {
+            border: 1px solid #1e3799;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+        }
+        .group-info {
+            background: #0c2461;
+            border: 1px solid #1e3799;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .group-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .group-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 10px;
+            color: #e58e26;
+        }
+        .group-emoji {
+            font-size: 24px;
+        }
+        .members-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 10px;
+        }
+        .member-card {
+            background: #1e3799;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #0c2461;
+        }
+        .member-name {
+            font-weight: bold;
+            color: #e58e26;
+        }
+        .member-email {
+            font-size: 0.9em;
+            color: #ffffff;
+            word-break: break-all;
+        }
+        .task-card {
+            background: #1e3799;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border: 1px solid #0c2461;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .task-card pre {
+            white-space: pre-wrap;
+            background: #0c2461;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #1e3799;
+            margin: 8px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Rest of the HTML and JavaScript code remains exactly the same -->
+    <div class="container">
+        <div id="groupInfo"></div>
+        <div id="messageContainer"></div>
+    </div>
+
+    <script>
+        // All JavaScript code remains exactly the same as in the original
+        function updateStatus(message) {
+            const statusDiv = document.createElement('div');
+            statusDiv.id = 'status';
+            statusDiv.textContent = message;
+            document.querySelector('.container').insertBefore(statusDiv, document.getElementById('groupInfo'));
+        }
+
+        let profanityList = [];
+
+        function parseProfanityCSV(csv) {
+            const lines = csv.split('\n');
+            profanityList = [];
+            for (let i = 1; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (line) {
+                    const [word] = line.split(',');
+                    if (word && word.trim()) {
+                        profanityList.push(word.toLowerCase().trim());
+                    }
+                }
+            }
+        }
+
+        function censorWord(word) {
+            if (word.length <= 2) return word;
+            const firstChar = word[0];
+            const lastChar = word[word.length - 1];
+            const middleLength = word.length - 2;
+            return firstChar + '*'.repeat(middleLength) + lastChar;
+        }
+
+        function filterProfanity(text) {
+            if (!text || profanityList.length === 0) return text;
+
+            let filteredText = text;
+            profanityList.forEach(profanity => {
+                const escapedProfanity = profanity.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                const regex = new RegExp(`\\b${escapedProfanity}\\b`, 'gi');
+                filteredText = filteredText.replace(regex, match => censorWord(match));
+            });
+            return filteredText;
+        }
+
+        async function loadFiles() {
+            try {
+                updateStatus('Loading files from google chat...');
+
+                const messagesResponse = await fetch('assets/google_chat/messages.json');
+                if (!messagesResponse.ok) throw new Error('Failed to load messages.json');
+                const messagesData = await messagesResponse.json();
+
+                try {
+                    const groupInfoResponse = await fetch('assets/google_chat/group_info.json');
+                    if (groupInfoResponse.ok) {
+                        const groupInfoData = await groupInfoResponse.json();
+                        displayGroupInfo(groupInfoData);
+                    }
+                } catch (err) {
+                    console.log('No group info found:', err);
+                }
+
+                try {
+                    const profanityResponse = await fetch('assets/google_chat/profanity_en.csv');
+                    if (profanityResponse.ok) {
+                        const profanityText = await profanityResponse.text();
+                        parseProfanityCSV(profanityText);
+                    }
+                } catch (err) {
+                    console.log('No profanity list found:', err);
+                }
+
+                const fileMap = new Map();
+                if (messagesData.messages) {
+                    const uniqueFiles = new Set();
+                    messagesData.messages.forEach(msg => {
+                        if (msg.attached_files) {
+                            msg.attached_files.forEach(file => {
+                                if (file.export_name) {
+                                    uniqueFiles.add(file.export_name);
+                                }
+                            });
+                        }
+                    });
+
+                    for (const fileName of uniqueFiles) {
+                        const fileUrl = `assets/google_chat/${fileName}`;
+                        try {
+                            const response = await fetch(fileUrl);
+                            if (response.ok) {
+                                const blob = await response.blob();
+                                fileMap.set(fileName, blob);
+                            }
+                        } catch (err) {
+                            console.log(`Failed to load file ${fileName}:`, err);
+                        }
+                    }
+                }
+
+                displayMessages(messagesData.messages, fileMap);
+                updateStatus(`Loaded ${messagesData.messages.length} messages successfully`);
+
+            } catch (err) {
+                updateStatus('Error: ' + err.message);
+            }
+        }
+
+        function displayGroupInfo(groupData) {
+            const container = document.getElementById('groupInfo');
+            const emoji = groupData.emoji_id ? groupData.emoji_id : "";
+
+            container.innerHTML = `
+                <div class="group-info">
+                    <div class="group-header">
+                        <div class="group-name">${groupData.name}</div>
+                        <div class="group-emoji">${emoji}</div>
+                    </div>
+                    <div class="members-list">
+                        ${groupData.members.map(member => `
+                            <div class="member-card">
+                                <div class="member-name">${member.name}</div>
+                                <div class="member-email">${member.email}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        async function createFilePreview(file, fileMap) {
+            try {
+                if (!file || !file.export_name || !fileMap) {
+                    return '<div class="error">Error: Invalid file data</div>';
+                }
+
+                const fileName = file.export_name;
+                const fileObj = fileMap.get(fileName);
+
+                if (!fileObj) {
+                    return '<div class="error">Error: File not found</div>';
+                }
+
+                const fileInfo = `<div class="file-attachment">
+                    📎 ${fileName} (${(fileObj.size / 1024).toFixed(1)} KB)
+                </div><br>`;
+
+                let url = URL.createObjectURL(fileObj);
+
+                const isImage = /\.(jpg|jpeg|png|gif|webp)$/i.test(fileName);
+                const isVideo = /\.(mp4|webm|ogg|mov)$/i.test(fileName);
+                const isAudio = /\.(mp3|wav|ogg|m4a)$/i.test(fileName);
+
+                if (isImage) {
+                    return `
+                        ${fileInfo}
+                        <img src="${url}"
+                            class="thumbnail"
+                            onclick="window.open('${url}', '_blank')"
+                            onerror="this.onerror=null; this.src=''; this.alt='Error loading image'">`;
+                }
+                else if (isVideo) {
+                    const mimeType = fileObj.type || `video/${fileName.split('.').pop().toLowerCase()}`;
+                    return `
+                        ${fileInfo}
+                        <div class="media-container">
+                            <video class="video-thumbnail" controls preload="metadata">
+                                <source src="${url}" type="${mimeType}">
+                                <p>Your browser does not support the video tag or the file format cannot be played.</p>
+                            </video>
+                            <button class="fullscreen-btn" onclick="toggleFullscreen(this.previousElementSibling)">⛶</button>
+                        </div>`;
+                }
+                else if (isAudio) {
+                    const mimeType = fileObj.type || `audio/${fileName.split('.').pop().toLowerCase()}`;
+                    return `
+                        ${fileInfo}
+                        <div class="media-container">
+                            <audio class="audio-player" controls preload="metadata">
+                                <source src="${url}" type="${mimeType}">
+                                <p>Your browser does not support the audio tag or the file format cannot be played.</p>
+                            </audio>
+                        </div>`;
+                }
+
+                return fileInfo;
+
+            } catch (error) {
+                return `<div class="error">Error processing file: ${error.message}</div>`;
+            }
+        }
+
+        function toggleFullscreen(element) {
+            if (!document.fullscreenElement) {
+                element.requestFullscreen().catch(err => {
+                    console.error(`Error attempting to enable fullscreen: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        function formatReactions(reactions) {
+            if (!reactions || reactions.length === 0) return '';
+
+            return `<div class="reactions">
+                ${reactions.map(reaction => `
+                    <span class="reaction" title="${reaction.reactor_emails?.join(', ')}">
+                        ${reaction.emoji?.unicode || reaction.emoji} ${reaction.count || 1}
+                    </span>
+                `).join('')}
+            </div>`;
+        }
+
+        async function displayMessages(messages, fileMap) {
+            const container = document.getElementById('messageContainer');
+            container.innerHTML = '';
+
+            const countDiv = document.createElement('div');
+            countDiv.style.padding = '10px';
+            countDiv.style.marginBottom = '20px';
+            countDiv.style.backgroundColor = '#1e3799';
+            countDiv.style.borderRadius = '4px';
+            countDiv.innerHTML = `Total Messages: ${messages.length}`;
+            container.appendChild(countDiv);
+
+            for (const msg of messages) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'message';
+
+                let creatorName = 'Unknown';
+                if (msg.creator) {
+                    if (msg.creator.acting_user) {
+                        creatorName = `${msg.creator.name} via ${msg.creator.acting_user.name}`;
+                    } else {
+                        creatorName = msg.creator.name;
+                    }
+                }
+
+                let content = `<strong>${creatorName}</strong>
+                              <span class="timestamp">${formatTimestamp(msg.created_date)}</span><br>`;
+
+                if (msg.text) {
+                    const boldText = msg.text === "Updated room membership." ?
+                        "<strong>Updated room membership.</strong>" :
+                        filterProfanity(msg.text);
+                    content += `<div>${boldText}</div>`;
+                }
+
+                if (msg.annotations) {
+                    for (const annotation of msg.annotations) {
+                        if (annotation.gsuite_integration_metadata?.tasks_data) {
+                            const taskData = annotation.gsuite_integration_metadata.tasks_data;
+                            const taskProperties = taskData.task_properties;
+
+                            content += `
+                                <div class="task-card">
+                                    <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 8px;">
+                                        📋 ${taskProperties.title || 'Untitled Task'}
+                                    </div>
+                                    ${taskProperties.description ? `
+                                        <div style="white-space: pre-line; margin: 8px 0;">
+                                            ${taskProperties.description}
+                                        </div>
+                                    ` : ''}
+                                    <div style="margin-top: 8px; color: #e58e26;">
+                                        ${taskProperties.assignee ? `
+                                            <div>✍️ Assigned to: ${taskProperties.assignee.id}</div>
+                                        ` : ''}
+                                        <div>✓ Status: ${taskProperties.completed ? 'Completed' : 'Pending'}</div>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                    }
+                }
+
+                if (msg.attached_files) {
+                    content += '<div class="attachment">';
+                    for (const file of msg.attached_files) {
+                        content += await createFilePreview(file, fileMap);
+                    }
+                    content += '</div>';
+                }
+
+                if (msg.reactions) {
+                    content += formatReactions(msg.reactions);
+                }
+
+                messageDiv.innerHTML = content;
+                container.appendChild(messageDiv);
+            }
+        }
+
+        function formatTimestamp(timestamp) {
+            try {
+                if (!timestamp) return '';
+                const date = new Date(timestamp.replace(' at ', ' ').replace(' UTC', ''));
+                return date.toLocaleString();
+            } catch (err) {
+                return timestamp;
+            }
+        }
+
+        window.addEventListener('load', loadFiles);
+    </script>
+</body>
+</html>
