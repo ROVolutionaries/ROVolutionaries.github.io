@@ -42,8 +42,12 @@
             border-radius: 4px;
             font-size: 0.9em;
             color: #cccccc;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
-
+        .quoted-message:hover {
+            background: #1a3469;
+        }
         .quoted-message-author {
             color: #e58e26;
             font-weight: bold;
@@ -177,17 +181,24 @@
             border: 1px solid #1e3799;
             margin: 8px 0;
         }
+        @keyframes highlight {
+            0% { background-color: #e58e26; }
+            100% { background-color: inherit; }
+        }
+        .highlight {
+            animation: highlight 2s;
+        }
     </style>
 </head>
 <body>
-    <!-- Rest of the HTML and JavaScript code remains exactly the same -->
     <div class="container">
         <div id="groupInfo"></div>
         <div id="messageContainer"></div>
     </div>
 
     <script>
-        // All JavaScript code remains exactly the same as in the original
+        let messageMap = new Map();
+
         function updateStatus(message) {
             const statusDiv = document.createElement('div');
             statusDiv.id = 'status';
@@ -231,6 +242,16 @@
             return filteredText;
         }
 
+        function scrollToMessage(messageId) {
+            const element = document.getElementById(`message-${messageId}`);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                element.classList.remove('highlight');
+                void element.offsetWidth; // Trigger reflow
+                element.classList.add('highlight');
+            }
+        }
+
         async function loadFiles() {
             try {
                 updateStatus('Loading files from google chat...');
@@ -238,6 +259,9 @@
                 const messagesResponse = await fetch('assets/google_chat/messages.json');
                 if (!messagesResponse.ok) throw new Error('Failed to load messages.json');
                 const messagesData = await messagesResponse.json();
+
+                // Create message map for quick lookup
+                messageMap = new Map(messagesData.messages.map(msg => [msg.message_id, msg]));
 
                 try {
                     const groupInfoResponse = await fetch('assets/google_chat/group_info.json');
@@ -258,7 +282,6 @@
                 } catch (err) {
                     console.log('No profanity list found:', err);
                 }
-
 
                 const fileMap = new Map();
                 if (messagesData.messages) {
@@ -416,6 +439,7 @@
             for (const msg of messages) {
                 const messageDiv = document.createElement('div');
                 messageDiv.className = 'message';
+                messageDiv.id = `message-${msg.message_id}`;
 
                 let creatorName = 'Unknown';
                 if (msg.creator) {
@@ -431,8 +455,9 @@
 
                 // Add quoted message if it exists
                 if (msg.quoted_message_metadata) {
+                    const quotedMessageId = msg.quoted_message_metadata.message_id;
                     content += `
-                        <div class="quoted-message">
+                        <div class="quoted-message" onclick="scrollToMessage('${quotedMessageId}')">
                             <div class="quoted-message-author">${msg.quoted_message_metadata.creator.name}</div>
                             ${filterProfanity(msg.quoted_message_metadata.text)}
                         </div>
