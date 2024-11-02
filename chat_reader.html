@@ -235,7 +235,7 @@
                 }
 
                 try {
-                    const profanityResponse = await fetch('assets/google_chat/profanity_en.csv');
+                    const profanityResponse = await fetch('assets/profanity_en.csv');
                     if (profanityResponse.ok) {
                         const profanityText = await profanityResponse.text();
                         parseProfanityCSV(profanityText);
@@ -243,6 +243,7 @@
                 } catch (err) {
                     console.log('No profanity list found:', err);
                 }
+
 
                 const fileMap = new Map();
                 if (messagesData.messages) {
