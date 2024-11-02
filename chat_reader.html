@@ -44,9 +44,21 @@
             color: #cccccc;
             cursor: pointer;
             transition: background-color 0.3s;
+            text-decoration: underline;
+            text-decoration-style: dotted;
+            text-decoration-color: #e58e26;
         }
         .quoted-message:hover {
             background: #1a3469;
+            text-decoration-style: solid;
+        }
+        @keyframes highlight {
+            0% { background-color: #e58e26; }
+            25% { background-color: #e58e26; }
+            100% { background-color: inherit; }
+        }
+        .highlight {
+            animation: highlight 2s ease-out;
         }
         .quoted-message-author {
             color: #e58e26;
@@ -245,10 +257,32 @@
         function scrollToMessage(messageId) {
             const element = document.getElementById(`message-${messageId}`);
             if (element) {
+                // Remove highlight from all messages first
+                document.querySelectorAll('.message').forEach(msg => {
+                    msg.classList.remove('highlight');
+                });
+
+                // Scroll to the message
                 element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                element.classList.remove('highlight');
-                void element.offsetWidth; // Trigger reflow
+
+                // Add highlight class to trigger animation
                 element.classList.add('highlight');
+
+                // Add URL parameter without reloading the page
+                const url = new URL(window.location);
+                url.searchParams.set('messageId', messageId);
+                window.history.pushState({}, '', url);
+            }
+        }
+
+        // Add this new function to handle initial message highlighting from URL
+        function handleInitialMessageHighlight() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const messageId = urlParams.get('messageId');
+            if (messageId) {
+                setTimeout(() => {
+                    scrollToMessage(messageId);
+                }, 500); // Small delay to ensure messages are loaded
             }
         }
 
@@ -527,6 +561,12 @@
         }
 
         window.addEventListener('load', loadFiles);
+
+        // Add popstate event listener to handle browser back/forward buttons
+        window.addEventListener('popstate', () => {
+            handleInitialMessageHighlight();
+        });
+
     </script>
 </body>
 </html>
