@@ -489,7 +489,19 @@
 
                 // Add quoted message if it exists
                 if (msg.quoted_message_metadata) {
-                    const quotedMessageId = msg.quoted_message_metadata.message_id;
+                    // Find the quoted message ID by searching through the messageMap
+                    const quotedText = msg.quoted_message_metadata.text;
+                    const quotedCreatorEmail = msg.quoted_message_metadata.creator.email;
+
+                    let quotedMessageId = null;
+                    for (const [id, message] of messageMap) {
+                        if (message.text === quotedText &&
+                            message.creator.email === quotedCreatorEmail) {
+                            quotedMessageId = id;
+                            break;
+                        }
+                    }
+
                     content += `
                         <div class="quoted-message" onclick="scrollToMessage('${quotedMessageId}')">
                             <div class="quoted-message-author">${msg.quoted_message_metadata.creator.name}</div>
