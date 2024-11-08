@@ -271,6 +271,28 @@
             margin-top: 10px;
         }
 
+        .vision-container {
+            display: flex;
+            min-height: 500px;
+        }
+
+        .vision-right, .vision-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vision-left {
+            flex: 3;
+        }
+
+        #vision-statement {
+            text-align: center;
+            margin-top: 10px;
+        }
+
         .logo-container {
             max-width: 500px;
             width: 100%;
@@ -425,9 +447,26 @@
             <div class="mission-container">
                 <div class="mission-left">
                     <h2>Our Mission</h2>
-                    <p id="mission-statement">To innovate and create practical solutions for underwater challenges while inspiring others to discover the thrilling possibilities within robotics and marine science.</p>
+                    <p id="mission-statement">To pave the way forward for those whose mind yearns for a taste of knowledge and experience in ROV design.</p>
                 </div>
                 <div class="mission-right">
+                    <div class="logo-container">
+                        <div class="outer-circle" id="outerCircle"></div>
+                        <div class="inner-circle" id="innerCircle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="vision">
+        <div class="container">
+            <div class="vision-container">
+                <div class="vision-right">
+                    <h2>Our Vision</h2>
+                    <p id="vision-statement">Through the power of a curious mind, one can investigate, inspire, and ignite anything they are passionate and committed to.</p>
+                </div>
+                <div class="vision-left">
                     <div class="logo-container">
                         <div class="outer-circle" id="outerCircle"></div>
                         <div class="inner-circle" id="innerCircle"></div>
