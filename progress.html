@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROVolutionaries - Progress Updates</title>
+    <title>ROVolution - Open-Source Journal</title>
     <link rel="icon" href="assets/logo/favicon.png" type="image/png">
     <style>
         :root {
@@ -31,8 +31,6 @@
             margin: 0 auto;
             padding: 0 20px;
         }
-
-        /* Navigation styles remain the same */
 
         .blog-section {
             padding: 120px 0 80px;
@@ -69,9 +67,34 @@
             margin-bottom: 20px;
         }
 
+        .post-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
         .post-date {
             color: var(--orange);
             font-size: 0.9rem;
+        }
+
+        .post-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+
+        .author-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
         }
 
         .post-title {
@@ -82,6 +105,18 @@
 
         .post-content {
             margin-bottom: 20px;
+        }
+
+        .post-content ul {
+            margin-left: 2em;  /* Increases indentation */
+        }
+
+        .post-content a {
+            color: #66b3ff;  /* Lighter blue color */
+            text-decoration: none;
+        }
+        .post-content a:hover {
+            text-decoration: underline;
         }
 
         .post-images {
@@ -124,60 +159,56 @@
             .blog-post {
                 padding: 20px;
             }
+
+            .post-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <section class="blog-section">
-            <h1 class="blog-title">MATEROV Progress Updates</h1>
+            <h1 class="blog-title">ROVolution Open-Source Journal</h1>
 
             <div class="blog-posts">
-                <!-- Week 1 Update -->
+                <!-- Update 1 Start -->
                 <article class="blog-post">
                     <div class="post-header">
-                        <h2 class="post-title">Week 1: Project Initialization</h2>
-                        <span class="post-date">December 18, 2024</span>
+                        <h2 class="post-title">Project Initialization</h2>
+                        <div class="post-meta">
+                            <span class="post-date">January 2, 2025</span>
+                            <div class="post-author">
+                                <div class="author-avatar">AS</div>
+                                <span>Ahmed Shaikh - CEO</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="post-content">
                         <p>This week, we accomplished the following:</p>
                         <ul>
-                            <li>Formed the core team and assigned roles</li>
-                            <li>Created initial design sketches for the ROV</li>
-                            <li>Set up our development environment</li>
-                            <li>Established project timeline and milestones</li>
-                            <li>Established <a href="https://www.instagram.com/p/DDo-Eq6oekH/">Example Hyperlink</a></li>
+                            <li>Confirmed Sponsorship from KCRI and PCL</li>
+                            <li>Organized team structure</li>
+                            <li>Created a <a href="https://grabify.link/Y2RILB">Drive Folder</a> for all our work</li>
+                            <li>Discussed Marketing Plans</li>
+                            <li>Met with experts to talk about lasers</li>
                         </ul>
                         <div class="post-images">
                             <!-- Add your actual image URLs here -->
-                            <img src="path-to-your-image-1.jpg" alt="Team Meeting" class="post-image">
-                            <img src="path-to-your-image-2.jpg" alt="Initial Designs" class="post-image">
+                            <img src="assets/progress1.jpg" alt="Discussion" class="post-image">
+                            <img src="assets/progress2.jpg" alt="Discussion" class="post-image">
+                            <img src="assets/progress3.jpg" alt="Lasers" class="post-image">
                         </div>
                     </div>
                     <div class="tags">
                         <span class="tag">Planning</span>
-                        <span class="tag">Design</span>
                         <span class="tag">Team Building</span>
                     </div>
                 </article>
+                <!-- Update 1 End -->
 
-                <!-- Template for future updates -->
-                <article class="blog-post">
-                    <div class="post-header">
-                        <h2 class="post-title">Week 2: Progress Title</h2>
-                        <span class="post-date">December 25, 2024</span>
-                    </div>
-                    <div class="post-content">
-                        <p>Weekly accomplishments and updates go here...</p>
-                        <div class="post-images">
-                            <!-- Add your actual image URLs here -->
-                            <img src="path-to-your-image-3.jpg" alt="Progress Photo" class="post-image">
-                        </div>
-                    </div>
-                    <div class="tags">
-                        <span class="tag">Development</span>
-                    </div>
-                </article>
+
             </div>
         </section>
     </div>
