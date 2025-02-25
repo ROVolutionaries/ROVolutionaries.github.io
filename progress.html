@@ -165,9 +165,122 @@
                 align-items: flex-start;
             }
         }
+
+        nav {
+            background-color: rgba(18, 18, 18, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-text);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            padding: 0 15px;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            max-width: 100%;
+        }
+
+        .logo img.logo-small {
+            display: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: rgba(18, 18, 18, 0.9);
+                width: 50%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                padding: 15px;
+                display: block;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .logo img.logo-large {
+                display: none;
+            }
+
+            .logo img.logo-small {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <img src="assets/logo/logo1.png" alt="ROVolutionaries Logo" class="logo-large">
+                <img src="assets/logo/logo2.png" alt="ROVolutionaries Logo" class="logo-small">
+            </a>
+            <div class="nav-links">
+                <a href="contact.html">Contact</a>
+                <a href="sponsors.html">Sponsors</a>
+                <a href="progress.html">Progress</a>
+            </div>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <section class="blog-section">
             <h1 class="blog-title">ROVolution Open-Source Journal</h1>
@@ -212,7 +325,20 @@
     </div>
 
     <script>
-        // Add any interactive features or animations here
+        // Added navbar JavaScript
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            hamburger.classList.toggle("active");
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll(".nav-links a").forEach(n => n.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            hamburger.classList.remove("active");
+        }));
     </script>
 </body>
 </html>
