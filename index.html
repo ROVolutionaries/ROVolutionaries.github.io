@@ -153,10 +153,16 @@
             left: 0;
             width: 100%;
             height: 100%;
+            background-color: #000; /* Solid black fallback */
             background-size: cover;
             background-position: center;
             transition: opacity 1s ease-in-out;
         }
+
+        @keyframes spin {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
 
         .hero-content {
             position: relative;
@@ -398,7 +404,7 @@
                     <div class="team-member">
                         <img src="assets/images/member3.jpg" alt="Team Member 3">
                         <h3>Dewei Zhang</h3>
-                        <p>Mechanical Engineer</p>
+                        <p>CTO</p>
                     </div>
                     <div class="team-member">
                         <img src="assets/images/member4.jpg" alt="Team Member 5">
@@ -464,21 +470,21 @@
         // Hero Background Carousel
         const heroBackground = document.querySelector('.hero-background');
         let images = [
-            'assets/images/homepage-hero01.jpg',
-            'assets/images/homepage-hero02.jpg',
-            'assets/images/homepage-hero03.jpg',
-            'assets/images/homepage-hero04.jpg',
-            'assets/images/homepage-hero05.jpg',
-            'assets/images/homepage-hero06.jpg',
-            'assets/images/homepage-hero07.jpg',
-            'assets/images/homepage-hero08.jpg',
-            'assets/images/homepage-hero09.jpg',
-            'assets/images/homepage-hero10.jpg',
-            'assets/images/homepage-hero11.jpg',
-            'assets/images/homepage-hero12.jpg',
-            'assets/images/homepage-hero13.jpg',
-            'assets/images/homepage-hero14.jpg',
-            'assets/images/homepage-hero15.jpg'
+            'assets/images/homepage-hero01.webp',
+            'assets/images/homepage-hero02.webp',
+            'assets/images/homepage-hero03.webp',
+            'assets/images/homepage-hero04.webp',
+            'assets/images/homepage-hero05.webp',
+            'assets/images/homepage-hero06.webp',
+            'assets/images/homepage-hero07.webp',
+            'assets/images/homepage-hero08.webp',
+            'assets/images/homepage-hero09.webp',
+            'assets/images/homepage-hero10.webp',
+            'assets/images/homepage-hero11.webp',
+            'assets/images/homepage-hero12.webp',
+            'assets/images/homepage-hero13.webp',
+            'assets/images/homepage-hero14.webp',
+            'assets/images/homepage-hero15.webp'
         ];
 
         let shuffledImages = shuffleArray(images.slice());
@@ -492,16 +498,48 @@
             return array;
         }
 
+        // Preload images on initial load
+        const preloadImages = () => {
+            images.forEach(src => {
+                const img = new Image();
+                img.src = src;
+                img.decode().catch(() => {});
+            });
+        };
+        window.addEventListener('load', preloadImages);
+
+
+        let isFirstLoad = true;
+
         function changeBackgroundImage() {
-            heroBackground.style.opacity = '0';
-            setTimeout(() => {
-                heroBackground.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${shuffledImages[currentImageIndex]})`;
-                heroBackground.style.opacity = '1';
+            const nextImage = new Image();
+            nextImage.src = shuffledImages[currentImageIndex];
+
+            nextImage.onload = function() {
+                // Fade out current image
+                heroBackground.style.opacity = '0';
+                
+                setTimeout(() => {
+                    // Set new background image
+                    heroBackground.style.backgroundImage = 
+                        `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(${nextImage.src})`;
+                    // Fade in new image
+                    heroBackground.style.opacity = '1';
+                    
+                    currentImageIndex = (currentImageIndex + 1) % shuffledImages.length;
+                    if (currentImageIndex === 0) {
+                        shuffledImages = shuffleArray(images.slice());
+                    }
+                }, 1000);
+            };
+
+            // Handle image loading errors
+            nextImage.onerror = function() {
+                console.error('Error loading image:', nextImage.src);
                 currentImageIndex = (currentImageIndex + 1) % shuffledImages.length;
-                if (currentImageIndex === 0) {
-                    shuffledImages = shuffleArray(images.slice());
-                }
-            }, 1000);
+                // Try with the next image
+                changeBackgroundImage();
+            };
         }
 
         changeBackgroundImage();
