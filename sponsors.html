@@ -11,7 +11,7 @@
             --blue: #0077be;
             --dark-bg: #121212;
             --light-text: #f0f0f0;
-            --overlay-bg: rgba(0, 0, 0, 0.5); /* Darker overlay */
+            --overlay-bg: rgba(0, 0, 0, 0.5);
         }
 
         * {
@@ -25,7 +25,7 @@
             background-color: var(--dark-bg);
             color: var(--light-text);
             line-height: 1.6;
-            transition: background-color 1s ease; /* Smooth background transition */
+            transition: background-color 1s ease; 
         }
 
         .container {
@@ -189,7 +189,6 @@
             opacity: 1;
         }
 
-        /* Dark overlay */
         .slideshow::before {
             content: '';
             position: absolute;
@@ -201,18 +200,30 @@
             z-index: 1;
         }
 
-        .sponsors-content {
+        .content {
             padding: 80px 0;
         }
 
-        .sponsors-grid {
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            color: var(--orange);
+        }
+
+        .sponsors-section {
+            padding: 80px 0;
+        }
+
+        .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
-            margin-bottom: 60px;
+            margin: 0 auto;
+            max-width: 1200px;
         }
 
-        .sponsor-card {
+        .card {
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             padding: 20px;
@@ -220,12 +231,12 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .sponsor-card:hover {
+        .card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
-        .sponsor-logo {
+        .image {
             width: 150px;
             height: 150px;
             margin: 0 auto 20px;
@@ -237,7 +248,7 @@
             overflow: hidden;
         }
 
-        .sponsor-logo img {
+        .image img {
             max-width: 80%;
             max-height: 80%;
             object-fit: contain;
@@ -257,73 +268,6 @@
         .text-link:hover {
             color: var(--orange);
             text-decoration: underline;
-        }
-
-        .sponsor-cta {
-            padding: 40px;
-            background-color: rgba(255, 255, 255, 0.05);
-            color: var(--light-text);
-            border-radius: 10px;
-            margin-bottom: 40px;
-        }
-
-        .sponsor-cta h2 {
-            color: var(--orange);
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .sponsor-cta p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .sponsor-cta h3 {
-            color: var(--blue);
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-
-        .sponsor-cta ul {
-            list-style-type: none;
-            padding: 0;
-            margin-bottom: 20px;
-        }
-
-        .sponsor-cta ul li {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            color: var(--light-text);
-            padding-left: 20px;
-            position: relative;
-        }
-
-        .sponsor-cta ul li:before {
-            content: '•';
-            color: var(--white);
-            position: absolute;
-            left: 0;
-        }
-
-        .button-container {
-            text-align: center;
-            padding-top: 0vh; /* Adjust this value to move the button up or down */
-        }
-
-        .cta-button {
-            display: inline-block;
-            background-color: var(--blue);
-            color: var(--light-text);
-            padding: 12px 24px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: background-color 0.3s ease;
-        }
-
-        .cta-button:hover {
-            background-color: var(--orange);
         }
     </style>
 
@@ -354,14 +298,15 @@
             <img src="assets/images/sponsors-hero1.jpg" alt="Sponsors Hero 1" class="active">
             <img src="assets/images/sponsors-hero2.jpg" alt="Sponsors Hero 2">
         </div>
-        <h1>Our Sponsors</h1>
+        <h1>Sponsors and Mentors</h1>
     </section>
 
-    <section class="sponsors-content">
+    <section class="content">
         <div class="container">
-            <div class="sponsors-grid">
-                <div class="sponsor-card">
-                    <div class="sponsor-logo">
+            <h2>Sponsors</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="image">
                         <img src="assets/images/sponsor-logo1.jpg" alt="Sponsor 1 Logo">
                     </div>
                     <h3 class="sponsor-name">
@@ -370,17 +315,17 @@
                     <p class="sponsor-description">Provided funding for our ROV components and materials.</p>
                 </div>
 
-                <div class="sponsor-card">
-                    <div class="sponsor-logo" style="background-color: #1e2c59;">
+                <div class="card">
+                    <div class="image" style="background-color: #1e2c59;">
                         <img src="assets/images/sponsor-logo2.jpg" alt="Sponsor 2 Logo">
                     </div>
                     <h3 class="sponsor-name">
-                        <a href="https://corelabs.kaust.edu.sa/labs/coastal-and-marine-resources/cmr-team" class="text-link">KAUST Costal and Marine Resources</a>
+                        <a href="https://corelabs.kaust.edu.sa/labs/detail/coastal-and-marine-resources-core-lab" class="text-link">KAUST Costal and Marine Resources</a>
                     </h3>
                     <p class="sponsor-description">Provided us with essential components and granted access to advanced tools and equipment.</p>
                 </div>
-                <div class="sponsor-card">
-                    <div class="sponsor-logo">
+                <div class="card">
+                    <div class="image">
                         <img src="assets/images/sponsor-logo4.jpg" alt="Sponsor 4 Logo">
                     </div>
                     <h3 class="sponsor-name">
@@ -390,39 +335,26 @@
                 </div>
                 <!-- Add more sponsor cards as needed -->
             </div>
+        </div>
+    </section>
 
-            <section class="sponsor-cta">
-                <h2>Join Us on Our Journey! Become a Sponsor Today!</h2>
-                <p>
-                    At <strong>ROVolutionaries</strong>, we're on a mission to innovate and inspire as we tackle exciting underwater robotics challenges in the <strong>MATE ROV competition</strong>. But we can't do it alone — we need partners like you to help make our vision a reality!
-                </p>
-                <p>
-                    By sponsoring our team, you'll be supporting the next generation of engineers, innovators, and problem-solvers. Your sponsorship will directly contribute to our success, helping us access essential equipment, cutting-edge technology, and vital resources for competition.
-                </p>
+    <section class="content">
+        <div class="container">
+            <h2>Coaches</h2>
+                <!-- Add more coaches cards as necessary -->
+            </div>
+        </div>
+    </section>
 
-                <h3>Why Sponsor Us?</h3>
-                <ul>
-                    <li>Gain exposure through our website, social media, and competition presence</li>
-                    <li>Showcase your support for STEM education and hands-on learning</li>
-                    <li>Join us in an innovative project focused on underwater exploration</li>
-                </ul>
-
-                <p>
-                    Join our community of passionate sponsors and partners who are making waves in underwater robotics!
-                </p>
-                <p>
-                    Let's work together to make a lasting impact. Reach out today to explore sponsorship opportunities and help us dive deeper into success.
-                </p>
-                <div class="button-container">
-                    <a href="contact.html" class="cta-button">Contact Us</a>
-                </div>
-            </section>
-
+    <section class="content">
+        <div class="container">
+            <h2>Mentors</h2>
+                <!-- Add more mentor cards as necessary -->
+            </div>
         </div>
     </section>
 
     <script>
-        // Nav bar
         const hamburger = document.querySelector(".hamburger");
         const navLinks = document.querySelector(".nav-links");
 
@@ -431,13 +363,11 @@
             hamburger.classList.toggle("active");
         });
 
-        // Close menu when a link is clicked
         document.querySelectorAll(".nav-links a").forEach(n => n.addEventListener("click", () => {
             navLinks.classList.remove("active");
             hamburger.classList.remove("active");
         }));
 
-        // Image slideshow
         const images = document.querySelectorAll('.slideshow img');
         let currentImage = 0;
 
@@ -447,10 +377,9 @@
             images[currentImage].classList.add('active');
         }
 
-        setInterval(nextImage, 10000); // Change image every 10 seconds
+        setInterval(nextImage, 10000); 
 
-        // Background color change
-        const colors = ['#121212', '#1c1c1c', '#242424']; // Darker background colors
+        const colors = ['#121212', '#1c1c1c', '#242424']; 
         let currentColor = 0;
 
         function changeBackground() {
@@ -458,7 +387,7 @@
             document.body.style.backgroundColor = colors[currentColor];
         }
 
-        setInterval(changeBackground, 10000); // Change background color every 10 seconds
+        setInterval(changeBackground, 10000); 
     </script>
 </body>
 </html>
