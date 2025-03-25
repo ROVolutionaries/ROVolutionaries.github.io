@@ -73,7 +73,8 @@ def generate_blog_html(blog_posts):
         
         # Clean up data
         tags = [tag.strip() for tag in tags if tag.strip()]
-        images = [img.strip() for img in images if img.strip()]
+        if images is not None:
+            images = [img.strip() for img in images if img.strip()]
         
         # Generate HTML for images
         images_html = ""
