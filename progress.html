@@ -298,6 +298,311 @@
             
         <article class="blog-post">
             <div class="post-header">
+                <h2 class="post-title">Electronics Tray</h2>
+                <div class="post-meta">
+                    <span class="post-date">March 25, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">AF</div>
+                        <span>Atisam Faisal - Safety Officer</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>With the frame of the ROV constructed, the next key component is the brains of the ROV, the electronics. The electronics of the ROVolution ROV are housed in the BlueRobotics capsule enclosure. The electronics of course cannot just be placed into the capsule, they must rest on an electronics tray.</p>
+<p>This week, I have been working closely with Konstantin, Head Electrical Engineer, to design the tray for the electronics. As it stands, we have successfully created a CAD model of the tray that attaches directly to the flange. This model has also been cut and tested to ensure it fits snugly into the capsule. </p>
+<p>The next step is to create holes for the electrical components to fit onto. The tray must be able to hold the following components:<br />
+- Raspberry Pi <br />
+- Pi - Hat <br />
+- 8 ESCs for T200s <br />
+- Power Board <br />
+- Gripper Board <br />
+- Linear Actuator Driver <br />
+- pH Sensor Board</p>
+<p>Most of the 3D CAD Models of these components have been created by Konstantin. Whilst he finalizes the final pieces, I will be working on implementing them in a strategic manner onto the electronics tray to ensure that all the pieces fit whilst keeping wire management in mind. Once the positioning has been finalized, I can add extrusions onto the design to allow for points of attachment. Finally, these cuts will be applied to the actual real-life component which will help finalize the design.</p>
+                
+            </div>
+            <div class="tags"><span class="tag">aa</span></div>
+        </article>
+        
+        <article class="blog-post">
+            <div class="post-header">
+                <h2 class="post-title">T200 Thrust Test Setup</h2>
+                <div class="post-meta">
+                    <span class="post-date">March 20, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">DZ</div>
+                        <span>David Zhang - CTO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>Throughout the year, I emphasized to our main software engineer, Ahmed, how important it was for us to be able to stabilize the ROV with PID as most high-scoring teams on the product demonstration had something like that, and it makes sense for many precision tasks that came out. However, we already came across multiple problems. A mentor that has a PhD in ROVs came up to us telling us how our max current draw is extremely low and it was important to assume maximum thrust from all thrusters to divide the current draw for each. We later on asked other teams on the Discord server, and they disagreed, saying that we should assume that there is no limit until it exceeds the limit, which it should then split the current (probably because this is a pool competition rather than an actual ROV). I’m not too sure about the specifics, but I believe it was also important to know the general thrust output of each thruster based on the PWM signal in case they were different. I watched a video from the <a href="https://www.youtube.com/watch?v=9_amdMnDMS4&amp;t=784s">Brick Experiment Channel</a> that has a clever solution to measuring the force applied. Thus, we created a setup like shown below, where we used lego to connect a <a href="https://drive.google.com/file/d/1rAXnbbyropwywJ70RbUwuPj-ToULuszI/view?usp=sharing">3D printed part</a> that is bolted on to the T200. There were a few problems with this setup that we are planning on improving. At the start, the T200 didn’t run because of problems with the code. Then, when it ran, it was stalling (like sometimes twitching, sometimes moving), but when we rotated it the other way, it spun normally. So, Omar kickstarted the T200 by moving it and it spun normally. Also, the lego extends out from the scale and is connected by tape, the <a href="https://youtube.com/shorts/yziKkib4t5Q">scale tilts</a> due to the T200. </p>
+<p>Thus, we will improve the setup by adding weights on one side and redo everything.</p>
+                <div class="post-images"><img src="assets/blog/images/t200-thrust1.jpg" alt="Blog image" class="post-image"><img src="assets/blog/images/t200-thrust2.jpg" alt="Blog image" class="post-image"><img src="assets/blog/images/t200-thrust3.jpg" alt="Blog image" class="post-image"></div>
+            </div>
+            
+        </article>
+        
+        <article class="blog-post">
+            <div class="post-header">
+                <h2 class="post-title">Sealing the Float</h2>
+                <div class="post-meta">
+                    <span class="post-date">March 20, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">DZ</div>
+                        <span>David Zhang - DTO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>These days, I have been working on sealing and joining the gripper and the float. So far, the o-ring seal has been successful, which shouldn’t be surprising but is definitely surprising to me. For the float flange, I designed it so that there would be a flat surface (the acrylic) and it compresses the o-ring towards a resin printed groove. From what I read, the optimal compression should be a 25% compression, and allowing DeepSeek to do all the math (ID=88mm, OD=95mm, CS=3.5mm), the groove depth should be around 2.5 mm, and the groove width should be around 4 mm. However, due to the lack of experience, I made the groove depth more shallow at 2 mm with a max compression of 42.9%. This way we could always increase the pressure in case it doesn’t work but it doesn’t go above 42.9% to avoid damaging the o-ring further (in case a team member is assigned with assembling the float). </p>
+<p>Yesterday, I finished sealing the flange with epoxy and the nitrile rubber o-rings arrived, so Omar and I added the o-rings and compressed the o-ring with a few bolts (we didn’t have enough hex nuts, so we couldn’t fill the 12 holes, but rather did around 5 that were evenly spaced, but the final should probably have all 12 to distribute the pressure on the o-ring). Because Omar didn’t understand how the o-rings worked, they didn’t leave a gap in some areas of the face seal (and the 3mm acrylic kind of bends). This may cause the <a href="https://eriks.com/en/know-how-hub/blogs/o-ring-degradation-characteristics-causes-solutions/">o-ring to degrade</a>. After some DeepSeek calculations, the gap between the flanges should be around 0.5 mm to 1 mm.</p>
+                
+            </div>
+            <div class="tags"><span class="tag">aa</span></div>
+        </article>
+        
+        <article class="blog-post">
+            <div class="post-header">
+                <h2 class="post-title">Figuring out how use CURA to print TPU</h2>
+                <div class="post-meta">
+                    <span class="post-date">March 11, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">SB</div>
+                        <span>Shivahaari Balamurugan - CFO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>As a part of the manufacturing team, one of the biggest headaches we had was figuring out how to use the Ultimaker Printers to print out our TPU springs without it completely failing. And looking back, I’d say it;s because we weren’t properly trained on them; we technically did but there's so much to learn about these printers (such as the dual extrusion, the printer cores, bed leveling, etc.), we simply didn’t have enough time to get through all of it, and at the time it seemed pretty unnecessary. </p>
+<p>The first issue that I had to overcome was the bed leveling. Often the prints wouldn’t adhere to the print bed, and ultimately fail, which was due to an issue with the machine itself, hence the PCL staff helped us fix that. The next issue was printer core in the Ultimaker printers. The printer core refers to the extruder used for filaments, and each specific filament has their own preferred printer core, which after a lot of trial and error with the PCL staff, we learnt that the optimum for TPU was AA 0.4. Finally the final issue I had to overcome was dual extrusion; essentially when printing complex shapes such as our springs, there needs to be a lot of support, which TPU is not good for, hence I had to learn to configure the printer such that it would print supports in another filament (such as Breakaway white), to ensure we had a clean print. With all of them obstacles sorted out, I now hope that 3D printing on the Ultimaker will be significantly easier.</p>
+                
+            </div>
+            <div class="tags"><span class="tag">aa</span></div>
+        </article>
+        
+        <article class="blog-post">
+            <div class="post-header">
+                <h2 class="post-title">Waffling about TPU printed spring</h2>
+                <div class="post-meta">
+                    <span class="post-date">March 10, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">DZ</div>
+                        <span>David Zhang - CTO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>I received the TPU prints (finally!). Apparently the manufacturing team had a huge difficulty in printing in TPU. They printed with the wrong extruders at PCL multiple times, so it took a few weeks for the parts to come. In fact, they even printed my part in durable resin once, but I thought the material was a bit too stiff. </p>
+<p>The TPU print was very bad quality since Shiva chose the wrong support material, but it helped me recognize the problems and potential solutions. I explained everything in the 7-minute yap session <a href="https://youtu.be/rvyLVZWc7QA">here</a> because Ahmed wanted to know what's going on (also something I forgot to mention: the first design was actually inspired by a hinge compliant mechanism I saw before where it is a circle, then I realized the shape is basically the same shape as when the spring is being compressed). As stated in the video, I’m not a professional mechanical engineer and compliant mechanisms are far beyond what I can do, so most of the stuff is just either yap or just pure instinct (hopefully the design works though).</p>
+                
+            </div>
+            <div class="tags"><span class="tag">aa</span></div>
+        </article>
+        
+        <article class="blog-post">
+            <div class="post-header">
+                <h2 class="post-title">Frame Design</h2>
+                <div class="post-meta">
+                    <span class="post-date">March 7, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">DZ</div>
+                        <span>David Zhang - CTO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>Although the CAD model of the frame design was completed a while ago, I wanted to talk about the design choices. Because we don’t have a lot of experience with the frame, I wanted to make it as structurally sound as possible. Despite the functionality, I ruled out Atisam’s unique design and opted for something that has been done before. I read through the technical documentation of many teams mainly from the explorers class and I found <a href="https://20693798.fs1.hubspotusercontent-na1.net/hubfs/20693798/EX29%20Cabrillo_Robotics_SeaHawk_Technical_Documentation_2024.pdf">Callibro’s</a>, <a href="https://20693798.fs1.hubspotusercontent-na1.net/hubfs/20693798/City%20University%20of%20Hong%20Kong_CityU%20Underwater%20Robotics_technical%20documentation_2024.pdf">CityU’s</a>, and <a href="https://bluerobotics.com/store/rov/bluerov2/">Blue Robotics’</a> designs appealing due to their simplicity, which includes two planes made of aluminum or HDPE with HDPE side plates. The top plane is for the electronic capsule and motors, which were in a typical 6 or <a href="https://discuss.bluerobotics.com/t/frame-configuration-advantages-disadvantages/7968">8 motor configuration</a>. We chose 8 motors for 6 degrees of freedom, auto stabilisation, and the ability to pitch for the gripper and other tooling (especially as our gripper is extremely long and it would be impractical to tilt it). To save space, Ahmed wanted to build PCBs and a custom watertight box for electronics similar to many of the teams, but I also ruled this out because I was scared of waterproofing due to inexperience. Instead, we used the <a href="https://bluerobotics.com/store/watertight-enclosures/locking-series/wte-locking-tube-r1-vp/">watertight capsule</a> by Blue Robotics and found a method of placing it in a way that reduces space by bending the aluminum as seen in the images below, which was provided by Shiva from a meeting with a PCL staff. </p>
+<p>For the bottom plate, we wanted to ensure structural stability but also decrease the mass similar to Callibro’s SeaHawk. I recalled from a <a href="https://www.youtube.com/watch?v=GafRRl5XRPM">video</a> that Voronoi patterns were used in nature and they were rather strong. We used this <a href="https://websvg.github.io/voronoi/">Voronoi generator</a> with specific coordinates from the json file to create a pattern to be used for our ROV. Additionally, we had a modular tooling board to fit different tools with bolts. </p>
+<p>Finally, I added as many bolt holes as possible to ensure modularity in case we needed something.</p>
+                <div class="post-images"><img src="assets/blog/images/frame-design-ati.png" alt="Blog image" class="post-image"><img src="assets/blog/images/frame-design-revised.png" alt="Blog image" class="post-image"><img src="assets/blog/images/frame-design-alubend1.jpeg" alt="Blog image" class="post-image"><img src="assets/blog/images/frame-design-alubend2.jpeg" alt="Blog image" class="post-image"></div>
+            </div>
+            <div class="tags"><span class="tag">aa</span></div>
+        </article>
+        
+        <article class="blog-post">
+            <div class="post-header">
+                <h2 class="post-title">Float Design</h2>
+                <div class="post-meta">
+                    <span class="post-date">March 7, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">DZ</div>
+                        <span>David Zhang - CTO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>The float design has been one of my main projects in MateROV since last year. Last year, we were very lost as we had no prior experience or help from others. We had no idea how a buoyancy engine worked, and articles such as the <a href="https://en.wikipedia.org/wiki/Buoyancy_engine">wikipedia article</a> used methods that seemed impractical. After reading the preview mission task that required the measurement of depth, our team came up with gyro, laser pointers, and sonar. Thankfully, we found a <a href="https://www.instructables.com/Underwater-Glider/">guide from instructables</a> and decided to use syringes to modify the buoyancy. Our float consisted mainly of scrap pieces lying around, such as syringes, stepper motors that were scavenged from defunct 3D printers, and a long bolt. Additionally, we were able to 3D print parts in the TKS design room and our mentor bought us 3.5 inch PVC. The design had an electronics compartment and a buoyancy engine compartment (my friend advised me to separate the electronics from the buoyancy engine even though we didn’t know proper methods of waterproofing, so the two compartments would inevitably be stuck together with epoxy). Because the float PVC was not transparent, it was impossible to tell whether the inside was waterproofed, and we had to sometimes go by luck (for example pouring in epoxy to waterproof the syringes). The syringes were extremely difficult to pull and lubricants such as WD40 somehow made it less smooth. Thus, we had to scrap our first float because the syringes were attached to the float. Additionally, because we were using a long bolt, it was extremely difficult to couple the bolt head to the stepper motor. We messed up the coupler a few times and hours before the regional competition, we had to EpoPutty the stepper motor directly to the bolt, where it's stuck to this day (a lot of things were done extremely last minute. For example, the electric engineer literally soldered the fuse in parallel at 3am before the regional competition). Finally, we noticed that the stepper motor had absolutely no torque at all (e.g if you gently tapped the stepper motor it would’ve stopped) and even if we minimized the errors there would be no way for the float to work. Also, this year we found out that the pressure sensor we bought from Amazon didn’t work. </p>
+<p>This year, I used a similar mechanism but <a href="https://youtu.be/9TrLYAlDmAg">addressed all the issues</a>:<br />
+- The entire float is able to be taken out like an electronics tray in a capsule while having proper O-ring face seals<br />
+- To decrease loss in efficiency, I used structural beams made of stainless steel to align the syringes with the stepper motor<br />
+- Used bolts from the stepper motor instead of holding it with a 3D print <br />
+- Bought a <a href="https://www.aliexpress.com/item/1005006104443954.html">stepper motor</a> that has relatively high torque, <a href="https://www.aliexpress.com/item/1005002085320555.html">lead screw set</a> that was of high quality, and a fairly transparent <a href="https://www.aliexpress.com/item/1005005890935183.html">PVC pipe</a> <br />
+- Expanded the hole of the syringe to decrease the force (because I am using tubing, I needed the outer circle of the syringe to make a connection. Thus, I expanded the size of the entrance by removing the middle part of the syringe. The <a href="https://www.youtube.com/watch?v=ORL7fASZpUw">method used</a> was inspired by a tale I heard about a person using needles to drill holes into postage stamps to make it easier to rip. I did the same using a hammer, a nail, and pliers to yoink the part out)<br />
+- Created a more accurate way of holding the syringe heads with 3D prints instead of drilling into the it by hand <br />
+- Used tubing rather than directly epoxy the float, which will probably allow for syringe removal if necessary <br />
+- Added a tonne of space for the electronics at the top <br />
+- Using a universal coupler for slight alignment issues (we haven’t tested this yet)</p>
+<p>Although it may not be the final version, here is the <a href="https://drive.google.com/file/d/1AnbART2U5zjeA3a6lvJc0xrgnfLWK7QG/view?usp=sharing">STEP file</a>. </p>
+<p>Right now, I’m waiting for the manufacturing team to finish the prints and for the o-rings to arrive. I’m very excited to turn the theoretical CAD files into reality! In the future, I would like to use a compact and more reliable mechanism to push and pull syringes as shown in <a href="https://www.youtube.com/watch?v=KLEH8RJsYgI">this video</a> by the Lego Experiment Channel. I may also experiment with other methods shown in <a href="https://www.youtube.com/watch?v=ZdhM0SjlS9o">another video</a>.</p>
+                
+            </div>
+            <div class="tags"><span class="tag">aa</span></div>
+        </article>
+        
+        <article class="blog-post">
+            <div class="post-header">
+                <h2 class="post-title">Control System Communication Protocols</h2>
+                <div class="post-meta">
+                    <span class="post-date">March 2, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">AS</div>
+                        <span>Ahmed Shaikh - CEO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>One of the primary requirements of our control system was communication between a Raspberry Pi and the Raspberry Pi Pico. The reason we decided to use a Raspberry Pi along with a separate microcontroller was that there were insufficient hardware PWM (Pulse Width Modulation) channels on the Raspberry Pi to control all the servos and thrusters on the ROV along with ADC (Analog to Digital Conversion) for the pH sensor. The Pico would offer a compact and efficient solution to the lack of hardware control and take some processing load off of the Raspberry Pi, which would already handle 4-5 camera inputs and control telemetry from the surface laptop.</p>
+<p>Initially, I decided on the I2C protocol for communication between the Pi and the Pico as it had the highest data rate of the ones on the Pico. However, I noticed that the language I was programming the pico in, Micropython, did not support I2C slave mode. This was an issue because the I2C protocol requires a controller and a peripheral, and setting the Raspberry Pi as a peripheral device also proved challenging. Thus, I decided to rewrite my Pico code in C++ using the Raspberry Pi Pico SDK. Despite setting up slave mode on the Pico with an interrupt handler, I could not get this connection to work. I used the same processes as the various examples I saw online. </p>
+<p>Thus, I took an alternative approach and decided to use the UART communication protocol. I got this working much faster and resolved the data transfer issues quickly.</p>
+                
+            </div>
+            <div class="tags"><span class="tag">aa</span></div>
+        </article>
+        
+        <article class="blog-post">
+            <div class="post-header">
+                <h2 class="post-title">Metal Laser Cutter Final Pieces</h2>
+                <div class="post-meta">
+                    <span class="post-date">February 20, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">SB</div>
+                        <span>Shivahaari Balamurugan - CFO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>With great success from our last session, we decided it was time to cut our final pieces. We liaised with the PCL inventory to acquire a full new sheet of aluminum for our purposes, and travelled to the HFL to set up the machinery for our purposes. After exporting the aluminum flat patterns as DXF files, and transferring them to the machinery, we were ready to cut. It was during the cutting we realized a mistake on our part. Whilst cutting out the voronoi pattern on the aluminum, the cut pieces didn’t fall through, which sometimes hindered the machine, hence we had to manually stop the machine and remove those pieces every time before continuing. However this was easy as the laser cutter had an extremely high precision and the aluminum was locked in place. Once we were done, we removed the pieces and began to sand it for safety purposes, however we had to stop due to time restrictions. Our plan moving forward would be to come in next week on a Monday to sand/finish the aluminum, bend it to our specifications and use the waterjet if we have enough time.</p>
+<p>Documentation of Aluminum Cutting</p>
+                <div class="post-images"><img src="assets/blog/images/metal-cutter-final1.png" alt="Blog image" class="post-image"><img src="assets/blog/images/metal-cutter-final2.png" alt="Blog image" class="post-image"></div>
+            </div>
+            <div class="tags"><span class="tag">aa</span></div>
+        </article>
+        
+        <article class="blog-post">
+            <div class="post-header">
+                <h2 class="post-title">Finalizing Cut Files</h2>
+                <div class="post-meta">
+                    <span class="post-date">February 19, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">SB</div>
+                        <span>Shivahaari Balamurugan - CFO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>With plans to cut the final frame very soon, we took a trip to the PCL one more time in which we had a 90 minute sessions with the chief engineers and designers to fully solidify our design, ensuring there are no points of failure, and that we are able to easily manufacturer it with the PCL facilities. This involved taking precision measurements of the aluminum, and accounting for the bending. Thankfully this was all correct, and then we moved onto the bending process. We initially planned on “etching ” into the aluminum to aid us with the bending process, however this machine lacked those capabilities, thus we decided to take more precision measurements of where the bends begin, which we can input into the bending machine for ease. I unfortunately had to leave shortly after finalizing how to bend the aluminum, however my colleague Atisam stayed behind to test this process to ensure this will be feasible in the future.</p>
+                
+            </div>
+            <div class="tags"><span class="tag">aa</span></div>
+        </article>
+        
+        <article class="blog-post">
+            <div class="post-header">
+                <h2 class="post-title">Training on Metal Laser Cutter and Learning about Clearance Holes</h2>
+                <div class="post-meta">
+                    <span class="post-date">February 11, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">SB</div>
+                        <span>Shivahaari Balamurugan - CFO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>With the deadline for the frame fast approaching, we decided to learn the process of laser cutting metal and testing out the bolt holes, to fundamentally understand how we would manufacture our ROV frame, and take notes of any questions or issues we ran into. By doing this, we hope to eliminate any points of failure whilst constructing and fabricating the frame, whilst also changing the design to meet the specifications of the machinery available to us. </p>
+<p>Hence we took a trip to the PCL, where we contacted one of their staff to aid us with this experiment/learning. We had beforehand sent them a test file, filled with different variations of clearance holes to determine which best suited our needs. It was here we learnt that they had an industry standard for the machinery they used, hence we changed the file according to their specifications; m3 bolts had a clearance size of 3.3 mm, whilst m6 bolts had a clearance of 6.5 mm. Once corrected, we transferred to the Harbour Fabrication Lab (HFL), where we were introduced to the 6KW “Fiber Laser Cutting Machine”, and learnt about the different  processes it was capable of. Unfortunately, as 16-year old PCL users, we were not allowed to directly use the machine, but rather watched as the staff aided once. Once the lasercut was finished, we sanded the sharp edges (for safety purposes), and tested the bolt holes. We noticed that the m3 bolt holes were perfect, however there was a little too much wiggle room for the m6, hence in the actual design, we decided to change the m6 clearance hole to 6.4 mm.</p>
+                <div class="post-images"><img src="assets/blog/images/metal-cutter-clearance-hole1.png" alt="Blog image" class="post-image"><img src="assets/blog/images/metal-cutter-clearance-hole2.png" alt="Blog image" class="post-image"></div>
+            </div>
+            <div class="tags"><span class="tag">aa</span></div>
+        </article>
+        
+        <article class="blog-post">
+            <div class="post-header">
+                <h2 class="post-title">Use of Compliant Mechanism in Tooling</h2>
+                <div class="post-meta">
+                    <span class="post-date">February 9, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">DZ</div>
+                        <span>David Zhang - CTO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>After developing a fascination on compliant mechanisms from prior research on mechanisms, I wanted to implement such mechanisms into this project. The materials we had at PCL were quite limited. Nylon 12 filament was almost used up and the rest was exposed to air while PETG didn’t work properly. Thus, our only option for a reliable compliant mechanism would be TPU. </p>
+<p>After reading the competition manual, I realized that the fish catcher and jellyfish catcher should be removable. A way to do this is to have a compliant mechanism hold it in place. This idea was extremely complex, but potentially could allow for the easiest removability with reliability that came with testing. This idea is outlined in the two sketches below. The opening and closing motion of the jellyfish catcher lid or the fish catcher lid would come from an axle that runs through a hinge, with one end connecting to the lid and another to a gear. The outer component of the hinge is connected to the “bucket” and would also reduce the horizontal motion of the inner axle. The compliant mechanism could hold the outer hinge in place, though with certain force could allow the entire hinge to be removed (the compliant mechanism should connect to the hinge perfectly, eliminating horizontal and rotational motion of the hinge with bumps). Finally, the gear is connected to a servo motor with another gear (the servo is not removable as the power source needs to be connected to the capsule). This allows for the removal of both the lid and the “bucket” in one go. This is the reason why the compliant mechanism is very important, and can make tooling removal very simple. </p>
+<p>Compliant mechanisms can also act like springs, allowing movement though increasing the force. During a test of the gripper, we realized that it is extremely difficult to control the precise motion of the linear actuator, and that it may continue to retract while it has already grabbed an object or continue to extend even though the gripper can’t open any further. This could permanently damage both the 3D printed gripper and the linear actuator (shown in one of the sketches below). My friend thought of implementing a compliant mechanism that would allow for deformation during additional force. On top of current sensing, this adds another layer of protection for the gripper in case the pilot extends or retracts the gripper too much. </p>
+<p>Thus, to test the properties of TPU and the use of compliant mechanisms, I sent a <a href="https://www.printables.com/model/583713-large-displacement-linear-motion-mechanisms/files">large-displacement linear-motion mechanism</a> (CT) and an <a href="https://www.printables.com/model/596315-ortho-planar-spring">ortho-planar spring</a> made by BYU to the manufacturing division of ROVolution to print at PCL with 30% infill. This can be seen in the images below. It came out very satisfactory, but was a lot more flexible than I thought. I believe that this is too unreliable for the tooling removal, but is very suitable for a spring system for the gripper. This is demonstrated in <a href="https://www.youtube.com/shorts/LGnIUWkiODk">this</a> video.</p>
+                <div class="post-images"><img src="assets/blog/images/compliant-mechanism1.png" alt="Blog image" class="post-image"><img src="assets/blog/images/compliant-mechanism2.png" alt="Blog image" class="post-image"><img src="assets/blog/images/compliant-mechanism3.jpg" alt="Blog image" class="post-image"><img src="assets/blog/images/compliant-mechanism4.jpeg" alt="Blog image" class="post-image"></div>
+            </div>
+            <div class="tags"><span class="tag">aa</span></div>
+        </article>
+        
+        <article class="blog-post">
+            <div class="post-header">
+                <h2 class="post-title">Jelly Catching (One of the Tools)</h2>
+                <div class="post-meta">
+                    <span class="post-date">February 2, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">SB</div>
+                        <span>Shivahaari Balamurugan - CFO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>For the most part, I was correcting and finalizing my design on Fusion 360. The design consists of a cylindrical tube for catching the jellyfish, and a lid that should close using a waterproof servos and gear. I had previously tested the hinges to ensure they work, however upon further analysis and brainstorming, I concluded that it would be an inefficient design, especially with the gears, hence I’ve made it simpler and easier to print (which was an added bonus). The next steps would include finding a way to secure the gears to ensure they work as intended, as well as printing a prototype (likely out of PLA), to test the design.</p>
+                
+            </div>
+            <div class="tags"><span class="tag">aa</span></div>
+        </article>
+        
+        <article class="blog-post">
+            <div class="post-header">
+                <h2 class="post-title">Peg Board (Tooling Mobility)</h2>
+                <div class="post-meta">
+                    <span class="post-date">February 1, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">AF</div>
+                        <span>Atisam Faisal - Safety Officer</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>Today I worked largely on Fusion 360 making changes to the design for the tooling Peg Board. The design was previously finalized with the utilization of aluminum standoffs to connect the board to the Aluminum sheet metal. However, we heard back from PCL who unfortunately did not have any standoffs of any kind. So I spent today reworking the design and coordinating with Ahmed to figure out an alternate solution that would still be able to deliver the requirements of the Peg Board.</p>
+                
+            </div>
+            <div class="tags"><span class="tag">aa</span></div>
+        </article>
+        
+        <article class="blog-post">
+            <div class="post-header">
+                <h2 class="post-title">Print in Place Gripper Refined V2 Coupler Test</h2>
+                <div class="post-meta">
+                    <span class="post-date">January 28, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">DZ</div>
+                        <span>David Zhang - CTO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>I discovered print in place mechanisms. Thus I wanted to try and make a coupler that is printed in place that allows for force that is applied linearly while simultaneously allowing rotary motion. I drew inspiration from the Kaleidocycle (<a href="https://all3dp.com/2/coolest-print-in-place-3d-models/">link</a>) and designed my own as seen in <a href="https://www.youtube.com/watch?v=NLitvjZWok8">this video</a>. I printed this in our school’s new printer, which came out great as seen in the image below (although it was quite difficult to get the supports off. I requested tree support from our manufacturing team and somehow it came out to be normal support). I found that it was not viable for our situation as seen in <a href="https://youtu.be/_A0seaw92J8">this video</a>. The rotary motion of the coupler was fine, but the problem mainly lay in the linear force. When applying a linear force, the inner piece sort of gets stuck in the outer piece, which doesn’t allow it to rotate. I tried to put water in to see if I could improve it with some lubricant, but it didn’t work as well. I will use the original coupler.</p>
+                <div class="post-images"><img src="assets/blog/images/gripper-refined-v2-coupling.jpg" alt="Blog image" class="post-image"></div>
+            </div>
+            <div class="tags"><span class="tag">aa</span></div>
+        </article>
+        
+        <article class="blog-post">
+            <div class="post-header">
                 <h2 class="post-title">Fish Catcher Prototype</h2>
                 <div class="post-meta">
                     <span class="post-date">January 27, 2025</span>
@@ -369,7 +674,7 @@
             </div>
             <div class="post-content">
                 <p>Today, David, Ahmed, and I, worked on creating the meet-the-sponsors posts for the Instagram accounts. We found two different Canva templates, and worked on those. Following the completion of the design, Ahmed reached out to our sponsors to get their confirmation of the posts. After the final edits, we posted them on our Instagram account.</p>
-                <div class="post-images"><img src="assets/blog/images/meet-sponsors-kcri1.jpg" alt="Blog image" class="post-image"><img src="assets/blog/images/meet-sponsors-kcri2.jpg" alt="Blog image" class="post-image"><img src="assets/blog/images/meet-sponsors-kcl.jpg" alt="Blog image" class="post-image"><img src="assets/blog/images/meet-sponsors-cmr.jpg" alt="Blog image" class="post-image"><img src="assets/blog/images/meet-sponsors-pcl.jpg" alt="Blog image" class="post-image"></div>
+                <div class="post-images"><img src="assets/blog/images/meet-sponsors-kcri1.png" alt="Blog image" class="post-image"><img src="assets/blog/images/meet-sponsors-kcri2.png" alt="Blog image" class="post-image"><img src="assets/blog/images/meet-sponsors-kcl.png" alt="Blog image" class="post-image"><img src="assets/blog/images/meet-sponsors-cmr.png" alt="Blog image" class="post-image"><img src="assets/blog/images/meet-sponsors-pcl.png" alt="Blog image" class="post-image"></div>
             </div>
             <div class="tags"><span class="tag">blah</span></div>
         </article>

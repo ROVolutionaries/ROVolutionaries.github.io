@@ -72,7 +72,8 @@ def generate_blog_html(blog_posts):
         images = metadata.get('images', '').split(',') if isinstance(metadata.get('images', ''), str) else metadata.get('images', [])
         
         # Clean up data
-        tags = [tag.strip() for tag in tags if tag.strip()]
+        if tags is not None:
+            tags = [tag.strip() for tag in tags if tag.strip()]
         if images is not None:
             images = [img.strip() for img in images if img.strip()]
         

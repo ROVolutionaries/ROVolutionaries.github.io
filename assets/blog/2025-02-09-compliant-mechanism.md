@@ -1,0 +1,17 @@
+---
+title: Use of Compliant Mechanism in Tooling
+date: February 9, 2025
+author: David Zhang
+position: CTO
+avatar: DZ
+tags: aa
+images: assets/blog/images/compliant-mechanism1.png, assets/blog/images/compliant-mechanism2.png, assets/blog/images/compliant-mechanism3.jpg, assets/blog/images/compliant-mechanism4.jpeg
+---
+
+After developing a fascination on compliant mechanisms from prior research on mechanisms, I wanted to implement such mechanisms into this project. The materials we had at PCL were quite limited. Nylon 12 filament was almost used up and the rest was exposed to air while PETG didn’t work properly. Thus, our only option for a reliable compliant mechanism would be TPU. 
+
+After reading the competition manual, I realized that the fish catcher and jellyfish catcher should be removable. A way to do this is to have a compliant mechanism hold it in place. This idea was extremely complex, but potentially could allow for the easiest removability with reliability that came with testing. This idea is outlined in the two sketches below. The opening and closing motion of the jellyfish catcher lid or the fish catcher lid would come from an axle that runs through a hinge, with one end connecting to the lid and another to a gear. The outer component of the hinge is connected to the “bucket” and would also reduce the horizontal motion of the inner axle. The compliant mechanism could hold the outer hinge in place, though with certain force could allow the entire hinge to be removed (the compliant mechanism should connect to the hinge perfectly, eliminating horizontal and rotational motion of the hinge with bumps). Finally, the gear is connected to a servo motor with another gear (the servo is not removable as the power source needs to be connected to the capsule). This allows for the removal of both the lid and the “bucket” in one go. This is the reason why the compliant mechanism is very important, and can make tooling removal very simple. 
+
+Compliant mechanisms can also act like springs, allowing movement though increasing the force. During a test of the gripper, we realized that it is extremely difficult to control the precise motion of the linear actuator, and that it may continue to retract while it has already grabbed an object or continue to extend even though the gripper can’t open any further. This could permanently damage both the 3D printed gripper and the linear actuator (shown in one of the sketches below). My friend thought of implementing a compliant mechanism that would allow for deformation during additional force. On top of current sensing, this adds another layer of protection for the gripper in case the pilot extends or retracts the gripper too much. 
+
+Thus, to test the properties of TPU and the use of compliant mechanisms, I sent a [large-displacement linear-motion mechanism](https://www.printables.com/model/583713-large-displacement-linear-motion-mechanisms/files) (CT) and an [ortho-planar spring](https://www.printables.com/model/596315-ortho-planar-spring) made by BYU to the manufacturing division of ROVolution to print at PCL with 30% infill. This can be seen in the images below. It came out very satisfactory, but was a lot more flexible than I thought. I believe that this is too unreliable for the tooling removal, but is very suitable for a spring system for the gripper. This is demonstrated in [this](https://www.youtube.com/shorts/LGnIUWkiODk) video. 
