@@ -13,3 +13,4 @@ For the bottom plate, we wanted to ensure structural stability but also decrease
 
 Finally, I added as many bolt holes as possible to ensure modularity in case we needed something. 
 
+Here is a [step file](https://drive.google.com/file/d/12tEkmIG0S9U-ErCGtq6gUw_bw50xtHRc/view?usp=sharing)
