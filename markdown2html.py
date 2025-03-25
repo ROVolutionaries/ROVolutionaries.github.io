@@ -36,7 +36,7 @@ def process_markdown_files(blog_directory="assets/blog"):
                     continue
                 
                 # Convert markdown content to HTML
-                html_content = markdown.markdown(md_content, extensions=['extra', 'nl2br'])
+                html_content = markdown.markdown(md_content, extensions=['extra', 'nl2br', 'tables', 'sane_lists'], output_format='html5')
                 
                 # Add metadata and HTML content to blog posts
                 blog_posts.append({
@@ -82,7 +82,11 @@ def generate_blog_html(blog_posts):
         if images:
             images_html = '<div class="post-images">'
             for img in images:
-                images_html += f'<img src="{img}" alt="Blog image" class="post-image">'
+                images_html += f'''
+                <div class="image-wrapper">
+                    <img src="{img}" alt="Blog image" class="post-image" loading="lazy">
+                </div>
+                '''
             images_html += '</div>'
         
         # Generate HTML for tags
