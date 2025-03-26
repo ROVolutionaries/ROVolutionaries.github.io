@@ -76,7 +76,11 @@ def generate_blog_html(blog_posts):
             tags = [tag.strip() for tag in tags if tag.strip()]
         if images is not None:
             images = [img.strip() for img in images if img.strip()]
-        
+
+        # Split content for the "Read More" functionality
+        intro_content = content.split("\n")[0]  # Just an example of splitting by the first paragraph
+        full_content = content  # Full content will be shown when expanded
+
         # Generate HTML for images
         images_html = ""
         if images:
@@ -88,7 +92,7 @@ def generate_blog_html(blog_posts):
                 </div>
                 '''
             images_html += '</div>'
-        
+
         # Generate HTML for tags
         tags_html = ""
         if tags:
@@ -96,28 +100,32 @@ def generate_blog_html(blog_posts):
             for tag in tags:
                 tags_html += f'<span class="tag">{tag}</span>'
             tags_html += '</div>'
-        
+
         # Create blog post HTML
         post_html = f'''
-        <article class="blog-post">
-            <div class="post-header">
-                <h2 class="post-title">{title}</h2>
-                <div class="post-meta">
-                    <span class="post-date">{date}</span>
-                    <div class="post-author">
-                        <div class="author-avatar">{avatar}</div>
-                        <span>{author}{f" - {position}" if position else ""}</span>
+                <article class="blog-post">
+                    <div class="post-header">
+                        <h2 class="post-title">{title}</h2>
+                        <div class="post-meta">
+                            <span class="post-date">{date}</span>
+                            <div class="post-author">
+                                <div class="author-avatar">{avatar}</div>
+                                <span>{author}{f" - {position}" if position else ""}</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="post-content">
-                {content}
-                {images_html}
-            </div>
-            {tags_html}
-        </article>
-        '''
-        
+                    <div class="post-content">
+                        <p>{intro_content}...</p>  <!-- This is the introductory content -->
+                        <span class="read-more">Read More</span>  <!-- This button will toggle between "Read More" and "Read Less" -->
+
+                        <div class="full-content">
+                            <p>{full_content}</p>  <!-- This is the full content that will be shown when expanded -->
+                        </div>
+                        {images_html}
+                    </div>
+                    {tags_html}
+                </article>
+                '''
         blog_posts_html += post_html
     
     return blog_posts_html
