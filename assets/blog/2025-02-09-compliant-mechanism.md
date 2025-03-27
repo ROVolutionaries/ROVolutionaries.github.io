@@ -2,7 +2,7 @@
 title: Use of Compliant Mechanism in Tooling
 date: February 9, 2025
 author: David Zhang
-position: CTO
+position: Head of Mechanical Engineering
 avatar: DZ
 tags: aa
 images: assets/blog/images/compliant-mechanism1.png, assets/blog/images/compliant-mechanism2.png, assets/blog/images/compliant-mechanism3.jpg, assets/blog/images/compliant-mechanism4.jpeg

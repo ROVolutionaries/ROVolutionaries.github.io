@@ -2,7 +2,7 @@
 title: Float Design
 date: March 7, 2025
 author: David Zhang
-position: CTO
+position: Head of Mechanical Engineering
 avatar: DZ
 tags: aa
 images:

@@ -375,6 +375,34 @@
             
         <article class="blog-post">
             <div class="post-header">
+                <h2 class="post-title">T200 Solution</h2>
+                <div class="post-meta">
+                    <span class="post-date">March 25, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">AS</div>
+                        <span>Ahmed Shaikh - CEO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>A major hurdle we encountered when conducting our thrust test for the T200s was that motors were inexplicably stalling. Specifically, 3 out of our 8 thrusters were showing major issues with stalling and proved to be completely unreliable. Upon some further investigation and troubleshooting, we found that the problem was very unusual for three reasons:</p>
+<ol>
+<li>Thrusters were stalling regardless of their age/corrosion. A brand new thruster was also stalling</li>
+<li>Swapping out the ESCs did not make a difference and the PWM signals coming from the Raspberry Pi Pico were perfect</li>
+<li>Sometimes thrusters wouldn’t work at a specific PWM value but would at others. Specifically, turning thrusters in reverse seemed to be a challenge</li>
+</ol>
+<p>I decided to consult the Blue Robotics forums to see if I could find a solution. I got a prompt reply from Blue Robotics engineer Tony White who suggested that the issue was most likely in the wiring of the electronics. He advised me to check that I had a common ground between my Raspberry Pi Pico and the ESC and T200 thruster, as well as informing me that long alligator clips could be creating an issue in my power supply. Upon fixing both of these things, it seemed to be the alligator clips that were causing the issue. When creating a direct connection between the ESC and T200 phase wires, the issue disappeared for the new thruster. However, the older thrusters were still having some slight stalling, and I believe this is due to the immense corrosion in the phase wires. I tried stripping the wires down as much as I could, but at least one of them would remain corroded even close to the base. We will need to strip the wires of these faulty thrusters all the way down until the corrosion is gone and extend all the wires to the length of one metre by soldering on fresh 18AWG cable.</p>
+                <div class="post-images">
+                <div class="image-wrapper">
+                    <img src="assets/blog/images/t200_thrusttest_results.png" alt="Blog image" class="post-image" loading="lazy">
+                </div>
+                </div>
+            </div>
+            <div class="tags"><span class="tag">aa</span></div>
+        </article>
+        
+        <article class="blog-post">
+            <div class="post-header">
                 <h2 class="post-title">Electronics Tray</h2>
                 <div class="post-meta">
                     <span class="post-date">March 25, 2025</span>
@@ -439,14 +467,18 @@
                     <span class="post-date">March 20, 2025</span>
                     <div class="post-author">
                         <div class="author-avatar">DZ</div>
-                        <span>David Zhang - DTO</span>
+                        <span>David Zhang - CTO</span>
                     </div>
                 </div>
             </div>
             <div class="post-content">
                 <p>These days, I have been working on sealing and joining the gripper and the float. So far, the o-ring seal has been successful, which shouldn’t be surprising but is definitely surprising to me. For the float flange, I designed it so that there would be a flat surface (the acrylic) and it compresses the o-ring towards a resin printed groove. From what I read, the optimal compression should be a 25% compression, and allowing DeepSeek to do all the math (ID=88mm, OD=95mm, CS=3.5mm), the groove depth should be around 2.5 mm, and the groove width should be around 4 mm. However, due to the lack of experience, I made the groove depth more shallow at 2 mm with a max compression of 42.9%. This way we could always increase the pressure in case it doesn’t work but it doesn’t go above 42.9% to avoid damaging the o-ring further (in case a team member is assigned with assembling the float). </p>
 <p>Yesterday, I finished sealing the flange with epoxy and the nitrile rubber o-rings arrived, so Omar and I added the o-rings and compressed the o-ring with a few bolts (we didn’t have enough hex nuts, so we couldn’t fill the 12 holes, but rather did around 5 that were evenly spaced, but the final should probably have all 12 to distribute the pressure on the o-ring). Because Omar didn’t understand how the o-rings worked, they didn’t leave a gap in some areas of the face seal (and the 3mm acrylic kind of bends). This may cause the <a href="https://eriks.com/en/know-how-hub/blogs/o-ring-degradation-characteristics-causes-solutions/">o-ring to degrade</a>. After some DeepSeek calculations, the gap between the flanges should be around 0.5 mm to 1 mm.</p>
-                
+                <div class="post-images">
+                <div class="image-wrapper">
+                    <img src="assets/blog/images/Types-of-Seals.jpg" alt="Blog image" class="post-image" loading="lazy">
+                </div>
+                </div>
             </div>
             <div class="tags"><span class="tag">aa</span></div>
         </article>
@@ -472,12 +504,36 @@
         
         <article class="blog-post">
             <div class="post-header">
+                <h2 class="post-title">HDPE Cutting</h2>
+                <div class="post-meta">
+                    <span class="post-date">March 10, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">AF</div>
+                        <span>Atisam Faisal - Safety Officer</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>Over the course of the past 2 weeks, we have unfortunately suffered from delays in the manufacturing process. These delays came with the difficulty in cutting one of our key frame components; the HDPE side plates. These side plates are simply a 2D cut onto 3D material. Our first instinct was to lasercut the material as this was the most efficient and precise method. Unfortunately, after extensive research, we learned that HDPE releases toxic fumes that are dangerous for both the operator of the laser cutter and the laser cutter exhaust mechanism itself. Our next idea was to use the waterjets available at HFL to cut the HDPE. These were ideal as they operated similarly to laser cutters but used high pressure jets of water to cut through the material. In this way, no toxic fumes would have been released. Unfortunately, the water jets that were available were under maintenance due to technical errors in their water output. We then met with Woodrow and Ali to discuss how we could possibly cut the HDPE side plates. They suggested using the Woodpecker CNC machine available at the IFL. This also operated similarly to a laser cutter but was more manual and operated using a drill bit. To help us with this we acquired the help of Jamaal at the IFL. Jamaal helped us to develop our Fusion 360 design using the manufacturing tab to create a suitable file for the CNC to read. We first prototyped this design on some spare plywood of 8mm thickness at IFL. The major issues we ran into are listed below:</p>
+<ul>
+<li>Z axis starting position was too low and required us to manually adjust the Gcode to manually set the Z starting position </li>
+<li>Different sized holes on the HDPE side plate file meant that we had to continuously change drill bits throughout the cutting process</li>
+<li>HDPE plate size was almost the exact dimension of the HDPE material available. This forced us to center our design on the corner of the material to leave ourselves as much clearance as possible</li>
+</ul>
+<p>Today as we were cutting the HDPE side plate, we realized we had made a huge mistake. We accidentally centered the cut file 4 mm to the right of the corner of the HDPE material. As a result, every bolt hole was adjusted 4mm to the right. This could have caused a huge problem as the HDPE side plate would not have fit on the available material and would also not have connected properly to the Aluminium. To combat this, we simply recentered the design and cut the bolt holes again. We ensured to adjust any dimensions to ensure that no holes overlapped. As a result, one of the HDPE side plates has two sets of bolt holes. This might end up working in our favor as it provides modularity which can be used for ballast or even attachment of tooling. Additionally, the extra set of holes serve as a powerful reminder of the struggles and challenges we had to overcome to get to where we are as a team today. This is a powerful symbol that our ROV incorporates.</p>
+                
+            </div>
+            <div class="tags"><span class="tag">aa</span></div>
+        </article>
+        
+        <article class="blog-post">
+            <div class="post-header">
                 <h2 class="post-title">Waffling about TPU printed spring</h2>
                 <div class="post-meta">
                     <span class="post-date">March 10, 2025</span>
                     <div class="post-author">
                         <div class="author-avatar">DZ</div>
-                        <span>David Zhang - CTO</span>
+                        <span>David Zhang - Head of Mechanical Engineering</span>
                     </div>
                 </div>
             </div>
@@ -496,7 +552,7 @@
                     <span class="post-date">March 7, 2025</span>
                     <div class="post-author">
                         <div class="author-avatar">DZ</div>
-                        <span>David Zhang - CTO</span>
+                        <span>David Zhang - Head of Mechanical Engineering</span>
                     </div>
                 </div>
             </div>
@@ -504,7 +560,7 @@
                 <p>Although the CAD model of the frame design was completed a while ago, I wanted to talk about the design choices. Because we don’t have a lot of experience with the frame, I wanted to make it as structurally sound as possible. Despite the functionality, I ruled out Atisam’s unique design and opted for something that has been done before. I read through the technical documentation of many teams mainly from the explorers class and I found <a href="https://20693798.fs1.hubspotusercontent-na1.net/hubfs/20693798/EX29%20Cabrillo_Robotics_SeaHawk_Technical_Documentation_2024.pdf">Callibro’s</a>, <a href="https://20693798.fs1.hubspotusercontent-na1.net/hubfs/20693798/City%20University%20of%20Hong%20Kong_CityU%20Underwater%20Robotics_technical%20documentation_2024.pdf">CityU’s</a>, and <a href="https://bluerobotics.com/store/rov/bluerov2/">Blue Robotics’</a> designs appealing due to their simplicity, which includes two planes made of aluminum or HDPE with HDPE side plates. The top plane is for the electronic capsule and motors, which were in a typical 6 or <a href="https://discuss.bluerobotics.com/t/frame-configuration-advantages-disadvantages/7968">8 motor configuration</a>. We chose 8 motors for 6 degrees of freedom, auto stabilisation, and the ability to pitch for the gripper and other tooling (especially as our gripper is extremely long and it would be impractical to tilt it). To save space, Ahmed wanted to build PCBs and a custom watertight box for electronics similar to many of the teams, but I also ruled this out because I was scared of waterproofing due to inexperience. Instead, we used the <a href="https://bluerobotics.com/store/watertight-enclosures/locking-series/wte-locking-tube-r1-vp/">watertight capsule</a> by Blue Robotics and found a method of placing it in a way that reduces space by bending the aluminum as seen in the images below, which was provided by Shiva from a meeting with a PCL staff. </p>
 <p>For the bottom plate, we wanted to ensure structural stability but also decrease the mass similar to Callibro’s SeaHawk. I recalled from a <a href="https://www.youtube.com/watch?v=GafRRl5XRPM">video</a> that Voronoi patterns were used in nature and they were rather strong. We used this <a href="https://websvg.github.io/voronoi/">Voronoi generator</a> with specific coordinates from the json file to create a pattern to be used for our ROV. Additionally, we had a modular tooling board to fit different tools with bolts. </p>
 <p>Finally, I added as many bolt holes as possible to ensure modularity in case we needed something. </p>
-<p>Here is the <a href="https://drive.google.com/file/d/12tEkmIG0S9U-ErCGtq6gUw_bw50xtHRc/view?usp=sharing">step file</a>. Here are videos of the manufacturing team <a href="https://www.youtube.com/shorts/OTcz77hJvpw">laser cutting aluminum</a> and [CNC cutting ]</p>
+<p>Here is the <a href="https://drive.google.com/file/d/12tEkmIG0S9U-ErCGtq6gUw_bw50xtHRc/view?usp=sharing">step file</a>. Here are videos of the manufacturing team <a href="https://www.youtube.com/shorts/OTcz77hJvpw">laser cutting aluminum</a> and <a href="https://www.youtube.com/shorts/4ajQbhGuH9A">CNC cutting</a></p>
                 <div class="post-images">
                 <div class="image-wrapper">
                     <img src="assets/blog/images/frame-design-ati.png" alt="Blog image" class="post-image" loading="lazy">
@@ -512,6 +568,10 @@
                 
                 <div class="image-wrapper">
                     <img src="assets/blog/images/frame-design-revised.png" alt="Blog image" class="post-image" loading="lazy">
+                </div>
+                
+                <div class="image-wrapper">
+                    <img src="assets/blog/images/File-Image_20250115_165005_847.jpeg" alt="Blog image" class="post-image" loading="lazy">
                 </div>
                 
                 <div class="image-wrapper">
@@ -533,7 +593,7 @@
                     <span class="post-date">March 7, 2025</span>
                     <div class="post-author">
                         <div class="author-avatar">DZ</div>
-                        <span>David Zhang - CTO</span>
+                        <span>David Zhang - Head of Mechanical Engineering</span>
                     </div>
                 </div>
             </div>
@@ -685,7 +745,7 @@
                     <span class="post-date">February 9, 2025</span>
                     <div class="post-author">
                         <div class="author-avatar">DZ</div>
-                        <span>David Zhang - CTO</span>
+                        <span>David Zhang - Head of Mechanical Engineering</span>
                     </div>
                 </div>
             </div>
@@ -709,6 +769,41 @@
                 
                 <div class="image-wrapper">
                     <img src="assets/blog/images/compliant-mechanism4.jpeg" alt="Blog image" class="post-image" loading="lazy">
+                </div>
+                </div>
+            </div>
+            <div class="tags"><span class="tag">aa</span></div>
+        </article>
+        
+        <article class="blog-post">
+            <div class="post-header">
+                <h2 class="post-title">Power Distribution PCB Fabrication</h2>
+                <div class="post-meta">
+                    <span class="post-date">February 5, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">KL</div>
+                        <span>Konstantin Logashenko - Head of Electrical Engineering</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>The Power Distribution PCB was manufactured at KAUST’s Electronics Fabrication Laboratory (EFL) using the LPKF suite of PCB prototyping equipment. The process has several stages: hole and outline cutting, hole plating, fabrication of tracks, and solder mask application.  </p>
+<p><a href="https://youtu.be/61VreP0BN5A">Here</a> is a video.</p>
+                <div class="post-images">
+                <div class="image-wrapper">
+                    <img src="assets/blog/images/20250205_104109.jpg" alt="Blog image" class="post-image" loading="lazy">
+                </div>
+                
+                <div class="image-wrapper">
+                    <img src="assets/blog/images/20250204_165758.jpg" alt="Blog image" class="post-image" loading="lazy">
+                </div>
+                
+                <div class="image-wrapper">
+                    <img src="assets/blog/images/20250205_154608.jpg" alt="Blog image" class="post-image" loading="lazy">
+                </div>
+                
+                <div class="image-wrapper">
+                    <img src="assets/blog/images/File-1000018416.jpg" alt="Blog image" class="post-image" loading="lazy">
                 </div>
                 </div>
             </div>
@@ -758,7 +853,7 @@
                     <span class="post-date">January 28, 2025</span>
                     <div class="post-author">
                         <div class="author-avatar">DZ</div>
-                        <span>David Zhang - CTO</span>
+                        <span>David Zhang - Head of Mechanical Engineering</span>
                     </div>
                 </div>
             </div>
@@ -803,18 +898,20 @@
                     <span class="post-date">January 23, 2025</span>
                     <div class="post-author">
                         <div class="author-avatar">DZ</div>
-                        <span>David Zhang - CTO</span>
+                        <span>David Zhang - Head of Mechanical Engineering</span>
                     </div>
                 </div>
             </div>
             <div class="post-content">
-                <p>I modified the main linear mechanism by adding gears and a container for the linear actuator. Because I didn’t have the CAD file for the linear actuator, I found it quite difficult to model and properly make a container for it that would keep the linear actuator from moving at an angle. As you can see in this <a href="https://youtu.be/E-dHsgfKOfo">video</a>, it was a complete disappointment and a waste of PLA. The print was also very low quality as we were in a hurry (here is the <a href="https://drive.google.com/file/d/1SJOKX2HULdFf48tS1fz4IHvbFKGeJHQl/view?usp=sharing">STEP file</a>). Additionally, I had not considered the electrical side of this problem. To test the entire gripper, I headed to Konstantin’s house. For the design to work, I expected the linear actuator to be able to stop at a certain point, but this is very difficult given that it only has two power wires without any signal or something that is able to detect the extension. Thus, when retracting the linear actuator to close the gripper, we found that the linear actuator actually crushes the print and completely broke the coupler while squashing the slider piece. Also, I noticed that the linear actuator axle couldnt retract fully (though it wasn’t a large difference if you see the image below), suggesting that it has probably skipped a few gears internally. When I left, the electrical engineer was able to fit the gear onto the M200 motor and was able to rotate the gripper as seen in <a href="https://youtu.be/4bq-KlKKDm0">this video</a>. We had a discussion and decided the best way to reduce the chances of breaking the gripper was to add a stiff spring that wouldn’t allow the linear actuator to skip gears for some time while there is current sensing to see if there is excess force applied. From this experience and the feedback given from the electrical engineer, there should be changes such as:<br>
-- Increased tolerance for the parts that are connected to the components such as the linear actuator housing or gear held by the M200<br>
-- Decreased tolerance for parts that are related to the axle <br>
-- Remove the sliding component that attaches to the linear actuator housing and replace with something else <br>
-- A spring mechanism<br>
-- A gripper that has a long axle <br>
-- The use of the linear actuators' built-in stopping point helps prevent damage to components by avoiding crushing</p>
+                <p>I modified the main linear mechanism by adding gears and a container for the linear actuator. Because I didn’t have the CAD file for the linear actuator, I found it quite difficult to model and properly make a container for it that would keep the linear actuator from moving at an angle. As you can see in this <a href="https://youtu.be/E-dHsgfKOfo">video</a>, it was a complete disappointment and a waste of PLA. The print was also very low quality as we were in a hurry (here is the <a href="https://drive.google.com/file/d/1SJOKX2HULdFf48tS1fz4IHvbFKGeJHQl/view?usp=sharing">STEP file</a>). Additionally, I had not considered the electrical side of this problem. To test the entire gripper, I headed to Konstantin’s house. For the design to work, I expected the linear actuator to be able to stop at a certain point, but this is very difficult given that it only has two power wires without any signal or something that is able to detect the extension. Thus, when retracting the linear actuator to close the gripper, we found that the linear actuator actually crushes the print and completely broke the coupler while squashing the slider piece. Also, I noticed that the linear actuator axle couldnt retract fully (though it wasn’t a large difference if you see the image below), suggesting that it has probably skipped a few gears internally. When I left, the electrical engineer was able to fit the gear onto the M200 motor and was able to rotate the gripper as seen in <a href="https://youtu.be/4bq-KlKKDm0">this video</a>. We had a discussion and decided the best way to reduce the chances of breaking the gripper was to add a stiff spring that wouldn’t allow the linear actuator to skip gears for some time while there is current sensing to see if there is excess force applied. From this experience and the feedback given from the electrical engineer, there should be changes such as:</p>
+<ul>
+<li>Increased tolerance for the parts that are connected to the components such as the linear actuator housing or gear held by the M200</li>
+<li>Decreased tolerance for parts that are related to the axle </li>
+<li>Remove the sliding component that attaches to the linear actuator housing and replace with something else </li>
+<li>A spring mechanism</li>
+<li>A gripper that has a long axle </li>
+<li>The use of the linear actuators' built-in stopping point helps prevent damage to components by avoiding crushing</li>
+</ul>
                 <div class="post-images">
                 <div class="image-wrapper">
                     <img src="assets/blog/images/gripper-refined-print-linear-actuator-axle.jpg" alt="Blog image" class="post-image" loading="lazy">
@@ -895,7 +992,7 @@
                     <span class="post-date">January 19, 2025</span>
                     <div class="post-author">
                         <div class="author-avatar">DZ</div>
-                        <span>David Zhang - CTO</span>
+                        <span>David Zhang - Head of Mechanical Engineering</span>
                     </div>
                 </div>
             </div>
@@ -908,12 +1005,40 @@
         
         <article class="blog-post">
             <div class="post-header">
+                <h2 class="post-title">Regarding Team Management and Funding</h2>
+                <div class="post-meta">
+                    <span class="post-date">December 23, 2024</span>
+                    <div class="post-author">
+                        <div class="author-avatar">DZ</div>
+                        <span>David Zhang - Mechanical Engineer</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>Our team procrastinated a lot last year, and even with the motivation, we didn’t have the correct equipment or materials to build a proper ROV. Even the act of borrowing a capsule or a dome from CMR would have been considered unfathomable and extraordinary. Almost all our work was done at the last minute, where we worked from 3pm to 6pm for the week and 10 am to 3 am the night before the competition, where we finally understood our tasks and how to complete them rather than meeting once every week for a discussion led by our CEO to brainstorm ideas but with no substance or follow a manual to solder the TriggerFish. A few of us literally carried the ROV, the team, and a few whale sharks on their shoulders. Ahmed, our CTO, worked tirelessly to figure out how to put together the electronics from almost no experience. Although the programming was supposed to be split with another member, he ended up having to do all of it himself at 6am before the competition after only sleeping for 3 hours. You could tell his brain was fried in the images after the regionals, how he cut and soldered the ethernet cable without inserting it through the capsule countless times, how he connected the float’s fuse in parallel, how he connected the rasberry pi directly into the power supply and burnt the fuse, or how he soldered and epoxied the wires without thinking of putting the o-rings. Although Konstantin wasn’t in our team, he helped Ahmed a lot, coming over at late nights to help debug. Finally, Iyad and I were a bit slow sometimes, but we tried extremely hard to complete the mechanical side of the ROV. We had a joke about how Iyad doesn’t care about safety at all. When trying to remove a piece of PVC that was stuck, he would use all types of methods from cutting it with a knife to using the soldering iron to heat it up. To waterproof a motor for our gripper, we literally put it in a PVC, added a bunch of vaseline, hotglue, and epo putty (we used epo putty a lot for waterproofing and holding things together). Finally, I spent a lot of time trying to make the float work as it was the only thing that was relatively difficult mechanically. I spent a lot of time designing it on CAD at home and building it with Iyad (and it was extremely slow as the manufacturing team spent like a few weeks before bringing the prints). </p>
+<p>Right after our failure at the Regionals competition, we went right to work, researching for how to make the float and gripper more reliable and to actually function. The hype eventually died down, and when we regrouped the next year, everything seemed like deja vu. There was no urgency and the communications went completely radio silent among the team. After looking at a lot of technical documentation and comparing ourselves with the Red Sea Robotics team, the team that qualified from regionals from KAUST, I realized that funding was critical and that history would repeat itself if we couldn’t fight against the tide. I compiled an extensive funding contact list with Iyad and urged our CEO to email many people. I also brainstormed all the parts that were necessary for building the ROV and the float with Ahmed and Iyad, and compiled a Google Sheet for all the online purchases (during this time we found that although Ahmed promised that he would secure us 3 T200s from the leftover KCRI funding of last year, we found that they all belonged to the other team because they put it on the sheet. I was pretty angry because they never told me about such an important topic and they fumbled the things that required the most money). Thus, we were literally working from scratch while facing the brutality of the IB curriculum. Despite making the tasks for the CEO extremely easy (he only had to write emails), he wasn’t willing to put in the effort and wanted to delay. Additionally, he had policies that were similar to last year, not understanding the requirements to build a ROV or a clear understanding of the scoring. Iyad and I had to buy a lot of float components from AliExpress with our own money. Because I really wanted to win, we had multiple heated arguments, which finally led to a meeting where I introduced Ahmed as our new CEO (although I could’ve lead the team due to my overall understanding of the tasks, I thought I wasn’t suitable for a leadership position in a company that requires members to do a lot of work but doesn’t have any punishments for disobeying because I was impatient with people who didn’t meet my expectations). Most of the other members complied with Ahmed being a temporary CEO to see whether it would make us more efficient, and it did. Ahmed had a much better understanding of the tasks, and moreover he would actually listen to what I have to say rather than ignore me completely because I spoke poorly of them. We organized meetings and brainstormed tasks for all the members. However, we were still in rough seas. Most of the people we emailed completely ignored us or didn’t have the ability to fund us. Luckily, out of all our emails, KCRI, CMR, and PCL were eager to meet with us. The meetings went extremely well (especially with KCRI) as we were able to show my frame design, the website I made, and ask for a specific amount of money as I basically finalized the expenses sheet. However, we ran into challenges as our supervisor wanted us to delay our funding so that she could secure funding for the regional competition and we were kind of ghosted by KCRI. Thus, we looked for connections to see if anyone’s parents were in key positions. One member in the team’s dad was able to fund but we ran into risks of embezzlement and conflict of interest. Thankfully, we contacted a friend’s dad who worked at KCRI and he immediately sent our supervisors the money after a few meetings. Additionally, a few members had relations with PCL from the WISER internship (and we heard that the other team worked there), and we met with the staff to talk about what was offered to us. </p>
+<p>The team met a lot of uncertainty and difficulties in team management and funding, but now we organize ourselves, it’s smooth sailing.</p>
+                <div class="post-images">
+                <div class="image-wrapper">
+                    <img src="assets/blog/images/File-1000010453.jpg" alt="Blog image" class="post-image" loading="lazy">
+                </div>
+                
+                <div class="image-wrapper">
+                    <img src="assets/blog/images/File-Image_20241104_155438_400.jpeg" alt="Blog image" class="post-image" loading="lazy">
+                </div>
+                </div>
+            </div>
+            <div class="tags"><span class="tag">aa</span></div>
+        </article>
+        
+        <article class="blog-post">
+            <div class="post-header">
                 <h2 class="post-title">M200 BLDC Motor Precise Control with FOC Prototype</h2>
                 <div class="post-meta">
                     <span class="post-date">October 29, 2024</span>
                     <div class="post-author">
                         <div class="author-avatar">KL</div>
-                        <span>Konstantin Logashenko - Head of Electrical Engineering</span>
+                        <span>Konstantin Logashenko - Electrical Engineer</span>
                     </div>
                 </div>
             </div>
@@ -932,7 +1057,7 @@
                     <span class="post-date">October 12, 2024</span>
                     <div class="post-author">
                         <div class="author-avatar">DZ</div>
-                        <span>David Zhang - CTO</span>
+                        <span>David Zhang - Head of Mechanical Engineering</span>
                     </div>
                 </div>
             </div>
@@ -951,7 +1076,7 @@
                     <span class="post-date">September 12, 2024</span>
                     <div class="post-author">
                         <div class="author-avatar">DZ</div>
-                        <span>David Zhang - CTO</span>
+                        <span>David Zhang - Head of Mechanical Engineering</span>
                     </div>
                 </div>
             </div>

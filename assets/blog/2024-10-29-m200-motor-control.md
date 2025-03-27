@@ -2,7 +2,7 @@
 title: M200 BLDC Motor Precise Control with FOC Prototype
 date: October 29, 2024
 author: Konstantin Logashenko
-position: Head of Electrical Engineering
+position: Electrical Engineer
 avatar: KL
 tags: later
 images:

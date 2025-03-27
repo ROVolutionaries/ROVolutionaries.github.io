@@ -7,6 +7,7 @@ avatar: AF
 tags: aa
 images:
 ---
+
 With the frame of the ROV constructed, the next key component is the brains of the ROV, the electronics. The electronics of the ROVolution ROV are housed in the BlueRobotics capsule enclosure. The electronics of course cannot just be placed into the capsule, they must rest on an electronics tray.
 
 This week, I have been working closely with Konstantin, Head Electrical Engineer, to design the tray for the electronics. As it stands, we have successfully created a CAD model of the tray that attaches directly to the flange. This model has also been cut and tested to ensure it fits snugly into the capsule. 
