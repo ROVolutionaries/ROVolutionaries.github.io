@@ -375,64 +375,6 @@
             
         <article class="blog-post">
             <div class="post-header">
-                <h2 class="post-title">T200 Solution</h2>
-                <div class="post-meta">
-                    <span class="post-date">March 25, 2025</span>
-                    <div class="post-author">
-                        <div class="author-avatar">AS</div>
-                        <span>Ahmed Shaikh - CEO</span>
-                    </div>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>A major hurdle we encountered when conducting our thrust test for the T200s was that motors were inexplicably stalling. Specifically, 3 out of our 8 thrusters were showing major issues with stalling and proved to be completely unreliable. Upon some further investigation and troubleshooting, we found that the problem was very unusual for three reasons:</p>
-<ol>
-<li>Thrusters were stalling regardless of their age/corrosion. A brand new thruster was also stalling</li>
-<li>Swapping out the ESCs did not make a difference and the PWM signals coming from the Raspberry Pi Pico were perfect</li>
-<li>Sometimes thrusters wouldn’t work at a specific PWM value but would at others. Specifically, turning thrusters in reverse seemed to be a challenge</li>
-</ol>
-<p>I decided to consult the Blue Robotics forums to see if I could find a solution. I got a prompt reply from Blue Robotics engineer Tony White who suggested that the issue was most likely in the wiring of the electronics. He advised me to check that I had a common ground between my Raspberry Pi Pico and the ESC and T200 thruster, as well as informing me that long alligator clips could be creating an issue in my power supply. Upon fixing both of these things, it seemed to be the alligator clips that were causing the issue. When creating a direct connection between the ESC and T200 phase wires, the issue disappeared for the new thruster. However, the older thrusters were still having some slight stalling, and I believe this is due to the immense corrosion in the phase wires. I tried stripping the wires down as much as I could, but at least one of them would remain corroded even close to the base. We will need to strip the wires of these faulty thrusters all the way down until the corrosion is gone and extend all the wires to the length of one metre by soldering on fresh 18AWG cable.</p>
-                <div class="post-images">
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/t200_thrusttest_results.png" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                </div>
-            </div>
-            <div class="tags"><span class="tag">aa</span></div>
-        </article>
-        
-        <article class="blog-post">
-            <div class="post-header">
-                <h2 class="post-title">Electronics Tray</h2>
-                <div class="post-meta">
-                    <span class="post-date">March 25, 2025</span>
-                    <div class="post-author">
-                        <div class="author-avatar">AF</div>
-                        <span>Atisam Faisal - Safety Officer</span>
-                    </div>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>With the frame of the ROV constructed, the next key component is the brains of the ROV, the electronics. The electronics of the ROVolution ROV are housed in the BlueRobotics capsule enclosure. The electronics of course cannot just be placed into the capsule, they must rest on an electronics tray.</p>
-<p>This week, I have been working closely with Konstantin, Head Electrical Engineer, to design the tray for the electronics. As it stands, we have successfully created a CAD model of the tray that attaches directly to the flange. This model has also been cut and tested to ensure it fits snugly into the capsule. </p>
-<p>The next step is to create holes for the electrical components to fit onto. The tray must be able to hold the following components:</p>
-<ul>
-<li>Raspberry Pi </li>
-<li>Pi - Hat </li>
-<li>8 ESCs for T200s </li>
-<li>Power Board </li>
-<li>Gripper Board </li>
-<li>Linear Actuator Driver </li>
-<li>pH Sensor Board</li>
-</ul>
-<p>Most of the 3D CAD Models of these components have been created by Konstantin. Whilst he finalizes the final pieces, I will be working on implementing them in a strategic manner onto the electronics tray to ensure that all the pieces fit whilst keeping wire management in mind. Once the positioning has been finalized, I can add extrusions onto the design to allow for points of attachment. Finally, these cuts will be applied to the actual real-life component which will help finalize the design.</p>
-                
-            </div>
-            <div class="tags"><span class="tag">aa</span></div>
-        </article>
-        
-        <article class="blog-post">
-            <div class="post-header">
                 <h2 class="post-title">T200 Thrust Test Setup</h2>
                 <div class="post-meta">
                     <span class="post-date">March 20, 2025</span>
@@ -481,73 +423,6 @@
                     <img src="assets/blog/images/Types-of-Seals.jpg" alt="Blog image" class="post-image" loading="lazy">
                 </div>
                 </div>
-            </div>
-            <div class="tags"><span class="tag">aa</span></div>
-        </article>
-        
-        <article class="blog-post">
-            <div class="post-header">
-                <h2 class="post-title">Regarding the Recent Procedural Issues</h2>
-                <div class="post-meta">
-                    <span class="post-date">March 20, 2025</span>
-                    <div class="post-author">
-                        <div class="author-avatar">DZ</div>
-                        <span>David Zhang - Mechanical Engineer</span>
-                    </div>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>This text is summarized by ChatGPT and accounts the recent procedural issues with a significant impact on our progress. </p>
-<h3>Chronological Documentation of Events</h3>
-<p>At the beginning of the academic year in September 2024, the MATE ROV competition team, known as ROVolution, was formed through a structured process. The team operated under the mentorship of a faculty advisor, with members contributing approximately 20 hours per week to the project. Team formation followed a merit-based selection procedure that included formal sign-ups through SchoolsBuddy during designated cycles, followed by interviews to assess candidate qualifications and team fit.</p>
-<p>The team established clear operational protocols from the outset. Original members who have put in significant time and effort were held to strict procedural standards, including mandatory SchoolsBuddy registration. The faculty advisor emphasized compliance with these protocols, threatening to remove members who failed to follow proper registration procedures or attend Wednesday meetings. This created an understanding that team membership was contingent upon adherence to established procedures.</p>
-<p>The team progressed significantly with their ROV project throughout the first two seasons (cycles), developing team dynamics based on shared commitment and workload distribution. Members invested substantial effort despite the challenges of balancing their IB coursework with competition preparations. By March 2025, the team was approaching project completion, having established effective workflows and responsibilities among existing members.</p>
-<p>In March 2025, during Season 3 of the competition cycle, tensions emerged when the faculty advisor instructed the team to interview potential new members. The team conducted these interviews as requested, identifying one candidate as suitable while determining that others, including a late-applying student, would not contribute effectively to the team at this advanced stage of project development.</p>
-<p>Despite the team's assessment, the faculty advisor unilaterally decided to add the late-applying student to the team. She informed the student of his acceptance before consulting with the team and subsequently mandated that the team accept him. When team members questioned this decision, the faculty advisor justified it by claiming that the student had been "unlucky" during Season 1 sign-ups due to "full teams" and deserved a chance. However, upon direct inquiry with the student, team members discovered he had not actually signed up during Season 1 but had instead decided to join in Season 3 after much of the project work had been completed.</p>
-<p>This created significant frustration among team members who had been investing substantial time and effort since the beginning of the year. The team already faced challenges with workload distribution, including dealing with an existing member who contributed minimally. They expressed concern that adding another late-entry member would further complicate their established dynamics and create additional "free-rider" problems that would demoralize the team and reduce overall productivity.</p>
-<p>As tensions escalated, team members expressed their frustrations in private group chats. These discussions included some inappropriate language, threats to remove their contributions to the project in order to force the student's removal, plans to gather evidence, and suggestions to disassociate from the school program. The conversations also contained characterizations of the student as "unsigma" and claims that he was "good at glazing teachers," implying he gained favor through flattery rather than merit. Additionally, there were suggestions that the faculty advisor had engaged in "backdooring" or circumventing proper procedures to favor certain students.</p>
-<p>These private discussions did not include bigotry or direct harassment, but did contain elements that could be interpreted as creating an unwelcoming environment, indirect defamation, and threats of self-sabotage.</p>
-<p>One team member, who maintained a friendship with the student, attempted to resolve the growing tension by directly confronting the student about the problem. During this confrontation, the team member showed the student select portions of these private conversations—specifically dialogues about potential self-sabotage and expressions that could be perceived as hatred toward the student. The team member advised the student to voluntarily leave the team in light of these underlying tensions. </p>
-<p>Importantly, these private conversations were not initially leaked completely to the administration. The student had given a glimpse of the content of the conversation. The administration became aware of their full content only after the first mandatory meeting, which explains the confusion during that initial meeting as the teachers did not yet have specific evidence of problematic communications.</p>
-<p>Following the confrontation between the team member and the student, the faculty advisor organized a mandatory meeting that included the Principal and other faculty members and administration. Team members were pulled from their classes without prior notice to attend this meeting, denying them any opportunity to prepare responses.</p>
-<p>During this initial meeting, the faculty advisor focused primarily on issues of inclusivity rather than specific accusations of misconduct. She presented her interpretation that the team had violated the school's inclusivity principles by resisting the student's addition to the team. She referenced the student handbook's definition of inclusivity, suggesting it required unconditional acceptance of all interested students. The Principal, lacking complete context of the situation, lectured the students on school values based on the limited information available to him.</p>
-<p>The atmosphere of the meeting was intimidating, designed to pressure the team into confessing to exclusionary behavior rather than facilitating an open discussion about the circumstances. The administration did not present specific evidence of harassment or bullying during this meeting, as they had not yet received the full chat logs. Instead, they made general assertions about the team's unwelcoming attitudes toward new members.</p>
-<p>At the conclusion of this first meeting, the administration requested evidence of team communications, after which they received the complete chat logs containing the problematic statements.</p>
-<p>After receiving and reviewing the chat evidence, the faculty advisor organized a session with the team to instruct them on preparing written confessions or defenses. This follow-up meeting, unfortunately, failed to provide the clarity or resolution team members had hoped for.</p>
-<p>The meeting primarily consisted of vague accusations without substantive evidence. Faculty supervisors made references to "harassment," "bullying," and violations of "inclusivity" principles without providing specific examples or clear definitions of how these terms applied to the team's actions. This created a challenging environment where team members were expected to defend themselves against undefined allegations.</p>
-<p>One faculty member communicated that an important lesson from this situation was that "the world is an unfair place" and that accepting new team members at a supervisor's direction is totally normal. Team members found this messaging contradictory to the school's stated values around inclusivity and creating welcoming environments, as it essentially normalized hierarchical decisions that could undermine team cohesion.</p>
-<p>When asked about the late-applying student's previous expression of interest in Season 1, the faculty advisor strongly affrimed that he had expressed interest during Season 1 or even the previous year during prop building. This was confusing and formal registration through SchoolsBuddy during Season 1 remains unverified. Some team members noted that the student may have expressed interest but from previous conversations with him, it was unlikely that he had signed up formally on Schools Buddy, as was required by many members.</p>
-<p>Faculty administration defined "inclusivity" as requiring the unconditional acceptance of all interested students regardless of timing, procedures, or skill level. When team members attempted to draw parallels to other competitive scenarios (such as joining a sports team midseason), faculty redirected the conversation to focus on the team's alleged misconduct rather than addressing the substantive question about reasonable boundaries for inclusion in competitive teams.</p>
-<p>When team members attempted to further seek clarification about the specific nature of the accusations or the administration's perspective on the situation, they were silenced or redirected. The faculty advisor stated that the meeting was only about the student's perspective. However, this approach created a situation where team members felt they were defending against ambiguous charges with no opportunity to understand the specific concerns being raised. </p>
-<p>The team was required to submit written defenses with very little time to prepare, which led to significant stress and confusion. They now had to respond to specific accusations based on private communications that they had not anticipated becoming part of the disciplinary process. Moreover, only select lines from their written defenses or confessions could be used against them, rather than considering the full context of the defense.</p>
-<p>A subsequent meeting was held with the administration, during which the team would potentially face severe consequences for their actions. Prior to this meeting, at approximately 9:00 AM, an email was sent to team members' parents informing them of potential suspension and other disciplinary actions. Parents were given until 4:00 PM the same day (a workday) to raise any objections, a timeframe that many parents found difficult to accommodate due to professional obligations.</p>
-<p>During this meeting, the faculty member that manages extracurricular activities stated that he would not be hearing any counterargument or clarification as ours had already been provided in the form of the essay (the team members were silenced when attempting to present their perspective). He expressed that the content of the leaked messages was so inappropriate he "doesn't want to say the word as a woman is in the room." He characterized the team's behavior as "collusion to exclude" the student, which he deemed "absurd." He emphasized that participation in extracurricular activities was "a given privilege" rather than a right, and that students lacked the authority to determine team composition.</p>
-<p>The faculty member cited specific sections from the student handbook, stating that he had identified at least two Category Two violations and suggesting that some members' behavior constituted Category Three misconduct--the most serious level that could result in suspension or expulsion. He explicitly threatened suspension as a potential consequence. </p>
-<p>The faculty member repeatedly asserted that MATE ROV was "not a competition but rather for everyone to learn," despite the team's understanding that they were preparing for a competitive event with regional qualifications at stake. He further explained that TKS was a department of KAUST, implying that any dissociation from TKS would constitute a dissociation from KAUST itself. When discussing the team's previous selection process, he dismissed the importance of the interviews we had conducted, stating that we were "not an independent business" and therefore shouldn't have autonomy over member selection. He also claimed that any sponsorships we had secured were obtained through the school's connections rather than through our own efforts.</p>
-<p>The faculty advisor then outlined a plan for "reuniting the team," which included mandating the team to hire three additional members with specific diversity requirements. She then spoke about how the team was "in shambles" and implied that the situation must have affected all members significantly. When pressed about the diversity requirements for new hires, she offered contradictory guidance. She initially stated that while she personally disliked being viewed as a "diversity hire," neutral hiring processes would naturally achieve diversity. However, she then pivoted to argue that we should prioritize diversity over skill in our selection, suggesting that any justification based on merit alone indicated bias, particularly toward Grade 11 boys.</p>
-<p>She specifically mandated that we must hire at least one female student to demonstrate inclusivity, adding that all three new members could be girls, but not necessarily boys since the team already included male students. When team members questioned this approach further, she reiterated that participation was a "privilege" and that we needed to demonstrate inclusive values rather than focusing on qualifications. Before concluding, she instructed that details of this disciplinary situation were not to be discussed outside the meeting.</p>
-<p>Shortly after these disciplinary meetings, a further conflict arose regarding a beach cleanup event that had been planned approximately one month in advance before the conflict. The team had organized this community service initiative with multiple supervisors, including the faculty advisor, Boy Scout leaders trained in first aid, and appropriate safety equipment including first aid kits, extra water, sunscreen, trash bags, and gloves.</p>
-<p>The team promoted the event on Instagram to encourage broader community participation. The faculty advisor expressed strong disapproval of this social media promotion, citing concerns about liability and supervision. She characterized the cleanup as a "school-related activity" requiring formal registration and approval processes, despite the team's understanding that it was a student-led community service initiative similar to other Service in Action activities that regularly occurred at the school.</p>
-<p>The faculty advisor insisted on receiving completed registration forms from all participants, which proved difficult to obtain on short notice. When team members failed to meet with her during their 30-minute lunch period (which was particularly challenging during Ramadan when many students attended mosque), the faculty advisor directly contacted the Boy Scout supervisor and unilaterally canceled the beach cleanup event.</p>
-<p>This action further reinforced the team's belief that they were being subjected to double standards and punitive measures that went far beyond the original dispute over team membership—much like when she barred them from using sponsorship funds to purchase ROV parts due to alleged non-compliance with disciplinary protocols.</p>
-<h3>Underlying Systemic Issues Throughout the Conflict</h3>
-<p>Throughout these events, several systemic issues emerged that complicated the situation:</p>
-<p><strong>Misrepresentation and Misinformation</strong><br>
-The faculty advisor had apparently led the student to believe he had been "selected by the ROVolution team" when in fact he was added unilaterally by the faculty advisor herself. This misrepresentation created unnecessary animosity between the student and the team, as team members perceived the student as having circumvented established procedures rather than understanding he had been misled about the selection process.</p>
-<p><strong>Inconsistent Application of Rules</strong><br>
-The team observed significant inconsistencies in how rules and policies were applied. Original team members were threatened with removal for procedural violations like missing SchoolsBuddy registration, while the student faced no consequences for bypassing the Season 1 application process entirely. The team was held to strict standards regarding meeting attendance and registration protocols, while exceptions were made selectively for other students.</p>
-<p><strong>Power Imbalance and Intimidation</strong><br>
-Administrative meetings were conducted in ways that maximized intimidation rather than fostering constructive dialogue. The team was consistently denied adequate preparation time, confronted with accusations that evolved as new evidence emerged, threatened with serious disciplinary consequences including suspension, and silenced when attempting to seek clarification or present alternative perspectives.</p>
-<p><strong>Contradictory Directives</strong><br>
-The team received contradictory guidance throughout the conflict. the faculty advisor simultaneously criticized "diversity hires" as contrary to merit while mandating hiring decisions based explicitly on gender and grade level. The team was told MATE ROV was "not a competition" despite its competitive structure with regional qualifications. They were instructed to conduct interviews and make membership decisions, then overruled and criticized for the decisions they made.</p>
-<p><strong>Misapplication of School Policies</strong><br>
-School policy on inclusivity was arguably misinterpreted. The student handbook defined inclusivity as providing "equitable access to opportunities and resources," not unconditional acceptance regardless of qualifications or timing. The team's interview-based selection process was consistent with equitable access, as it applied the same standards to all applicants.</p>
-<p>Similarly, accusations of Category Three misconduct appeared disproportionate to the actual behaviors in question. While the private communications certainly contained inappropriate language and problematic suggestions, they did not clearly constitute the "persistent pattern of significantly harming or holding back the learning of others" that the handbook identified as Category Three misconduct. The chat evidence revealed frustration, poor judgment, and inappropriate planning, but lacked elements of bigotry or direct harassment that would typically warrant the most severe disciplinary measures.</p>
-<h3>Resolution and Aftermath</h3>
-<p>Following these events, the student ultimately joined a Grade 9 team instead of the original ROVolution team. According to reports from the Grade 9 team, the student showed limited engagement with MATE ROV activities, often playing Minecraft during meeting times rather than contributing to the project. This raised questions about whether the intense conflict had been necessary, given the student's apparent level of interest in the competition.</p>
-<p>Meanwhile, the ROVolution team learned a difficult lesson about institutional power dynamics and the consequences of expressing discontent, even in private communications. The experience left them with the understanding that maintaining positive relationships with authority figures may sometimes require subordinating their own perspectives on fairness and procedural consistency—a lesson about organizational politics that came at significant emotional cost. After a reflection, the team acknowledged that the problem would have been solved quickly by complying to the faculty advisor rather than going through a crucible and a kafkaesque battle of perserving one's ego. </p>
-<p>The team's subsequent activities, including community service initiatives, faced heightened scrutiny and additional administrative barriers, suggesting that the repercussions of the conflict extended beyond the immediate issue of team membership to affect all aspects of the team's operations and community engagement.</p>
-                
             </div>
             <div class="tags"><span class="tag">aa</span></div>
         </article>
@@ -609,97 +484,6 @@ School policy on inclusivity was arguably misinterpreted. The student handbook d
             <div class="post-content">
                 <p>I received the TPU prints (finally!). Apparently the manufacturing team had a huge difficulty in printing in TPU. They printed with the wrong extruders at PCL multiple times, so it took a few weeks for the parts to come. In fact, they even printed my part in durable resin once, but I thought the material was a bit too stiff. </p>
 <p>The TPU print was very bad quality since Shiva chose the wrong support material, but it helped me recognize the problems and potential solutions. I explained everything in the 7-minute yap session <a href="https://youtu.be/rvyLVZWc7QA">here</a> because Ahmed wanted to know what's going on (also something I forgot to mention: the first design was actually inspired by a hinge compliant mechanism I saw before where it is a circle, then I realized the shape is basically the same shape as when the spring is being compressed). As stated in the video, I’m not a professional mechanical engineer and compliant mechanisms are far beyond what I can do, so most of the stuff is just either yap or just pure instinct (hopefully the design works though).</p>
-                
-            </div>
-            <div class="tags"><span class="tag">aa</span></div>
-        </article>
-        
-        <article class="blog-post">
-            <div class="post-header">
-                <h2 class="post-title">Frame Design</h2>
-                <div class="post-meta">
-                    <span class="post-date">March 7, 2025</span>
-                    <div class="post-author">
-                        <div class="author-avatar">DZ</div>
-                        <span>David Zhang - Head of Mechanical Engineering</span>
-                    </div>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>Although the CAD model of the frame design was completed a while ago, I wanted to talk about the design choices. Because we don’t have a lot of experience with the frame, I wanted to make it as structurally sound as possible. Despite the functionality, I ruled out Atisam’s unique design and opted for something that has been done before. I read through the technical documentation of many teams mainly from the explorers class and I found <a href="https://20693798.fs1.hubspotusercontent-na1.net/hubfs/20693798/EX29%20Cabrillo_Robotics_SeaHawk_Technical_Documentation_2024.pdf">Callibro’s</a>, <a href="https://20693798.fs1.hubspotusercontent-na1.net/hubfs/20693798/City%20University%20of%20Hong%20Kong_CityU%20Underwater%20Robotics_technical%20documentation_2024.pdf">CityU’s</a>, and <a href="https://bluerobotics.com/store/rov/bluerov2/">Blue Robotics’</a> designs appealing due to their simplicity, which includes two planes made of aluminum or HDPE with HDPE side plates. The top plane is for the electronic capsule and motors, which were in a typical 6 or <a href="https://discuss.bluerobotics.com/t/frame-configuration-advantages-disadvantages/7968">8 motor configuration</a>. We chose 8 motors for 6 degrees of freedom, auto stabilisation, and the ability to pitch for the gripper and other tooling (especially as our gripper is extremely long and it would be impractical to tilt it). To save space, Ahmed wanted to build PCBs and a custom watertight box for electronics similar to many of the teams, but I also ruled this out because I was scared of waterproofing due to inexperience. Instead, we used the <a href="https://bluerobotics.com/store/watertight-enclosures/locking-series/wte-locking-tube-r1-vp/">watertight capsule</a> by Blue Robotics and found a method of placing it in a way that reduces space by bending the aluminum as seen in the images below, which was provided by Shiva from a meeting with a PCL staff. </p>
-<p>For the bottom plate, we wanted to ensure structural stability but also decrease the mass similar to Callibro’s SeaHawk. I recalled from a <a href="https://www.youtube.com/watch?v=GafRRl5XRPM">video</a> that Voronoi patterns were used in nature and they were rather strong. We used this <a href="https://websvg.github.io/voronoi/">Voronoi generator</a> with specific coordinates from the json file to create a pattern to be used for our ROV. Additionally, we had a modular tooling board to fit different tools with bolts. </p>
-<p>Finally, I added as many bolt holes as possible to ensure modularity in case we needed something. </p>
-<p>Here is the <a href="https://drive.google.com/file/d/12tEkmIG0S9U-ErCGtq6gUw_bw50xtHRc/view?usp=sharing">step file</a>. Here are videos of the manufacturing team <a href="https://www.youtube.com/shorts/OTcz77hJvpw">laser cutting aluminum</a> and <a href="https://www.youtube.com/shorts/4ajQbhGuH9A">CNC cutting</a></p>
-                <div class="post-images">
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/frame-design-ati.png" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/frame-design-revised.png" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/frame-design-alubend1.jpeg" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/File-Image_20250115_165005_847.jpeg" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/frame-design-alubend2.jpeg" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                </div>
-            </div>
-            <div class="tags"><span class="tag">aa</span></div>
-        </article>
-        
-        <article class="blog-post">
-            <div class="post-header">
-                <h2 class="post-title">Float Design</h2>
-                <div class="post-meta">
-                    <span class="post-date">March 7, 2025</span>
-                    <div class="post-author">
-                        <div class="author-avatar">DZ</div>
-                        <span>David Zhang - Head of Mechanical Engineering</span>
-                    </div>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>The float design has been one of my main projects in MateROV since last year. Last year, we were very lost as we had no prior experience or help from others. We had no idea how a buoyancy engine worked, and articles such as the <a href="https://en.wikipedia.org/wiki/Buoyancy_engine">wikipedia article</a> used methods that seemed impractical. After reading the preview mission task that required the measurement of depth, our team came up with gyro, laser pointers, and sonar. Thankfully, we found a <a href="https://www.instructables.com/Underwater-Glider/">guide from instructables</a> and decided to use syringes to modify the buoyancy. Our float consisted mainly of scrap pieces lying around, such as syringes, stepper motors that were scavenged from defunct 3D printers, and a long bolt. Additionally, we were able to 3D print parts in the TKS design room and our mentor bought us 3.5 inch PVC. The design had an electronics compartment and a buoyancy engine compartment (my friend advised me to separate the electronics from the buoyancy engine even though we didn’t know proper methods of waterproofing, so the two compartments would inevitably be stuck together with epoxy). Because the float PVC was not transparent, it was impossible to tell whether the inside was waterproofed, and we had to sometimes go by luck (for example pouring in epoxy to waterproof the syringes). The syringes were extremely difficult to pull and lubricants such as WD40 somehow made it less smooth. Thus, we had to scrap our first float because the syringes were attached to the float. Additionally, because we were using a long bolt, it was extremely difficult to couple the bolt head to the stepper motor. We messed up the coupler a few times and hours before the regional competition, we had to EpoPutty the stepper motor directly to the bolt, where it's stuck to this day (a lot of things were done extremely last minute. For example, the electric engineer literally soldered the fuse in parallel at 3am before the regional competition). Finally, we noticed that the stepper motor had absolutely no torque at all (e.g if you gently tapped the stepper motor it would’ve stopped) and even if we minimized the errors there would be no way for the float to work. Also, this year we found out that the pressure sensor we bought from Amazon didn’t work. </p>
-<p>This year, I used a similar mechanism but <a href="https://youtu.be/9TrLYAlDmAg">addressed all the issues</a>:<br>
-- The entire float is able to be taken out like an electronics tray in a capsule while having proper O-ring face seals<br>
-- To decrease loss in efficiency, I used structural beams made of stainless steel to align the syringes with the stepper motor<br>
-- Used bolts from the stepper motor instead of holding it with a 3D print <br>
-- Bought a <a href="https://www.aliexpress.com/item/1005006104443954.html">stepper motor</a> that has relatively high torque, <a href="https://www.aliexpress.com/item/1005002085320555.html">lead screw set</a> that was of high quality, and a fairly transparent <a href="https://www.aliexpress.com/item/1005005890935183.html">PVC pipe</a> <br>
-- Expanded the hole of the syringe to decrease the force (because I am using tubing, I needed the outer circle of the syringe to make a connection. Thus, I expanded the size of the entrance by removing the middle part of the syringe. The <a href="https://www.youtube.com/watch?v=ORL7fASZpUw">method used</a> was inspired by a tale I heard about a person using needles to drill holes into postage stamps to make it easier to rip. I did the same using a hammer, a nail, and pliers to yoink the part out)<br>
-- Created a more accurate way of holding the syringe heads with 3D prints instead of drilling into the it by hand <br>
-- Used tubing rather than directly epoxy the float, which will probably allow for syringe removal if necessary <br>
-- Added a tonne of space for the electronics at the top <br>
-- Using a universal coupler for slight alignment issues (we haven’t tested this yet)</p>
-<p>Although it may not be the final version, here is the <a href="https://drive.google.com/file/d/1AnbART2U5zjeA3a6lvJc0xrgnfLWK7QG/view?usp=sharing">STEP file</a>. </p>
-<p>Right now, I’m waiting for the manufacturing team to finish the prints and for the o-rings to arrive. I’m very excited to turn the theoretical CAD files into reality! In the future, I would like to use a compact and more reliable mechanism to push and pull syringes as shown in <a href="https://www.youtube.com/watch?v=KLEH8RJsYgI">this video</a> by the Lego Experiment Channel. I may also experiment with other methods shown in <a href="https://www.youtube.com/watch?v=ZdhM0SjlS9o">another video</a>.</p>
-                
-            </div>
-            <div class="tags"><span class="tag">aa</span></div>
-        </article>
-        
-        <article class="blog-post">
-            <div class="post-header">
-                <h2 class="post-title">Control System Communication Protocols</h2>
-                <div class="post-meta">
-                    <span class="post-date">March 2, 2025</span>
-                    <div class="post-author">
-                        <div class="author-avatar">AS</div>
-                        <span>Ahmed Shaikh - CEO</span>
-                    </div>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>One of the primary requirements of our control system was communication between a Raspberry Pi and the Raspberry Pi Pico. The reason we decided to use a Raspberry Pi along with a separate microcontroller was that there were insufficient hardware PWM (Pulse Width Modulation) channels on the Raspberry Pi to control all the servos and thrusters on the ROV along with ADC (Analog to Digital Conversion) for the pH sensor. The Pico would offer a compact and efficient solution to the lack of hardware control and take some processing load off of the Raspberry Pi, which would already handle 4-5 camera inputs and control telemetry from the surface laptop.</p>
-<p>Initially, I decided on the I2C protocol for communication between the Pi and the Pico as it had the highest data rate of the ones on the Pico. However, I noticed that the language I was programming the pico in, Micropython, did not support I2C slave mode. This was an issue because the I2C protocol requires a controller and a peripheral, and setting the Raspberry Pi as a peripheral device also proved challenging. Thus, I decided to rewrite my Pico code in C++ using the Raspberry Pi Pico SDK. Despite setting up slave mode on the Pico with an interrupt handler, I could not get this connection to work. I used the same processes as the various examples I saw online. </p>
-<p>Thus, I took an alternative approach and decided to use the UART communication protocol. I got this working much faster and resolved the data transfer issues quickly.</p>
                 
             </div>
             <div class="tags"><span class="tag">aa</span></div>
@@ -809,96 +593,6 @@ School policy on inclusivity was arguably misinterpreted. The student handbook d
         
         <article class="blog-post">
             <div class="post-header">
-                <h2 class="post-title">Use of Compliant Mechanism in Tooling</h2>
-                <div class="post-meta">
-                    <span class="post-date">February 9, 2025</span>
-                    <div class="post-author">
-                        <div class="author-avatar">DZ</div>
-                        <span>David Zhang - Head of Mechanical Engineering</span>
-                    </div>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>After developing a fascination on compliant mechanisms from prior research on mechanisms, I wanted to implement such mechanisms into this project. The materials we had at PCL were quite limited. Nylon 12 filament was almost used up and the rest was exposed to air while PETG didn’t work properly. Thus, our only option for a reliable compliant mechanism would be TPU. </p>
-<p>After reading the competition manual, I realized that the fish catcher and jellyfish catcher should be removable. A way to do this is to have a compliant mechanism hold it in place. This idea was extremely complex, but potentially could allow for the easiest removability with reliability that came with testing. This idea is outlined in the two sketches below. The opening and closing motion of the jellyfish catcher lid or the fish catcher lid would come from an axle that runs through a hinge, with one end connecting to the lid and another to a gear. The outer component of the hinge is connected to the “bucket” and would also reduce the horizontal motion of the inner axle. The compliant mechanism could hold the outer hinge in place, though with certain force could allow the entire hinge to be removed (the compliant mechanism should connect to the hinge perfectly, eliminating horizontal and rotational motion of the hinge with bumps). Finally, the gear is connected to a servo motor with another gear (the servo is not removable as the power source needs to be connected to the capsule). This allows for the removal of both the lid and the “bucket” in one go. This is the reason why the compliant mechanism is very important, and can make tooling removal very simple. </p>
-<p>Compliant mechanisms can also act like springs, allowing movement though increasing the force. During a test of the gripper, we realized that it is extremely difficult to control the precise motion of the linear actuator, and that it may continue to retract while it has already grabbed an object or continue to extend even though the gripper can’t open any further. This could permanently damage both the 3D printed gripper and the linear actuator (shown in one of the sketches below). My friend thought of implementing a compliant mechanism that would allow for deformation during additional force. On top of current sensing, this adds another layer of protection for the gripper in case the pilot extends or retracts the gripper too much. </p>
-<p>Thus, to test the properties of TPU and the use of compliant mechanisms, I sent a <a href="https://www.printables.com/model/583713-large-displacement-linear-motion-mechanisms/files">large-displacement linear-motion mechanism</a> (CT) and an <a href="https://www.printables.com/model/596315-ortho-planar-spring">ortho-planar spring</a> made by BYU to the manufacturing division of ROVolution to print at PCL with 30% infill. This can be seen in the images below. It came out very satisfactory, but was a lot more flexible than I thought. I believe that this is too unreliable for the tooling removal, but is very suitable for a spring system for the gripper. This is demonstrated in <a href="https://www.youtube.com/shorts/LGnIUWkiODk">this</a> video.</p>
-                <div class="post-images">
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/compliant-mechanism1.png" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/compliant-mechanism2.png" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/compliant-mechanism3.jpg" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/compliant-mechanism4.jpeg" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                </div>
-            </div>
-            <div class="tags"><span class="tag">aa</span></div>
-        </article>
-        
-        <article class="blog-post">
-            <div class="post-header">
-                <h2 class="post-title">Power Distribution PCB Fabrication</h2>
-                <div class="post-meta">
-                    <span class="post-date">February 5, 2025</span>
-                    <div class="post-author">
-                        <div class="author-avatar">KL</div>
-                        <span>Konstantin Logashenko - Head of Electrical Engineering</span>
-                    </div>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>The Power Distribution PCB was manufactured at KAUST’s Electronics Fabrication Laboratory (EFL) using the LPKF suite of PCB prototyping equipment. The process has several stages: hole and outline cutting, hole plating, fabrication of tracks, and solder mask application.  </p>
-<p><a href="https://youtu.be/61VreP0BN5A">Here</a> is a video.</p>
-                <div class="post-images">
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/20250205_104109.jpg" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/20250204_165758.jpg" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/20250205_154608.jpg" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/File-1000018416.jpg" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                </div>
-            </div>
-            <div class="tags"><span class="tag">aa</span></div>
-        </article>
-        
-        <article class="blog-post">
-            <div class="post-header">
-                <h2 class="post-title">Jelly Catching (One of the Tools)</h2>
-                <div class="post-meta">
-                    <span class="post-date">February 2, 2025</span>
-                    <div class="post-author">
-                        <div class="author-avatar">SB</div>
-                        <span>Shivahaari Balamurugan - CFO</span>
-                    </div>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>For the most part, I was correcting and finalizing my design on Fusion 360. The design consists of a cylindrical tube for catching the jellyfish, and a lid that should close using a waterproof servos and gear. I had previously tested the hinges to ensure they work, however upon further analysis and brainstorming, I concluded that it would be an inefficient design, especially with the gears, hence I’ve made it simpler and easier to print (which was an added bonus). The next steps would include finding a way to secure the gears to ensure they work as intended, as well as printing a prototype (likely out of PLA), to test the design.</p>
-                
-            </div>
-            <div class="tags"><span class="tag">aa</span></div>
-        </article>
-        
-        <article class="blog-post">
-            <div class="post-header">
                 <h2 class="post-title">Peg Board (Tooling Mobility)</h2>
                 <div class="post-meta">
                     <span class="post-date">February 1, 2025</span>
@@ -911,85 +605,6 @@ School policy on inclusivity was arguably misinterpreted. The student handbook d
             <div class="post-content">
                 <p>Today I worked largely on Fusion 360 making changes to the design for the tooling Peg Board. The design was previously finalized with the utilization of aluminum standoffs to connect the board to the Aluminum sheet metal. However, we heard back from PCL who unfortunately did not have any standoffs of any kind. So I spent today reworking the design and coordinating with Ahmed to figure out an alternate solution that would still be able to deliver the requirements of the Peg Board.</p>
                 
-            </div>
-            <div class="tags"><span class="tag">aa</span></div>
-        </article>
-        
-        <article class="blog-post">
-            <div class="post-header">
-                <h2 class="post-title">Print in Place Gripper Refined V2 Coupler Test</h2>
-                <div class="post-meta">
-                    <span class="post-date">January 28, 2025</span>
-                    <div class="post-author">
-                        <div class="author-avatar">DZ</div>
-                        <span>David Zhang - Head of Mechanical Engineering</span>
-                    </div>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>I discovered print in place mechanisms. Thus I wanted to try and make a coupler that is printed in place that allows for force that is applied linearly while simultaneously allowing rotary motion. I drew inspiration from the Kaleidocycle (<a href="https://all3dp.com/2/coolest-print-in-place-3d-models/">link</a>) and designed my own as seen in <a href="https://www.youtube.com/watch?v=NLitvjZWok8">this video</a>. I printed this in our school’s new printer, which came out great as seen in the image below (although it was quite difficult to get the supports off. I requested tree support from our manufacturing team and somehow it came out to be normal support). I found that it was not viable for our situation as seen in <a href="https://youtu.be/_A0seaw92J8">this video</a>. The rotary motion of the coupler was fine, but the problem mainly lay in the linear force. When applying a linear force, the inner piece sort of gets stuck in the outer piece, which doesn’t allow it to rotate. I tried to put water in to see if I could improve it with some lubricant, but it didn’t work as well. I will use the original coupler.</p>
-                <div class="post-images">
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/gripper-refined-v2-coupling.jpg" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                </div>
-            </div>
-            <div class="tags"><span class="tag">aa</span></div>
-        </article>
-        
-        <article class="blog-post">
-            <div class="post-header">
-                <h2 class="post-title">Fish Catcher Prototype</h2>
-                <div class="post-meta">
-                    <span class="post-date">January 27, 2025</span>
-                    <div class="post-author">
-                        <div class="author-avatar">IH</div>
-                        <span>Iyad Hoteit - Mechanical Engineer</span>
-                    </div>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>Today, I worked on making the CAD model for the fish catcher. The image below shows a drawing that David made, which the model would be based on. The first model I created was made from 2 ovals, however, it was later switched to a more rounded rectangle shape. After creating these shapes, I made the hinge mechanism, which will try to be a print-in-place mechanism. This is in an attempt to make manufacturing much easier. The final product will put a net on either side, one being flat and the other being like a fish net extending to the back. It will use a waterproof servo to close. To finish the product, I need to test the print-in-place mechanism, add the compliant mechanism, and add bolt holes to hold the net. </p>
-<p><a href="https://drive.google.com/file/d/1GwptD0xjs3vGnC7RiLSJvqpzDYGdbX4A/view?usp=sharing">STEP file</a></p>
-                <div class="post-images">
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/fish-catcher.png" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                </div>
-            </div>
-            <div class="tags"><span class="tag">aa</span></div>
-        </article>
-        
-        <article class="blog-post">
-            <div class="post-header">
-                <h2 class="post-title">Gripper Refined V1 Complete Print</h2>
-                <div class="post-meta">
-                    <span class="post-date">January 23, 2025</span>
-                    <div class="post-author">
-                        <div class="author-avatar">DZ</div>
-                        <span>David Zhang - Head of Mechanical Engineering</span>
-                    </div>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>I modified the main linear mechanism by adding gears and a container for the linear actuator. Because I didn’t have the CAD file for the linear actuator, I found it quite difficult to model and properly make a container for it that would keep the linear actuator from moving at an angle. As you can see in this <a href="https://youtu.be/E-dHsgfKOfo">video</a>, it was a complete disappointment and a waste of PLA. The print was also very low quality as we were in a hurry (here is the <a href="https://drive.google.com/file/d/1SJOKX2HULdFf48tS1fz4IHvbFKGeJHQl/view?usp=sharing">STEP file</a>). Additionally, I had not considered the electrical side of this problem. To test the entire gripper, I headed to Konstantin’s house. For the design to work, I expected the linear actuator to be able to stop at a certain point, but this is very difficult given that it only has two power wires without any signal or something that is able to detect the extension. Thus, when retracting the linear actuator to close the gripper, we found that the linear actuator actually crushes the print and completely broke the coupler while squashing the slider piece. Also, I noticed that the linear actuator axle couldnt retract fully (though it wasn’t a large difference if you see the image below), suggesting that it has probably skipped a few gears internally. When I left, the electrical engineer was able to fit the gear onto the M200 motor and was able to rotate the gripper as seen in <a href="https://youtu.be/4bq-KlKKDm0">this video</a>. We had a discussion and decided the best way to reduce the chances of breaking the gripper was to add a stiff spring that wouldn’t allow the linear actuator to skip gears for some time while there is current sensing to see if there is excess force applied. From this experience and the feedback given from the electrical engineer, there should be changes such as:</p>
-<ul>
-<li>Increased tolerance for the parts that are connected to the components such as the linear actuator housing or gear held by the M200</li>
-<li>Decreased tolerance for parts that are related to the axle </li>
-<li>Remove the sliding component that attaches to the linear actuator housing and replace with something else </li>
-<li>A spring mechanism</li>
-<li>A gripper that has a long axle </li>
-<li>The use of the linear actuators' built-in stopping point helps prevent damage to components by avoiding crushing</li>
-</ul>
-                <div class="post-images">
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/gripper-refined-print-linear-actuator-axle.jpg" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/gripper-refined-print-m200.jpg" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                </div>
             </div>
             <div class="tags"><span class="tag">aa</span></div>
         </article>
@@ -1056,24 +671,6 @@ School policy on inclusivity was arguably misinterpreted. The student handbook d
         
         <article class="blog-post">
             <div class="post-header">
-                <h2 class="post-title">Gripper Refined V1 Closing Mechanism</h2>
-                <div class="post-meta">
-                    <span class="post-date">January 19, 2025</span>
-                    <div class="post-author">
-                        <div class="author-avatar">DZ</div>
-                        <span>David Zhang - Head of Mechanical Engineering</span>
-                    </div>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>Gripper V1 is the first prototype compatible with our electrical components: Bluerobotics M200 motor and HAKIWO IP68 Waterproof 12V Linear Actuator. We chose the linear actuator as the opening and closing mechanism mainly because it is seen in other products like BlueRobotics and Reach Robotics. It could provide adequate force and speed without expensive parts due to the waterproofing. The gripper was designed to be able to hold round objects up to 3 inches in diameter. It has been designed to be as compact as possible, with the linear actuator axle coupling directly to the gripper mechanism. As the linear actuator’s axle is only 50 mm and the gripper extension mechanism is around 20 mm, we have to fit everything (the couple, the boot, and the gear/gripper holder) in 30 mm only. To save space, the coupler is placed between the gear/gripper holder and the gripper. I have also tested it (<a href="https://www.youtube.com/watch?v=lOtYzAC4DQQ">video</a>), and found that I needed to decrease the clearance. <a href="https://drive.google.com/file/d/1LBXtrs9frGWZF6YYzrJ2XitwoCb6P3K2/view?usp=sharing">Here</a> is the STEP file.</p>
-                
-            </div>
-            <div class="tags"><span class="tag">later</span></div>
-        </article>
-        
-        <article class="blog-post">
-            <div class="post-header">
                 <h2 class="post-title">Regarding Team Management and Funding</h2>
                 <div class="post-meta">
                     <span class="post-date">December 23, 2024</span>
@@ -1132,44 +729,6 @@ School policy on inclusivity was arguably misinterpreted. The student handbook d
                 
             </div>
             <div class="tags"><span class="tag">to be done later</span></div>
-        </article>
-        
-        <article class="blog-post">
-            <div class="post-header">
-                <h2 class="post-title">Gripper Prototype V2</h2>
-                <div class="post-meta">
-                    <span class="post-date">September 12, 2024</span>
-                    <div class="post-author">
-                        <div class="author-avatar">DZ</div>
-                        <span>David Zhang - Head of Mechanical Engineering</span>
-                    </div>
-                </div>
-            </div>
-            <div class="post-content">
-                <p>I have spent a long time summarizing and brainstorming all the mechanisms I saw, but I wanted to achieve a gripper that can rotate indefinitely. One day, I had an idea of separating two input motions from one singular axis. I sketched it a couple of times and prototyped it on CAD. My first prototype was a failure. Instead of making my own gears, I decided to incorporate lego gears, and it was too small, imprecise, and fragile. It wasn’t functional and broke immediately when I removed the supports. Thus, I looked for a few tutorials to create my own gears and created a much larger model. As you can see in <a href="https://www.youtube.com/shorts/rSkOZ6gRzAY">this</a> video, the rotary and linear motion inputs can produce a desirable output.</p>
-                <div class="post-images">
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/OpenClose_mechanism1.png" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/OpenClose_mechanism2.png" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/Rotary_1(David_s).jpeg" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/Rotary_2(Inspired by 4).png" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                
-                <div class="image-wrapper">
-                    <img src="assets/blog/images/Rotary_3(David_s).png" alt="Blog image" class="post-image" loading="lazy">
-                </div>
-                </div>
-            </div>
-            <div class="tags"><span class="tag">Creativity</span><span class="tag">Critical Thinking</span></div>
         </article>
         </div>
         </section>
