@@ -44,17 +44,16 @@
         }
 
         .blog-posts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 40px;
         }
 
         .blog-post {
             background-color: rgba(255, 255, 255, 0.05);
             border-radius: 10px;
-            padding: 20px;
+            padding: 30px;
             transition: transform 0.3s ease;
-            overflow: hidden;
         }
 
         .blog-post:hover {
@@ -104,30 +103,11 @@
             margin-bottom: 15px;
         }
 
-        .post-content {
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: max-height 0.5s ease, opacity 0.3s ease;
-        }
-
         .post-content p {
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             line-height: 1.7;
         }
 
-        .read-more {
-            display: block;
-            color: var(--orange);
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-
-        .expanded .post-content {
-            max-height: 500px;
-            opacity: 1;
-        }
         /* List styling */
         .post-content ul {
             list-style-type: disc;
@@ -402,19 +382,6 @@
     </div>
 
     <script>
-        // Readmore feature...
-        document.querySelectorAll(".read-more").forEach(button => {
-            button.addEventListener("click", function () {
-                let postContent = this.closest('.post-content');
-                let fullContent = postContent.querySelector('.full-content');
-
-                fullContent.style.display = fullContent.style.display === 'none' ? 'block' : 'none';
-
-                // Toggle text between "Read More" and "Read Less"
-                this.textContent = fullContent.style.display === 'none' ? "Read More" : "Read Less";
-            });
-        });
-
         // Added navbar JavaScript
         const hamburger = document.querySelector(".hamburger");
         const navLinks = document.querySelector(".nav-links");
