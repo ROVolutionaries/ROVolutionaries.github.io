@@ -371,36 +371,7 @@
             <h1 class="blog-title">ROVolution Blog</h1>
 
             <div class="blog-posts">
-
-            
-            <article class="blog-post">
-                <div class="post-header">
-                    <h2 class="post-title">Electronics Tray</h2>
-                    <div class="post-meta">
-                        <span class="post-date">March 25, 2025</span>
-                        <div class="post-author">
-                            <div class="author-avatar">AF</div>
-                            <span>Atisam Faisal - Safety Officer</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-content">
-                    <p>With the frame of the ROV constructed, the next key component is the brains of the ROV, the electronics. The electronics of the ROVolution ROV are housed in the BlueRobotics capsule enclosure. The electronics of course cannot just be placed into the capsule, they must rest on an electronics tray.</p>
-<p>This week, I have been working closely with Konstantin, Head Electrical Engineer, to design the tray for the electronics. As it stands, we have successfully created a CAD model of the tray that attaches directly to the flange. This model has also been cut and tested to ensure it fits snugly into the capsule. </p>
-<p>The next step is to create holes for the electrical components to fit onto. The tray must be able to hold the following components:<br>
- - Raspberry Pi <br>
- - Pi - Hat <br>
- - 8 ESCs for T200s <br>
- - Power Board <br>
- - Gripper Board <br>
- - Linear Actuator Driver <br>
- - pH Sensor Board</p>
-<p>Most of the 3D CAD Models of these components have been created by Konstantin. Whilst he finalizes the final pieces, I will be working on implementing them in a strategic manner onto the electronics tray to ensure that all the pieces fit whilst keeping wire management in mind. Once the positioning has been finalized, I can add extrusions onto the design to allow for points of attachment. Finally, these cuts will be applied to the actual real-life component which will help finalize the design.</p>
-                    
-                </div>
-                <div class="tags"><span class="tag">aa</span></div>
-            </article>
-            
+                <!-- Update 1 Start -->
             <article class="blog-post">
                 <div class="post-header">
                     <h2 class="post-title">T200 Thrust Test Setup</h2>
@@ -439,14 +410,18 @@
                         <span class="post-date">March 20, 2025</span>
                         <div class="post-author">
                             <div class="author-avatar">DZ</div>
-                            <span>David Zhang - DTO</span>
+                            <span>David Zhang - CTO</span>
                         </div>
                     </div>
                 </div>
                 <div class="post-content">
                     <p>These days, I have been working on sealing and joining the gripper and the float. So far, the o-ring seal has been successful, which shouldn’t be surprising but is definitely surprising to me. For the float flange, I designed it so that there would be a flat surface (the acrylic) and it compresses the o-ring towards a resin printed groove. From what I read, the optimal compression should be a 25% compression, and allowing DeepSeek to do all the math (ID=88mm, OD=95mm, CS=3.5mm), the groove depth should be around 2.5 mm, and the groove width should be around 4 mm. However, due to the lack of experience, I made the groove depth more shallow at 2 mm with a max compression of 42.9%. This way we could always increase the pressure in case it doesn’t work but it doesn’t go above 42.9% to avoid damaging the o-ring further (in case a team member is assigned with assembling the float). </p>
 <p>Yesterday, I finished sealing the flange with epoxy and the nitrile rubber o-rings arrived, so Omar and I added the o-rings and compressed the o-ring with a few bolts (we didn’t have enough hex nuts, so we couldn’t fill the 12 holes, but rather did around 5 that were evenly spaced, but the final should probably have all 12 to distribute the pressure on the o-ring). Because Omar didn’t understand how the o-rings worked, they didn’t leave a gap in some areas of the face seal (and the 3mm acrylic kind of bends). This may cause the <a href="https://eriks.com/en/know-how-hub/blogs/o-ring-degradation-characteristics-causes-solutions/">o-ring to degrade</a>. After some DeepSeek calculations, the gap between the flanges should be around 0.5 mm to 1 mm.</p>
-                    
+                    <div class="post-images">
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/Types-of-Seals.jpg" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    </div>
                 </div>
                 <div class="tags"><span class="tag">aa</span></div>
             </article>
@@ -472,12 +447,36 @@
             
             <article class="blog-post">
                 <div class="post-header">
+                    <h2 class="post-title">HDPE Cutting</h2>
+                    <div class="post-meta">
+                        <span class="post-date">March 10, 2025</span>
+                        <div class="post-author">
+                            <div class="author-avatar">AF</div>
+                            <span>Atisam Faisal - Safety Officer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>Over the course of the past 2 weeks, we have unfortunately suffered from delays in the manufacturing process. These delays came with the difficulty in cutting one of our key frame components; the HDPE side plates. These side plates are simply a 2D cut onto 3D material. Our first instinct was to lasercut the material as this was the most efficient and precise method. Unfortunately, after extensive research, we learned that HDPE releases toxic fumes that are dangerous for both the operator of the laser cutter and the laser cutter exhaust mechanism itself. Our next idea was to use the waterjets available at HFL to cut the HDPE. These were ideal as they operated similarly to laser cutters but used high pressure jets of water to cut through the material. In this way, no toxic fumes would have been released. Unfortunately, the water jets that were available were under maintenance due to technical errors in their water output. We then met with Woodrow and Ali to discuss how we could possibly cut the HDPE side plates. They suggested using the Woodpecker CNC machine available at the IFL. This also operated similarly to a laser cutter but was more manual and operated using a drill bit. To help us with this we acquired the help of Jamaal at the IFL. Jamaal helped us to develop our Fusion 360 design using the manufacturing tab to create a suitable file for the CNC to read. We first prototyped this design on some spare plywood of 8mm thickness at IFL. The major issues we ran into are listed below:</p>
+<ul>
+<li>Z axis starting position was too low and required us to manually adjust the Gcode to manually set the Z starting position </li>
+<li>Different sized holes on the HDPE side plate file meant that we had to continuously change drill bits throughout the cutting process</li>
+<li>HDPE plate size was almost the exact dimension of the HDPE material available. This forced us to center our design on the corner of the material to leave ourselves as much clearance as possible</li>
+</ul>
+<p>Today as we were cutting the HDPE side plate, we realized we had made a huge mistake. We accidentally centered the cut file 4 mm to the right of the corner of the HDPE material. As a result, every bolt hole was adjusted 4mm to the right. This could have caused a huge problem as the HDPE side plate would not have fit on the available material and would also not have connected properly to the Aluminium. To combat this, we simply recentered the design and cut the bolt holes again. We ensured to adjust any dimensions to ensure that no holes overlapped. As a result, one of the HDPE side plates has two sets of bolt holes. This might end up working in our favor as it provides modularity which can be used for ballast or even attachment of tooling. Additionally, the extra set of holes serve as a powerful reminder of the struggles and challenges we had to overcome to get to where we are as a team today. This is a powerful symbol that our ROV incorporates.</p>
+                    
+                </div>
+                <div class="tags"><span class="tag">aa</span></div>
+            </article>
+            
+            <article class="blog-post">
+                <div class="post-header">
                     <h2 class="post-title">Waffling about TPU printed spring</h2>
                     <div class="post-meta">
                         <span class="post-date">March 10, 2025</span>
                         <div class="post-author">
                             <div class="author-avatar">DZ</div>
-                            <span>David Zhang - CTO</span>
+                            <span>David Zhang - Head of Mechanical Engineering</span>
                         </div>
                     </div>
                 </div>
@@ -488,93 +487,7 @@
                 </div>
                 <div class="tags"><span class="tag">aa</span></div>
             </article>
-            
-            <article class="blog-post">
-                <div class="post-header">
-                    <h2 class="post-title">Frame Design</h2>
-                    <div class="post-meta">
-                        <span class="post-date">March 7, 2025</span>
-                        <div class="post-author">
-                            <div class="author-avatar">DZ</div>
-                            <span>David Zhang - CTO</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-content">
-                    <p>Although the CAD model of the frame design was completed a while ago, I wanted to talk about the design choices. Because we don’t have a lot of experience with the frame, I wanted to make it as structurally sound as possible. Despite the functionality, I ruled out Atisam’s unique design and opted for something that has been done before. I read through the technical documentation of many teams mainly from the explorers class and I found <a href="https://20693798.fs1.hubspotusercontent-na1.net/hubfs/20693798/EX29%20Cabrillo_Robotics_SeaHawk_Technical_Documentation_2024.pdf">Callibro’s</a>, <a href="https://20693798.fs1.hubspotusercontent-na1.net/hubfs/20693798/City%20University%20of%20Hong%20Kong_CityU%20Underwater%20Robotics_technical%20documentation_2024.pdf">CityU’s</a>, and <a href="https://bluerobotics.com/store/rov/bluerov2/">Blue Robotics’</a> designs appealing due to their simplicity, which includes two planes made of aluminum or HDPE with HDPE side plates. The top plane is for the electronic capsule and motors, which were in a typical 6 or <a href="https://discuss.bluerobotics.com/t/frame-configuration-advantages-disadvantages/7968">8 motor configuration</a>. We chose 8 motors for 6 degrees of freedom, auto stabilisation, and the ability to pitch for the gripper and other tooling (especially as our gripper is extremely long and it would be impractical to tilt it). To save space, Ahmed wanted to build PCBs and a custom watertight box for electronics similar to many of the teams, but I also ruled this out because I was scared of waterproofing due to inexperience. Instead, we used the <a href="https://bluerobotics.com/store/watertight-enclosures/locking-series/wte-locking-tube-r1-vp/">watertight capsule</a> by Blue Robotics and found a method of placing it in a way that reduces space by bending the aluminum as seen in the images below, which was provided by Shiva from a meeting with a PCL staff. </p>
-<p>For the bottom plate, we wanted to ensure structural stability but also decrease the mass similar to Callibro’s SeaHawk. I recalled from a <a href="https://www.youtube.com/watch?v=GafRRl5XRPM">video</a> that Voronoi patterns were used in nature and they were rather strong. We used this <a href="https://websvg.github.io/voronoi/">Voronoi generator</a> with specific coordinates from the json file to create a pattern to be used for our ROV. Additionally, we had a modular tooling board to fit different tools with bolts. </p>
-<p>Finally, I added as many bolt holes as possible to ensure modularity in case we needed something. </p>
-<p>Here is the <a href="https://drive.google.com/file/d/12tEkmIG0S9U-ErCGtq6gUw_bw50xtHRc/view?usp=sharing">step file</a>. Here are videos of the manufacturing team <a href="https://www.youtube.com/shorts/OTcz77hJvpw">laser cutting aluminum</a> and [CNC cutting ]</p>
-                    <div class="post-images">
-                    <div class="image-wrapper">
-                        <img src="assets/blog/images/frame-design-ati.png" alt="Blog image" class="post-image" loading="lazy">
-                    </div>
-                    
-                    <div class="image-wrapper">
-                        <img src="assets/blog/images/frame-design-revised.png" alt="Blog image" class="post-image" loading="lazy">
-                    </div>
-                    
-                    <div class="image-wrapper">
-                        <img src="assets/blog/images/frame-design-alubend1.jpeg" alt="Blog image" class="post-image" loading="lazy">
-                    </div>
-                    
-                    <div class="image-wrapper">
-                        <img src="assets/blog/images/frame-design-alubend2.jpeg" alt="Blog image" class="post-image" loading="lazy">
-                    </div>
-                    </div>
-                </div>
-                <div class="tags"><span class="tag">aa</span></div>
-            </article>
-            
-            <article class="blog-post">
-                <div class="post-header">
-                    <h2 class="post-title">Float Design</h2>
-                    <div class="post-meta">
-                        <span class="post-date">March 7, 2025</span>
-                        <div class="post-author">
-                            <div class="author-avatar">DZ</div>
-                            <span>David Zhang - CTO</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-content">
-                    <p>The float design has been one of my main projects in MateROV since last year. Last year, we were very lost as we had no prior experience or help from others. We had no idea how a buoyancy engine worked, and articles such as the <a href="https://en.wikipedia.org/wiki/Buoyancy_engine">wikipedia article</a> used methods that seemed impractical. After reading the preview mission task that required the measurement of depth, our team came up with gyro, laser pointers, and sonar. Thankfully, we found a <a href="https://www.instructables.com/Underwater-Glider/">guide from instructables</a> and decided to use syringes to modify the buoyancy. Our float consisted mainly of scrap pieces lying around, such as syringes, stepper motors that were scavenged from defunct 3D printers, and a long bolt. Additionally, we were able to 3D print parts in the TKS design room and our mentor bought us 3.5 inch PVC. The design had an electronics compartment and a buoyancy engine compartment (my friend advised me to separate the electronics from the buoyancy engine even though we didn’t know proper methods of waterproofing, so the two compartments would inevitably be stuck together with epoxy). Because the float PVC was not transparent, it was impossible to tell whether the inside was waterproofed, and we had to sometimes go by luck (for example pouring in epoxy to waterproof the syringes). The syringes were extremely difficult to pull and lubricants such as WD40 somehow made it less smooth. Thus, we had to scrap our first float because the syringes were attached to the float. Additionally, because we were using a long bolt, it was extremely difficult to couple the bolt head to the stepper motor. We messed up the coupler a few times and hours before the regional competition, we had to EpoPutty the stepper motor directly to the bolt, where it's stuck to this day (a lot of things were done extremely last minute. For example, the electric engineer literally soldered the fuse in parallel at 3am before the regional competition). Finally, we noticed that the stepper motor had absolutely no torque at all (e.g if you gently tapped the stepper motor it would’ve stopped) and even if we minimized the errors there would be no way for the float to work. Also, this year we found out that the pressure sensor we bought from Amazon didn’t work. </p>
-<p>This year, I used a similar mechanism but <a href="https://youtu.be/9TrLYAlDmAg">addressed all the issues</a>:<br>
- - The entire float is able to be taken out like an electronics tray in a capsule while having proper O-ring face seals<br>
- - To decrease loss in efficiency, I used structural beams made of stainless steel to align the syringes with the stepper motor<br>
- - Used bolts from the stepper motor instead of holding it with a 3D print <br>
- - Bought a <a href="https://www.aliexpress.com/item/1005006104443954.html">stepper motor</a> that has relatively high torque, <a href="https://www.aliexpress.com/item/1005002085320555.html">lead screw set</a> that was of high quality, and a fairly transparent <a href="https://www.aliexpress.com/item/1005005890935183.html">PVC pipe</a> <br>
- - Expanded the hole of the syringe to decrease the force (because I am using tubing, I needed the outer circle of the syringe to make a connection. Thus, I expanded the size of the entrance by removing the middle part of the syringe. The <a href="https://www.youtube.com/watch?v=ORL7fASZpUw">method used</a> was inspired by a tale I heard about a person using needles to drill holes into postage stamps to make it easier to rip. I did the same using a hammer, a nail, and pliers to yoink the part out)<br>
- - Created a more accurate way of holding the syringe heads with 3D prints instead of drilling into the it by hand <br>
- - Used tubing rather than directly epoxy the float, which will probably allow for syringe removal if necessary <br>
- - Added a tonne of space for the electronics at the top <br>
- - Using a universal coupler for slight alignment issues (we haven’t tested this yet)</p>
-<p>Although it may not be the final version, here is the <a href="https://drive.google.com/file/d/1AnbART2U5zjeA3a6lvJc0xrgnfLWK7QG/view?usp=sharing">STEP file</a>. </p>
-<p>Right now, I’m waiting for the manufacturing team to finish the prints and for the o-rings to arrive. I’m very excited to turn the theoretical CAD files into reality! In the future, I would like to use a compact and more reliable mechanism to push and pull syringes as shown in <a href="https://www.youtube.com/watch?v=KLEH8RJsYgI">this video</a> by the Lego Experiment Channel. I may also experiment with other methods shown in <a href="https://www.youtube.com/watch?v=ZdhM0SjlS9o">another video</a>.</p>
-                    
-                </div>
-                <div class="tags"><span class="tag">aa</span></div>
-            </article>
-            
-            <article class="blog-post">
-                <div class="post-header">
-                    <h2 class="post-title">Control System Communication Protocols</h2>
-                    <div class="post-meta">
-                        <span class="post-date">March 2, 2025</span>
-                        <div class="post-author">
-                            <div class="author-avatar">AS</div>
-                            <span>Ahmed Shaikh - CEO</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-content">
-                    <p>One of the primary requirements of our control system was communication between a Raspberry Pi and the Raspberry Pi Pico. The reason we decided to use a Raspberry Pi along with a separate microcontroller was that there were insufficient hardware PWM (Pulse Width Modulation) channels on the Raspberry Pi to control all the servos and thrusters on the ROV along with ADC (Analog to Digital Conversion) for the pH sensor. The Pico would offer a compact and efficient solution to the lack of hardware control and take some processing load off of the Raspberry Pi, which would already handle 4-5 camera inputs and control telemetry from the surface laptop.</p>
-<p>Initially, I decided on the I2C protocol for communication between the Pi and the Pico as it had the highest data rate of the ones on the Pico. However, I noticed that the language I was programming the pico in, Micropython, did not support I2C slave mode. This was an issue because the I2C protocol requires a controller and a peripheral, and setting the Raspberry Pi as a peripheral device also proved challenging. Thus, I decided to rewrite my Pico code in C++ using the Raspberry Pi Pico SDK. Despite setting up slave mode on the Pico with an interrupt handler, I could not get this connection to work. I used the same processes as the various examples I saw online. </p>
-<p>Thus, I took an alternative approach and decided to use the UART communication protocol. I got this working much faster and resolved the data transfer issues quickly.</p>
-                    
-                </div>
-                <div class="tags"><span class="tag">aa</span></div>
-            </article>
+            <!-- Update 1 End -->
             </div>
         </section>
     </div>
