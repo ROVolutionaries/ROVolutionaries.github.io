@@ -44,15 +44,18 @@
         }
 
         .blog-posts {
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            max-width: 1800px;
+            margin: auto;
         }
 
         .blog-post {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
 
@@ -129,6 +132,19 @@
 
         .post-content a:hover {
             color: #1d4ed8;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .read-more:hover {
+            background: #217dbb;
         }
 
         /* Better code for technical terms */
@@ -372,8 +388,102 @@
 
             <div class="blog-posts">
 
+
+        <article class="blog-post">
+            <div class="post-header">
+                <h2 class="post-title">March 2025 Updates</h2>
+                <div class="post-meta">
+                    <span class="post-date">March 31, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">DZ</div>
+                        <span>David Zhang - CTO</span>
+                    </div>
+                </div>
             </div>
+            <div class="post-content">
+                <p>Check out all our March updates: boop, beep and baaap. </p>
+
+            </div>
+            <a href="progress-2025-03.html" class="read-more">Read More!</a>
+        </article>
+
+        <article class="blog-post">
+            <div class="post-header">
+                <h2 class="post-title">February 2025 Updates</h2>
+                <div class="post-meta">
+                    <span class="post-date">February 28, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">DZ</div>
+                        <span>David Zhang - CTO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>Check out all our February updates: boop, beep and baaap. </p>
+
+            </div>
+            <a href="progress-2025-02.html" class="read-more">Read More!</a>
+        </article>
+
+        <article class="blog-post">
+            <div class="post-header">
+                <h2 class="post-title">January 2025 Updates</h2>
+                <div class="post-meta">
+                    <span class="post-date">January 31, 2025</span>
+                    <div class="post-author">
+                        <div class="author-avatar">DZ</div>
+                        <span>David Zhang - CTO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>Check out all our January updates: boop, beep and baaap. Here from our... </p>
+
+            </div>
+            <a href="progress-2025-01.html" class="read-more">Read More!</a>
+        </article>
+
+        <article class="blog-post">
+            <div class="post-header">
+                <h2 class="post-title">October 2024 Updates</h2>
+                <div class="post-meta">
+                    <span class="post-date">October 31, 2024</span>
+                    <div class="post-author">
+                        <div class="author-avatar">DZ</div>
+                        <span>David Zhang - CTO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>Check out all our October 2024 updates: boop, beep and baaap. Here from our... </p>
+
+            </div>
+            <a href="progress-2024-10.html" class="read-more">Read More!</a>
+        </article>
+
+        <article class="blog-post">
+            <div class="post-header">
+                <h2 class="post-title">September 2024 Updates</h2>
+                <div class="post-meta">
+                    <span class="post-date">September 30, 2024</span>
+                    <div class="post-author">
+                        <div class="author-avatar">DZ</div>
+                        <span>David Zhang - CTO</span>
+                    </div>
+                </div>
+            </div>
+            <div class="post-content">
+                <p>Check out all our September 2024 updates: boop, beep and baaap. Here from our... </p>
+
+            </div>
+            <a href="progress-2024-09.html" class="read-more">Read More!</a>
+        </article>
+
+
+        </div>
         </section>
+
+
     </div>
 
     <div id="imageModal" class="modal">

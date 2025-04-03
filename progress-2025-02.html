@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROVolution - Open-Source Blog</title>
+    <link rel="icon" href="assets/logo/favicon.png" type="image/png">
+    <style>
+        :root {
+            --orange: #ff7f50;
+            --blue: #0077be;
+            --dark-bg: #121212;
+            --light-text: #f0f0f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .blog-section {
+            padding: 120px 0 80px;
+        }
+
+        .blog-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: var(--orange);
+        }
+
+        .blog-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .blog-post {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .post-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .post-date {
+            color: var(--orange);
+            font-size: 0.9rem;
+        }
+
+        .post-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+
+        .author-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .post-title {
+            color: var(--blue);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .post-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        /* List styling */
+        .post-content ul {
+            list-style-type: disc;
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .post-content li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        /* Link styling */
+        .post-content a {
+            color: #2563eb;
+            text-decoration: underline;
+        }
+
+        .post-content a:hover {
+            color: #1d4ed8;
+        }
+
+        /* Better code for technical terms */
+        .post-content code {
+            background-color: #f3f4f6;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .image-wrapper {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .image-wrapper:hover {
+            transform: scale(1.03);
+            z-index: 2;
+        }
+
+        .post-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .post-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            transition: opacity 0.3s ease;
+        }
+
+        .post-image:hover {
+            opacity: 0.9;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background-color: var(--blue);
+            color: var(--light-text);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .blog-title {
+                font-size: 2rem;
+            }
+
+            .post-title {
+                font-size: 1.5rem;
+            }
+
+            .blog-post {
+                padding: 20px;
+            }
+
+            .post-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        nav {
+            background-color: rgba(18, 18, 18, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--light-text);
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--light-text);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            padding: 0 15px;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            max-width: 100%;
+        }
+
+        .logo img.logo-small {
+            display: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: rgba(18, 18, 18, 0.9);
+                width: 50%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                padding: 15px;
+                display: block;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .logo img.logo-large {
+                display: none;
+            }
+
+            .logo img.logo-small {
+                display: block;
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            overflow: auto;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 90vh;
+            animation: zoom 0.3s;
+            cursor: pointer;
+        }
+
+        @keyframes zoom {
+            from {transform: scale(0.1)}
+            to {transform: scale(1)}
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: var(--orange);
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/logo/logo1.png" alt="ROVolution Logo" class="logo-large">
+                <img src="assets/logo/logo2.png" alt="ROVolution Logo" class="logo-small">
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="contact.html">Contact</a>
+                <a href="sponsors.html">Sponsors</a>
+                <a href="progress.html">Progress</a>
+            </div>
+            <div class="hamburger">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section class="blog-section">
+            <h1 class="blog-title">ROVolution Blog</h1>
+
+            <div class="blog-posts">
+
+            
+            <article class="blog-post">
+                <div class="post-header">
+                    <h2 class="post-title">Metal Laser Cutter Final Pieces</h2>
+                    <div class="post-meta">
+                        <span class="post-date">February 20, 2025</span>
+                        <div class="post-author">
+                            <div class="author-avatar">SB</div>
+                            <span>Shivahaari Balamurugan - CFO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>With great success from our last session, we decided it was time to cut our final pieces. We liaised with the PCL inventory to acquire a full new sheet of aluminum for our purposes, and travelled to the HFL to set up the machinery for our purposes. After exporting the aluminum flat patterns as DXF files, and transferring them to the machinery, we were ready to cut. It was during the cutting we realized a mistake on our part. Whilst cutting out the voronoi pattern on the aluminum, the cut pieces didn’t fall through, which sometimes hindered the machine, hence we had to manually stop the machine and remove those pieces every time before continuing. However this was easy as the laser cutter had an extremely high precision and the aluminum was locked in place. Once we were done, we removed the pieces and began to sand it for safety purposes, however we had to stop due to time restrictions. Our plan moving forward would be to come in next week on a Monday to sand/finish the aluminum, bend it to our specifications and use the waterjet if we have enough time.</p>
+                    <div class="post-images">
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/IMG_2296.jpeg" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/IMG_2302.jpeg" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/IMG_2303.jpeg" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/IMG_2307.jpeg" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/IMG_2312.jpeg" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/IMG_2318.jpeg" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    </div>
+                </div>
+                <div class="tags"><span class="tag">aa</span></div>
+            </article>
+            
+            <article class="blog-post">
+                <div class="post-header">
+                    <h2 class="post-title">Finalizing Cut Files</h2>
+                    <div class="post-meta">
+                        <span class="post-date">February 19, 2025</span>
+                        <div class="post-author">
+                            <div class="author-avatar">SB</div>
+                            <span>Shivahaari Balamurugan - CFO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>With plans to cut the final frame very soon, we took a trip to the PCL one more time in which we had a 90 minute sessions with the chief engineers and designers to fully solidify our design, ensuring there are no points of failure, and that we are able to easily manufacturer it with the PCL facilities. This involved taking precision measurements of the aluminum, and accounting for the bending. Thankfully this was all correct, and then we moved onto the bending process. We initially planned on “etching ” into the aluminum to aid us with the bending process, however this machine lacked those capabilities, thus we decided to take more precision measurements of where the bends begin, which we can input into the bending machine for ease. I unfortunately had to leave shortly after finalizing how to bend the aluminum, however my colleague Atisam stayed behind to test this process to ensure this will be feasible in the future.</p>
+                    
+                </div>
+                <div class="tags"><span class="tag">aa</span></div>
+            </article>
+            
+            <article class="blog-post">
+                <div class="post-header">
+                    <h2 class="post-title">Learning to Aluminium Bend</h2>
+                    <div class="post-meta">
+                        <span class="post-date">February 19, 2025</span>
+                        <div class="post-author">
+                            <div class="author-avatar">AF</div>
+                            <span>Atisam Faisal - Safety Officer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>Today I visited the HFL (Harbor Fabrication Lab) to learn how to use the Accurpress machine. This machine is used for bending sheets of Aluminium. This will be a vital process for our frame manufacturing which will involve two sheets of bent Aluminium. I worked with Woodrow from PCL to learn how to first use the machine. The way it works is pretty ingenious and involves a hammer piece pressing into a mold piece. The machine works by having the operator press down to push the Aluminium together at an angle. I practiced the specific cuts we would need for the ROV frame on spare Aluminium sheets that were available at HFL. The specific cut angle I really wanted to practice was the 135o angle bend. This was difficult because such an angle often distorted the shape of the Aluminium sheet making it harder to bend the next piece. The biggest thing I learned that will be vital for the actual bending process is to always start by ending the inner pieces first. This way the alignment of the outer bends is not affected too much by what is happening on the inside. This makes it much easier to ensure secondary and tertiary bends are done precisely.</p>
+                    
+                </div>
+                <div class="tags"><span class="tag">aa</span></div>
+            </article>
+            
+            <article class="blog-post">
+                <div class="post-header">
+                    <h2 class="post-title">Training on Metal Laser Cutter and Learning about Clearance Holes</h2>
+                    <div class="post-meta">
+                        <span class="post-date">February 11, 2025</span>
+                        <div class="post-author">
+                            <div class="author-avatar">SB</div>
+                            <span>Shivahaari Balamurugan - CFO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>With the deadline for the frame fast approaching, we decided to learn the process of laser cutting metal and testing out the bolt holes, to fundamentally understand how we would manufacture our ROV frame, and take notes of any questions or issues we ran into. By doing this, we hope to eliminate any points of failure whilst constructing and fabricating the frame, whilst also changing the design to meet the specifications of the machinery available to us. </p>
+<p>Hence we took a trip to the PCL, where we contacted one of their staff to aid us with this experiment/learning. We had beforehand sent them a test file, filled with different variations of clearance holes to determine which best suited our needs. It was here we learnt that they had an industry standard for the machinery they used, hence we changed the file according to their specifications; m3 bolts had a clearance size of 3.3 mm, whilst m6 bolts had a clearance of 6.5 mm. Once corrected, we transferred to the Harbour Fabrication Lab (HFL), where we were introduced to the 6KW “Fiber Laser Cutting Machine”, and learnt about the different  processes it was capable of. Unfortunately, as 16-year old PCL users, we were not allowed to directly use the machine, but rather watched as the staff aided once. Once the lasercut was finished, we sanded the sharp edges (for safety purposes), and tested the bolt holes. We noticed that the m3 bolt holes were perfect, however there was a little too much wiggle room for the m6, hence in the actual design, we decided to change the m6 clearance hole to 6.4 mm.</p>
+<p>This is a <a href="https://youtu.be/p0pSf79lvo4">video</a></p>
+                    <div class="post-images">
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/IMG_2233.jpeg" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    </div>
+                </div>
+                <div class="tags"><span class="tag">aa</span></div>
+            </article>
+            
+            <article class="blog-post">
+                <div class="post-header">
+                    <h2 class="post-title">Use of Compliant Mechanism in Tooling</h2>
+                    <div class="post-meta">
+                        <span class="post-date">February 9, 2025</span>
+                        <div class="post-author">
+                            <div class="author-avatar">DZ</div>
+                            <span>David Zhang - CTO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>After developing a fascination on compliant mechanisms from prior research on mechanisms, I wanted to implement such mechanisms into this project. The materials we had at PCL were quite limited. Nylon 12 filament was almost used up and the rest was exposed to air while PETG didn’t work properly. Thus, our only option for a reliable compliant mechanism would be TPU. </p>
+<p>After reading the competition manual, I realized that the fish catcher and jellyfish catcher should be removable. A way to do this is to have a compliant mechanism hold it in place. This idea was extremely complex, but potentially could allow for the easiest removability with reliability that came with testing. This idea is outlined in the two sketches below. The opening and closing motion of the jellyfish catcher lid or the fish catcher lid would come from an axle that runs through a hinge, with one end connecting to the lid and another to a gear. The outer component of the hinge is connected to the “bucket” and would also reduce the horizontal motion of the inner axle. The compliant mechanism could hold the outer hinge in place, though with certain force could allow the entire hinge to be removed (the compliant mechanism should connect to the hinge perfectly, eliminating horizontal and rotational motion of the hinge with bumps). Finally, the gear is connected to a servo motor with another gear (the servo is not removable as the power source needs to be connected to the capsule). This allows for the removal of both the lid and the “bucket” in one go. This is the reason why the compliant mechanism is very important, and can make tooling removal very simple. </p>
+<p>Compliant mechanisms can also act like springs, allowing movement though increasing the force. During a test of the gripper, we realized that it is extremely difficult to control the precise motion of the linear actuator, and that it may continue to retract while it has already grabbed an object or continue to extend even though the gripper can’t open any further. This could permanently damage both the 3D printed gripper and the linear actuator (shown in one of the sketches below). My friend thought of implementing a compliant mechanism that would allow for deformation during additional force. On top of current sensing, this adds another layer of protection for the gripper in case the pilot extends or retracts the gripper too much. </p>
+<p>Thus, to test the properties of TPU and the use of compliant mechanisms, I sent a <a href="https://www.printables.com/model/583713-large-displacement-linear-motion-mechanisms/files">large-displacement linear-motion mechanism</a> (CT) and an <a href="https://www.printables.com/model/596315-ortho-planar-spring">ortho-planar spring</a> made by BYU to the manufacturing division of ROVolution to print at PCL with 30% infill. This can be seen in the images below. It came out very satisfactory, but was a lot more flexible than I thought. I believe that this is too unreliable for the tooling removal, but is very suitable for a spring system for the gripper. This is demonstrated in <a href="https://www.youtube.com/shorts/LGnIUWkiODk">this</a> video.</p>
+                    <div class="post-images">
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/compliant-mechanism1.png" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/compliant-mechanism2.png" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/compliant-mechanism3.jpg" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/compliant-mechanism4.jpeg" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    </div>
+                </div>
+                <div class="tags"><span class="tag">aa</span></div>
+            </article>
+            
+            <article class="blog-post">
+                <div class="post-header">
+                    <h2 class="post-title">Jelly Catching (One of the Tools)</h2>
+                    <div class="post-meta">
+                        <span class="post-date">February 2, 2025</span>
+                        <div class="post-author">
+                            <div class="author-avatar">SB</div>
+                            <span>Shivahaari Balamurugan - CFO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>For the most part, I was correcting and finalizing my design on Fusion 360. The design consists of a cylindrical tube for catching the jellyfish, and a lid that should close using a waterproof servos and gear. I had previously tested the hinges to ensure they work, however upon further analysis and brainstorming, I concluded that it would be an inefficient design, especially with the gears, hence I’ve made it simpler and easier to print (which was an added bonus). The next steps would include finding a way to secure the gears to ensure they work as intended, as well as printing a prototype (likely out of PLA), to test the design.</p>
+                    
+                </div>
+                <div class="tags"><span class="tag">aa</span></div>
+            </article>
+            
+            <article class="blog-post">
+                <div class="post-header">
+                    <h2 class="post-title">Peg Board (Tooling Mobility)</h2>
+                    <div class="post-meta">
+                        <span class="post-date">February 1, 2025</span>
+                        <div class="post-author">
+                            <div class="author-avatar">AF</div>
+                            <span>Atisam Faisal - Safety Officer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>Today I worked largely on Fusion 360 making changes to the design for the tooling Peg Board. The design was previously finalized with the utilization of aluminum standoffs to connect the board to the Aluminum sheet metal. However, we heard back from PCL who unfortunately did not have any standoffs of any kind. So I spent today reworking the design and coordinating with Ahmed to figure out an alternate solution that would still be able to deliver the requirements of the Peg Board.</p>
+                    
+                </div>
+                <div class="tags"><span class="tag">aa</span></div>
+            </article>
+            </div>
+        </section>
+    </div>
+
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="expandedImage">
+    </div>
+
+    <script>
+        // Added navbar JavaScript
+        const hamburger = document.querySelector(".hamburger");
+        const navLinks = document.querySelector(".nav-links");
+
+        hamburger.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+            hamburger.classList.toggle("active");
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll(".nav-links a").forEach(n => n.addEventListener("click", () => {
+            navLinks.classList.remove("active");
+            hamburger.classList.remove("active");
+        }));
+
+        // Lightbox functionality
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("expandedImage");
+        const closeSpan = document.getElementsByClassName("close")[0];
+
+        // When clicking any blog post image
+        document.querySelector('.blog-posts').addEventListener('click', function(e) {
+            if (e.target.classList.contains('post-image')) {
+                modal.style.display = "flex";
+                modalImg.src = e.target.src;
+            }
+        });
+
+        // When clicking the close button
+        closeSpan.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When clicking outside the image
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
