@@ -3,6 +3,7 @@ import os
 import re
 import glob
 import yaml
+import csv
 from datetime import datetime
 
 
@@ -75,8 +76,40 @@ def process_markdown_files(blog_directory="assets/blog"):
 
     return blog_posts_by_month, sorted_months
 
+def load_monthly_descriptions(csv_path="assets/blog/monthly_description.csv"):
+    """Load monthly descriptions from CSV file."""
+    monthly_descriptions = {}
+
+    try:
+        with open(csv_path, 'r', encoding='utf-8') as f:
+            reader = csv.reader(f)
+            # Skip header if it exists
+            try:
+                header = next(reader)
+            except StopIteration:
+                print(f"CSV file {csv_path} is empty")
+                return monthly_descriptions
+                
+            for row in reader:
+                if len(row) >= 2:
+                    # Assuming format is "YYYY-MM,Description"
+                    month_key = row[0].strip()
+                    description = row[1].strip()
+                    monthly_descriptions[month_key] = description
+                else:
+                    print(f"Skipping invalid row in CSV: {row}")
+    except FileNotFoundError:
+        print(f"Monthly descriptions file not found: {csv_path}")
+    except Exception as e:
+        print(f"Error reading monthly descriptions: {e}")
+
+    return monthly_descriptions
+
 def generate_blog_html(blog_posts_by_month, sorted_months):
     """Generate HTML for blog posts based on the template."""
+
+    # Load monthly descriptions
+    monthly_descriptions = load_monthly_descriptions()
 
     blog_posts_html_by_month = {}
     month_cards_html = []
@@ -155,13 +188,13 @@ def generate_blog_html(blog_posts_by_month, sorted_months):
         year, month_num = month_key.split('-')
         month_name = datetime.strptime(month_num, '%m').strftime('%B')
         
-        # Example list of updates - you might want to extract real titles from posts
-        updates_list = ", ".join(["boop", "beep", "baaap"])
+        # Get month description from CSV or use default
+        description = monthly_descriptions.get(month_key, f"Check out all our {month_name} updates")
         
         month_card = f'''
         <div class="month-card">
             <h3>{month_name} {year} Updates</h3>
-            <p>Check out all our {month_name} updates: {updates_list}.</p>
+            <p>{description}</p>
             <a href="progress-{month_key}.html" class="read-more-button">Read more</a>
         </div>
         '''
@@ -182,47 +215,6 @@ def update_blog_template(template_path, output_dir, blog_posts_html_by_month, mo
     # Read the template once
     with open(template_path, 'r', encoding='utf-8') as f:
         template = f.read()
-    
-    # CSS styles that should be included in all pages
-    shared_css = '''
-    <style>
-        /* Blog post styles */
-        .blog-post {
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        /* Month card styles */
-        .month-cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-        .month-card {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .read-more-button {
-            display: inline-block;
-            background-color: #0066cc;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 4px;
-            text-decoration: none;
-            margin-top: 10px;
-        }
-        .read-more-button:hover {
-            background-color: #0055aa;
-        }
-    </style>
-    '''
-    
     
     # Create individual month pages
     for month_key, html_content in blog_posts_html_by_month.items():
@@ -276,8 +268,6 @@ def update_blog_template(template_path, output_dir, blog_posts_html_by_month, mo
     
     # Insert month cards grid into the main blog page.
     main_template = template
-    if '</head>' in main_template:
-        main_template = main_template.replace('</head>', f'{shared_css}</head>')
 
     start_marker = '<!-- Blog Start -->'
     end_marker = '<!-- Blog End -->'
