@@ -2,7 +2,7 @@
 title: Gripper Prototype V2
 date: September 12, 2024
 author: David Zhang
-position: CTO
+position: Head of Mechanical Engineering
 avatar: DZ
 tags: Creativity, Critical Thinking
 images: assets/blog/images/OpenClose_mechanism1.png, assets/blog/images/OpenClose_mechanism2.png, assets/blog/images/Rotary_1(David_s).jpeg, assets/blog/images/Rotary_2(Inspired by 4).png, assets/blog/images/Rotary_3(David_s).png

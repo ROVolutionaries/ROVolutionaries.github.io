@@ -2,7 +2,7 @@
 title: Syringe Force Test
 date: October 12, 2024
 author: David Zhang
-position: CTO
+position: Head of Mechanical Engineering
 avatar: DZ
 tags: to be done later
 images:

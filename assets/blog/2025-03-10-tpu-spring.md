@@ -2,7 +2,7 @@
 title: Waffling about TPU printed spring
 date: March 10, 2025
 author: David Zhang
-position: CTO
+position: Head of Mechanical Engineering
 avatar: DZ
 tags: aa
 images:
