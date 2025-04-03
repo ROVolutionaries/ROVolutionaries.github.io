@@ -172,8 +172,10 @@ def generate_blog_html(blog_posts_by_month, sorted_months):
 
 
 def update_blog_template(template_path, output_dir, blog_posts_html_by_month, month_cards_html):
-    """Update the blog template with the generated blog posts and create month pages."""
-    
+    """Update the blog template with the generated blog posts and create month pages,
+       using the same CSS as the blog.
+    """
+    import os, re
     # Create output directory if it doesn't exist
     os.makedirs(output_dir, exist_ok=True)
     
@@ -181,32 +183,76 @@ def update_blog_template(template_path, output_dir, blog_posts_html_by_month, mo
     with open(template_path, 'r', encoding='utf-8') as f:
         template = f.read()
     
+    # CSS styles that should be included in all pages
+    shared_css = '''
+    <style>
+        /* Blog post styles */
+        .blog-post {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        /* Month card styles */
+        .month-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .month-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .read-more-button {
+            display: inline-block;
+            background-color: #0066cc;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+        .read-more-button:hover {
+            background-color: #0055aa;
+        }
+    </style>
+    '''
+    
+    
     # Create individual month pages
     for month_key, html_content in blog_posts_html_by_month.items():
-        # Make a copy of the template for this month
+        # Use the existing blog template (which already includes your CSS)
         month_template = template
         
-        # Replace the blog posts section with our generated posts
+        # Replace the blog posts section with our generated posts using markers if available
         start_marker = '<!-- Update 1 Start -->'
         end_marker = '<!-- Update 1 End -->'
 
         if start_marker in month_template and end_marker in month_template:
             start_index = month_template.find(start_marker) + len(start_marker)
             end_index = month_template.find(end_marker)
-
             updated_template = month_template[:start_index] + html_content + month_template[end_index:]
         else:
-            # If markers not found, try to insert before closing div.blog-posts
+            # If markers not found, try to insert before a closing tag
             pattern = r'</div>\s*</section>'
             match = re.search(pattern, month_template)
             if match:
                 updated_template = month_template[:match.start()] + html_content + month_template[match.start():]
             else:
-                # Last resort: Try to insert after the <body> tag
+                # Last resort: insert after the <body> tag
                 body_match = re.search(r'<body[^>]*>', month_template)
                 if body_match:
                     insert_pos = body_match.end()
-                    updated_template = month_template[:insert_pos] + '\n<div class="blog-posts">' + html_content + '</div>\n' + month_template[insert_pos:]
+                    updated_template = (month_template[:insert_pos] +
+                                        '\n<div class="blog-posts">' +
+                                        html_content +
+                                        '</div>\n' +
+                                        month_template[insert_pos:])
                 else:
                     print(f"Could not find appropriate place to insert blog posts for {month_key}")
                     continue
@@ -218,67 +264,37 @@ def update_blog_template(template_path, output_dir, blog_posts_html_by_month, mo
         
         print(f"Created month page: {output_path}")
     
+
     # Create or update main blog page with month cards
     index_path = os.path.join(output_dir, "progress.html")
     
-    # Create two-column grid for month cards
     month_cards_grid = '''
     <div class="month-cards-grid">
         {}
     </div>
-    <style>
-        .month-cards-grid {{
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }}
-        .month-card {{
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }}
-        .read-more-button {{
-            display: inline-block;
-            background-color: #0066cc;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 4px;
-            text-decoration: none;
-            margin-top: 10px;
-        }}
-        .read-more-button:hover {{
-            background-color: #0055aa;
-        }}
-    </style>
     '''.format(''.join(month_cards_html))
     
-    # Create or update main blog page
+    # Insert month cards grid into the main blog page.
     main_template = template
-    
-    # Try to find the month cards markers
+    if '</head>' in main_template:
+        main_template = main_template.replace('</head>', f'{shared_css}</head>')
+
     start_marker = '<!-- Blog Start -->'
     end_marker = '<!-- Blog End -->'
     
     if start_marker in main_template and end_marker in main_template:
         start_index = main_template.find(start_marker) + len(start_marker)
         end_index = main_template.find(end_marker)
-        
         updated_template = main_template[:start_index] + month_cards_grid + main_template[end_index:]
     else:
-        # If no month card markers, try blog post markers
+        # Try alternative markers or insert at a common content area
         start_marker = '<!-- Update 1 Start -->'
         end_marker = '<!-- Update 1 End -->'
-        
         if start_marker in main_template and end_marker in main_template:
             start_index = main_template.find(start_marker) + len(start_marker)
             end_index = main_template.find(end_marker)
-            
             updated_template = main_template[:start_index] + month_cards_grid + main_template[end_index:]
         else:
-            # Try to find the main content area
-            # Common patterns: <main>, <div id="content">, <div class="content">
             patterns = [
                 r'<main[^>]*>',
                 r'<div[^>]*id="content"[^>]*>',
@@ -286,7 +302,6 @@ def update_blog_template(template_path, output_dir, blog_posts_html_by_month, mo
                 r'<div[^>]*class="[^"]*container[^"]*"[^>]*>',
                 r'<div[^>]*class="[^"]*blog[^"]*"[^>]*>'
             ]
-            
             found = False
             for pattern in patterns:
                 match = re.search(pattern, main_template)
@@ -295,13 +310,15 @@ def update_blog_template(template_path, output_dir, blog_posts_html_by_month, mo
                     updated_template = main_template[:insert_pos] + month_cards_grid + main_template[insert_pos:]
                     found = True
                     break
-            
             if not found:
-                # Last resort: Try to insert after the <body> tag
                 body_match = re.search(r'<body[^>]*>', main_template)
                 if body_match:
                     insert_pos = body_match.end()
-                    updated_template = main_template[:insert_pos] + '\n<div class="container">' + month_cards_grid + '</div>\n' + main_template[insert_pos:]
+                    updated_template = (main_template[:insert_pos] +
+                                        '\n<div class="container">' +
+                                        month_cards_grid +
+                                        '</div>\n' +
+                                        main_template[insert_pos:])
                 else:
                     print("Could not find any suitable location to insert month cards")
                     return False
@@ -310,7 +327,6 @@ def update_blog_template(template_path, output_dir, blog_posts_html_by_month, mo
         f.write(updated_template)
     
     print(f"Created main blog page: {index_path}")
-    
     return True
 
 def main():
