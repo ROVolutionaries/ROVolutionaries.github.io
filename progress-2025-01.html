@@ -410,6 +410,85 @@
                 <!-- Update 1 Start -->
             <article class="blog-post">
                 <div class="post-header">
+                    <h2 class="post-title">Print in Place Gripper Refined V2 Coupler Test</h2>
+                    <div class="post-meta">
+                        <span class="post-date">January 28, 2025</span>
+                        <div class="post-author">
+                            <div class="author-avatar">DZ</div>
+                            <span>David Zhang - Head of Mechanical Engineering</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>I discovered print in place mechanisms. Thus I wanted to try and make a coupler that is printed in place that allows for force that is applied linearly while simultaneously allowing rotary motion. I drew inspiration from the Kaleidocycle (<a href="https://all3dp.com/2/coolest-print-in-place-3d-models/">link</a>) and designed my own as seen in <a href="https://www.youtube.com/watch?v=NLitvjZWok8">this video</a>. I printed this in our school’s new printer, which came out great as seen in the image below (although it was quite difficult to get the supports off. I requested tree support from our manufacturing team and somehow it came out to be normal support). I found that it was not viable for our situation as seen in <a href="https://youtu.be/_A0seaw92J8">this video</a>. The rotary motion of the coupler was fine, but the problem mainly lay in the linear force. When applying a linear force, the inner piece sort of gets stuck in the outer piece, which doesn’t allow it to rotate. I tried to put water in to see if I could improve it with some lubricant, but it didn’t work as well. I will use the original coupler.</p>
+                    <div class="post-images">
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/gripper-refined-v2-coupling.jpg" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    </div>
+                </div>
+                <div class="tags"><span class="tag">aa</span></div>
+            </article>
+            
+            <article class="blog-post">
+                <div class="post-header">
+                    <h2 class="post-title">Fish Catcher Prototype</h2>
+                    <div class="post-meta">
+                        <span class="post-date">January 27, 2025</span>
+                        <div class="post-author">
+                            <div class="author-avatar">IH</div>
+                            <span>Iyad Hoteit - Mechanical Engineer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>Today, I worked on making the CAD model for the fish catcher. The image below shows a drawing that David made, which the model would be based on. The first model I created was made from 2 ovals, however, it was later switched to a more rounded rectangle shape. After creating these shapes, I made the hinge mechanism, which will try to be a print-in-place mechanism. This is in an attempt to make manufacturing much easier. The final product will put a net on either side, one being flat and the other being like a fish net extending to the back. It will use a waterproof servo to close. To finish the product, I need to test the print-in-place mechanism, add the compliant mechanism, and add bolt holes to hold the net. </p>
+<p><a href="https://drive.google.com/file/d/1GwptD0xjs3vGnC7RiLSJvqpzDYGdbX4A/view?usp=sharing">STEP file</a></p>
+                    <div class="post-images">
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/fish-catcher.png" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    </div>
+                </div>
+                <div class="tags"><span class="tag">aa</span></div>
+            </article>
+            
+            <article class="blog-post">
+                <div class="post-header">
+                    <h2 class="post-title">Gripper Refined V1 Complete Print</h2>
+                    <div class="post-meta">
+                        <span class="post-date">January 23, 2025</span>
+                        <div class="post-author">
+                            <div class="author-avatar">DZ</div>
+                            <span>David Zhang - Head of Mechanical Engineering</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>I modified the main linear mechanism by adding gears and a container for the linear actuator. Because I didn’t have the CAD file for the linear actuator, I found it quite difficult to model and properly make a container for it that would keep the linear actuator from moving at an angle. As you can see in this <a href="https://youtu.be/E-dHsgfKOfo">video</a>, it was a complete disappointment and a waste of PLA. The print was also very low quality as we were in a hurry (here is the <a href="https://drive.google.com/file/d/1SJOKX2HULdFf48tS1fz4IHvbFKGeJHQl/view?usp=sharing">STEP file</a>). Additionally, I had not considered the electrical side of this problem. To test the entire gripper, I headed to Konstantin’s house. For the design to work, I expected the linear actuator to be able to stop at a certain point, but this is very difficult given that it only has two power wires without any signal or something that is able to detect the extension. Thus, when retracting the linear actuator to close the gripper, we found that the linear actuator actually crushes the print and completely broke the coupler while squashing the slider piece. Also, I noticed that the linear actuator axle couldnt retract fully (though it wasn’t a large difference if you see the image below), suggesting that it has probably skipped a few gears internally. When I left, the electrical engineer was able to fit the gear onto the M200 motor and was able to rotate the gripper as seen in <a href="https://youtu.be/4bq-KlKKDm0">this video</a>. We had a discussion and decided the best way to reduce the chances of breaking the gripper was to add a stiff spring that wouldn’t allow the linear actuator to skip gears for some time while there is current sensing to see if there is excess force applied. From this experience and the feedback given from the electrical engineer, there should be changes such as:</p>
+<ul>
+<li>Increased tolerance for the parts that are connected to the components such as the linear actuator housing or gear held by the M200</li>
+<li>Decreased tolerance for parts that are related to the axle </li>
+<li>Remove the sliding component that attaches to the linear actuator housing and replace with something else </li>
+<li>A spring mechanism</li>
+<li>A gripper that has a long axle </li>
+<li>The use of the linear actuators' built-in stopping point helps prevent damage to components by avoiding crushing</li>
+</ul>
+                    <div class="post-images">
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/gripper-refined-print-linear-actuator-axle.jpg" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/gripper-refined-print-m200.jpg" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    </div>
+                </div>
+                <div class="tags"><span class="tag">aa</span></div>
+            </article>
+            
+            <article class="blog-post">
+                <div class="post-header">
                     <h2 class="post-title">Testing new equipment</h2>
                     <div class="post-meta">
                         <span class="post-date">January 22, 2025</span>
@@ -466,6 +545,24 @@
                     </div>
                 </div>
                 <div class="tags"><span class="tag">blah</span></div>
+            </article>
+            
+            <article class="blog-post">
+                <div class="post-header">
+                    <h2 class="post-title">Gripper Refined V1 Closing Mechanism</h2>
+                    <div class="post-meta">
+                        <span class="post-date">January 19, 2025</span>
+                        <div class="post-author">
+                            <div class="author-avatar">DZ</div>
+                            <span>David Zhang - Head of Mechanical Engineering</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>Gripper V1 is the first prototype compatible with our electrical components: Bluerobotics M200 motor and HAKIWO IP68 Waterproof 12V Linear Actuator. We chose the linear actuator as the opening and closing mechanism mainly because it is seen in other products like BlueRobotics and Reach Robotics. It could provide adequate force and speed without expensive parts due to the waterproofing. The gripper was designed to be able to hold round objects up to 3 inches in diameter. It has been designed to be as compact as possible, with the linear actuator axle coupling directly to the gripper mechanism. As the linear actuator’s axle is only 50 mm and the gripper extension mechanism is around 20 mm, we have to fit everything (the couple, the boot, and the gear/gripper holder) in 30 mm only. To save space, the coupler is placed between the gear/gripper holder and the gripper. I have also tested it (<a href="https://www.youtube.com/watch?v=lOtYzAC4DQQ">video</a>), and found that I needed to decrease the clearance. <a href="https://drive.google.com/file/d/1LBXtrs9frGWZF6YYzrJ2XitwoCb6P3K2/view?usp=sharing">Here</a> is the STEP file.</p>
+                    
+                </div>
+                <div class="tags"><span class="tag">later</span></div>
             </article>
             <!-- Update 1 End -->
             </div>

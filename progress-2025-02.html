@@ -512,6 +512,96 @@
             
             <article class="blog-post">
                 <div class="post-header">
+                    <h2 class="post-title">Use of Compliant Mechanism in Tooling</h2>
+                    <div class="post-meta">
+                        <span class="post-date">February 9, 2025</span>
+                        <div class="post-author">
+                            <div class="author-avatar">DZ</div>
+                            <span>David Zhang - Head of Mechanical Engineering</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>After developing a fascination on compliant mechanisms from prior research on mechanisms, I wanted to implement such mechanisms into this project. The materials we had at PCL were quite limited. Nylon 12 filament was almost used up and the rest was exposed to air while PETG didn’t work properly. Thus, our only option for a reliable compliant mechanism would be TPU. </p>
+<p>After reading the competition manual, I realized that the fish catcher and jellyfish catcher should be removable. A way to do this is to have a compliant mechanism hold it in place. This idea was extremely complex, but potentially could allow for the easiest removability with reliability that came with testing. This idea is outlined in the two sketches below. The opening and closing motion of the jellyfish catcher lid or the fish catcher lid would come from an axle that runs through a hinge, with one end connecting to the lid and another to a gear. The outer component of the hinge is connected to the “bucket” and would also reduce the horizontal motion of the inner axle. The compliant mechanism could hold the outer hinge in place, though with certain force could allow the entire hinge to be removed (the compliant mechanism should connect to the hinge perfectly, eliminating horizontal and rotational motion of the hinge with bumps). Finally, the gear is connected to a servo motor with another gear (the servo is not removable as the power source needs to be connected to the capsule). This allows for the removal of both the lid and the “bucket” in one go. This is the reason why the compliant mechanism is very important, and can make tooling removal very simple. </p>
+<p>Compliant mechanisms can also act like springs, allowing movement though increasing the force. During a test of the gripper, we realized that it is extremely difficult to control the precise motion of the linear actuator, and that it may continue to retract while it has already grabbed an object or continue to extend even though the gripper can’t open any further. This could permanently damage both the 3D printed gripper and the linear actuator (shown in one of the sketches below). My friend thought of implementing a compliant mechanism that would allow for deformation during additional force. On top of current sensing, this adds another layer of protection for the gripper in case the pilot extends or retracts the gripper too much. </p>
+<p>Thus, to test the properties of TPU and the use of compliant mechanisms, I sent a <a href="https://www.printables.com/model/583713-large-displacement-linear-motion-mechanisms/files">large-displacement linear-motion mechanism</a> (CT) and an <a href="https://www.printables.com/model/596315-ortho-planar-spring">ortho-planar spring</a> made by BYU to the manufacturing division of ROVolution to print at PCL with 30% infill. This can be seen in the images below. It came out very satisfactory, but was a lot more flexible than I thought. I believe that this is too unreliable for the tooling removal, but is very suitable for a spring system for the gripper. This is demonstrated in <a href="https://www.youtube.com/shorts/LGnIUWkiODk">this</a> video.</p>
+                    <div class="post-images">
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/compliant-mechanism1.png" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/compliant-mechanism2.png" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/compliant-mechanism3.jpg" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/compliant-mechanism4.jpeg" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    </div>
+                </div>
+                <div class="tags"><span class="tag">aa</span></div>
+            </article>
+            
+            <article class="blog-post">
+                <div class="post-header">
+                    <h2 class="post-title">Power Distribution PCB Fabrication</h2>
+                    <div class="post-meta">
+                        <span class="post-date">February 5, 2025</span>
+                        <div class="post-author">
+                            <div class="author-avatar">KL</div>
+                            <span>Konstantin Logashenko - Head of Electrical Engineering</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>The Power Distribution PCB was manufactured at KAUST’s Electronics Fabrication Laboratory (EFL) using the LPKF suite of PCB prototyping equipment. The process has several stages: hole and outline cutting, hole plating, fabrication of tracks, and solder mask application.  </p>
+<p><a href="https://youtu.be/61VreP0BN5A">Here</a> is a video.</p>
+                    <div class="post-images">
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/20250205_104109.jpg" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/20250204_165758.jpg" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/20250205_154608.jpg" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    
+                    <div class="image-wrapper">
+                        <img src="assets/blog/images/File-1000018416.jpg" alt="Blog image" class="post-image" loading="lazy">
+                    </div>
+                    </div>
+                </div>
+                <div class="tags"><span class="tag">aa</span></div>
+            </article>
+            
+            <article class="blog-post">
+                <div class="post-header">
+                    <h2 class="post-title">Jelly Catching (One of the Tools)</h2>
+                    <div class="post-meta">
+                        <span class="post-date">February 2, 2025</span>
+                        <div class="post-author">
+                            <div class="author-avatar">SB</div>
+                            <span>Shivahaari Balamurugan - CFO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="post-content">
+                    <p>For the most part, I was correcting and finalizing my design on Fusion 360. The design consists of a cylindrical tube for catching the jellyfish, and a lid that should close using a waterproof servos and gear. I had previously tested the hinges to ensure they work, however upon further analysis and brainstorming, I concluded that it would be an inefficient design, especially with the gears, hence I’ve made it simpler and easier to print (which was an added bonus). The next steps would include finding a way to secure the gears to ensure they work as intended, as well as printing a prototype (likely out of PLA), to test the design.</p>
+                    
+                </div>
+                <div class="tags"><span class="tag">aa</span></div>
+            </article>
+            
+            <article class="blog-post">
+                <div class="post-header">
                     <h2 class="post-title">Peg Board (Tooling Mobility)</h2>
                     <div class="post-meta">
                         <span class="post-date">February 1, 2025</span>
